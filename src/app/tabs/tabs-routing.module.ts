@@ -58,6 +58,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'simple',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../simple/simple.module').then(m => m.SimplePageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
