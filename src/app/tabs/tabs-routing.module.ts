@@ -28,12 +28,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'connexion',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../connexion/connexion.module').then(m => m.ConnexionPageModule)
           }
         ]
       },
@@ -44,6 +44,26 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab4/tab4.module').then(m => m.Tab4PageModule)
+          }
+        ]
+      },
+      {
+        path: 'inscription',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../inscription/inscription.module').then(m => m.InscriptionPageModule)
+          }
+        ]
+      },
+      {
+        path: 'mpaimment',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../mpaimment/mpaimment.module').then(m => m.MpaimmentPageModule)
           }
         ]
       },
