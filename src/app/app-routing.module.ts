@@ -6,9 +6,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
-  { path: 'moyen-de-paimment', loadChildren: './moyen-de-paimment/moyen-de-paimment.module#MoyenDePaimmentPageModule' },
-  { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' }
+  { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' },
+  { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' }
 ];
 @NgModule({
   imports: [

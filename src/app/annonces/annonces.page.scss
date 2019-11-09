@@ -1,0 +1,47 @@
+
+.dj {
+    margin: 0px 6px;
+}
+.di {
+    padding: 8px 8px 12px;
+}
+.dh {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+}
+.bs {
+    flex-basis: calc(85vw - 16px);
+}
+.br {
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+}
+.bc {
+    flex-shrink: 0;
+}
+.az {
+    min-width: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.ai {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+}
+.ax {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html {
+    color: -internal-root-color;
+}
