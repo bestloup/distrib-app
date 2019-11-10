@@ -8,7 +8,8 @@ const routes: Routes = [
   },
   { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' },
   { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' },
-  { path: 'sqlite', loadChildren: './sqlite/sqlite.module#SqlitePageModule' }
+  { path: 'sqlite', loadChildren: './sqlite/sqlite.module#SqlitePageModule' },  { path: 'role', loadChildren: './role/role.module#RolePageModule' }
+
 ];
 @NgModule({
   imports: [
