@@ -6,28 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form action="" method="post">
-    <table id="frm">
-      <tr>
-        <td><label for="inputemail"><b>Email :</b></label></td>
-        <td><label for="inputpw"><b>Mot de passe :</b></label></td>
-      </tr>
-      <tr>
-        <td><input type="email" name="email" id="inputemail" placeholder="example@toto.com" class="from-control"/></td>
-        <td><input type="password" name="mot_passe" id="inputpw" class="from-control"/></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><input type="submit" name="go" value="Connexion" id="bt"></td>
-      </tr>
-      <h6>OU</h6>
-      <tr>
-        <td></td>
-        <td><input type="submit" name="go" value="Connexion avec Facebook" id="bt"></td>
-      </tr>
-    </table>
-  </form>
-  </ion-content>
-
-
+<ion-content padding center text-center>
+    <ion-title> Distrib </ion-title>
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Username" [(ngModel)] ="username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Password" type="password"></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-button (click)="login()" color="primary" expand="full">Log in</ion-button>
+    <ion-button color="light" (click)="goRegister()" expand="full">Register</ion-button>
+</ion-content>

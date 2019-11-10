@@ -7,7 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' },
-  { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' }
+  { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' },
+  { path: 'sqlite', loadChildren: './sqlite/sqlite.module#SqlitePageModule' }
 ];
 @NgModule({
   imports: [

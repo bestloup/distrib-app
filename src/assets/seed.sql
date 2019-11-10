@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS marchant(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,photo TEXT,description TEXT,note FLOAT,geolocalisation GEOGRAPHY,dispo CHAR,bio TEXT);
+INSERT or IGNORE INTO marchand VALUES (1, 'Dimitri', 'https://pbs.twimg.com/profile_images/858987821394210817/oMccbXv6_bigger.jpg', 'Légumes de saison', '5', '47.65100, -122.34900, 4326', 'Lundi', 'Je suis un agriculteur biologique dans la région lyonnaise.' );

@@ -14,17 +14,23 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 import { AgmCoreModule } from '@agm/core';
 
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'})],
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'}), HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
     NativeGeocoder,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SQLite,
+    SQLitePorter
   ],
   bootstrap: [AppComponent]
 })
