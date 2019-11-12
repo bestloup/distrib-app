@@ -14,12 +14,12 @@ import {
 
 
 @Component({
-  selector: 'app-tab4',
-  templateUrl: 'tab4.page.html',
-  styleUrls: ['tab4.page.scss']
+  selector: 'app-coursiers',
+  templateUrl: 'coursiers.page.html',
+  styleUrls: ['coursiers.page.scss']
 })
 
-export class Tab4Page {
+export class CoursiersPage {
   map: GoogleMap;
   constructor(
     public alertController: AlertController,

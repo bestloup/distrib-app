@@ -18,62 +18,42 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'annonces',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../annonces/annonces.module').then(m => m.AnnoncesPageModule)
           }
         ]
       },
       {
-        path: 'connexion',
+        path: 'marchands',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../connexion/connexion.module').then(m => m.ConnexionPageModule)
+              import('../marchands/marchands.module').then(m => m.MarchandsPageModule)
           }
         ]
       },
       {
-        path: 'tab4',
+        path: 'coursiers',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab4/tab4.module').then(m => m.Tab4PageModule)
+              import('../coursiers/coursiers.module').then(m => m.CoursiersPageModule)
           }
         ]
       },
       {
-        path: 'inscription',
+        path: 'favoris',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../inscription/inscription.module').then(m => m.InscriptionPageModule)
-          }
-        ]
-      },
-      {
-        path: 'mpaimment',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../mpaimment/mpaimment.module').then(m => m.MpaimmentPageModule)
-          }
-        ]
-      },
-      {
-        path: 'geolocation',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../geolocation/geolocation.module').then(m => m.GeolocationPageModule)
+              import('../favoris/favoris.module').then(m => m.FavorisPageModule)
           }
         ]
       },
@@ -84,16 +64,6 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../settings/settings.module').then(m => m.SettingsPageModule)
-          }
-        ]
-      },
-      {
-        path: 'simple',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../simple/simple.module').then(m => m.SimplePageModule)
           }
         ]
       },

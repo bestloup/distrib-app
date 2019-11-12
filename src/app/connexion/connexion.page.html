@@ -20,6 +20,7 @@
             <ion-input placeholder="Password" type="password"></ion-input>
         </ion-item>
     </ion-list>
-    <ion-button (click)="login()" color="primary" expand="full">Log in</ion-button>
+    <ion-button (click)="login()" color="primary" expand="full">Log in
+    <ion-route-redirect from="/connexion" to="/tabs"></ion-route-redirect> </ion-button>
     <ion-button color="light" (click)="goRegister()" expand="full">Register</ion-button>
 </ion-content>
