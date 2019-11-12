@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'favoris', loadChildren: './favoris/favoris.module#FavorisPageModule' },
   { path: 'marchands', loadChildren: './marchands/marchands.module#MarchandsPageModule' },
   { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' },
-  { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' }
+  { path: 'inscription', loadChildren: './inscription/inscription.module#InscriptionPageModule' }
 
 ];
 @NgModule({
