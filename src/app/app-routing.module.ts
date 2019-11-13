@@ -6,6 +6,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
+  { path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule' },
   { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' },
   { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' },
   { path: 'sqlite', loadChildren: './sqlite/sqlite.module#SqlitePageModule' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'favoris', loadChildren: './favoris/favoris.module#FavorisPageModule' },
   { path: 'marchands', loadChildren: './marchands/marchands.module#MarchandsPageModule' },
   { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' },
-  { path: 'inscription', loadChildren: './inscription/inscription.module#InscriptionPageModule' }
+  { path: 'inscription', loadChildren: './inscription/inscription.module#InscriptionPageModule' },
+  { path: 'desmarchand', loadChildren: './desmarchand/desmarchand.module#DesmarchandPageModule' }
 
 ];
 @NgModule({
