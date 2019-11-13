@@ -1,10 +1,48 @@
 <ion-header>
   <ion-toolbar>
-  <ion-back-button></ion-back-button>
-  <img class="toto" src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FFAC.2Fvar.2Ffemmeactuelle.2Fstorage.2Fimages.2Famour.2Fcoaching-amoureux.2Fcest-quoi-belle-femme-temoignages-43206.2F14682625-1-fre-FR.2Fc-est-quoi-une-belle-femme-temoignages.2Ejpg/748x372/quality/90/crop-from/center/c-est-quoi-une-belle-femme-temoignages.jpeg"/>
-  </ion-toolbar>
+    <ion-back-button></ion-back-button>
+    <img class="image" src="http://www.cuisine-blog.fr/wp-content/uploads/2018/06/cover-juillet.jpg"/>
+   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-content class="en-tete">
+      <h1> Position </h1>
+      10Km
+    </ion-content>
+    <ion-content class="en-tete">
+      <h1> Disponibilité </h1>
+      tous les jours 
+    </ion-content>
+
+    <ion-content class="bio">
+    <h1 id="titre"> BIO </h1>
+    Nous sommes des agriculteurs biologiques dans la région lyonnaise. Nous produissons exclusivement des légumes de saison.
+    </ion-content>
+
+    <ion-list>
+    <h1>Produits</h1>
+    <ion-item>
+      <ion-card>
+        <img class="pomme" src="./assets/pomme.png">
+        <ion-card-header>
+            <ion-card-title>Pommes</ion-card-title>
+            <ion-card-subtitle>100 Kg</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-item>
+    <ion-item>
+      <ion-card>
+        <img class="carotte" src="./assets/carotte.png">
+        <ion-card-header>
+            <ion-card-title>Carotte</ion-card-title>
+            <ion-card-subtitle>80 Kg</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-item>
+    </ion-list>
+
+        <ion-button class="but" color="success" routerLink="/initcommande">Commander</ion-button>
 
 </ion-content>

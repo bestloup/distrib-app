@@ -40,8 +40,8 @@ export class CoursiersPage {
     this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {
-          lat: 43.610769,
-          lng: 3.876716
+          lat: 45.75,
+          lng: 4.85
         },
         zoom: 12,
         tilt: 30

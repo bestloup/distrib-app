@@ -17,7 +17,9 @@ const routes: Routes = [
   { path: 'marchands', loadChildren: './marchands/marchands.module#MarchandsPageModule' },
   { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' },
   { path: 'inscription', loadChildren: './inscription/inscription.module#InscriptionPageModule' },
-  { path: 'desmarchand', loadChildren: './desmarchand/desmarchand.module#DesmarchandPageModule' }
+  { path: 'desmarchand', loadChildren: './desmarchand/desmarchand.module#DesmarchandPageModule' },
+  { path: 'initcommande', loadChildren: './initcommande/initcommande.module#InitcommandePageModule' },
+  { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' }
 
 ];
 @NgModule({
