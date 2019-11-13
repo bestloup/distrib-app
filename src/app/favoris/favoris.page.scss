@@ -1,0 +1,41 @@
+.profile_image {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: 5px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.profile_info {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    text-align: left;
+}
+
+.profile_stars {
+    display: inline-block;
+    text-align: left;
+    padding-left: 0px;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+
+
+
+ion-header{
+    text-align: center;
+}
+
+ion-content{
+    display: inline-block;
+    width: 100%;
+}
