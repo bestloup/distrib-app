@@ -5,13 +5,21 @@ ion-icon{
 
 ion-item{
     display: inline-block;
+    width: 100%;
 }
 ion-card-header{
     display: inline-block;
     vertical-align: top;
     width: 70%;
 }
+ion-card{
+    width: 100%;
+}
 
 ion-checkbox{
     vertical-align: middle;
+}
+
+ion-header{
+    text-align: center;
 }
