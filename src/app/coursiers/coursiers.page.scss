@@ -40,14 +40,19 @@ h1 {
 }
 
 
-
-
-
-ion-header{
-  text-align: center;
-}
-
 ion-content{
   display: inline-block;
   width: 100%;
+}
+
+
+//ajout de mathéo pour que la vue ressemble a celle que l'on voualais 
+.list-coursiers{
+  height: 30%;
+  overflow-y : auto;
+
+}
+
+ion-card{
+  display:block;
 }

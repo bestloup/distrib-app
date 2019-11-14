@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'desmarchand', loadChildren: './desmarchand/desmarchand.module#DesmarchandPageModule' },
   { path: 'initcommande', loadChildren: './initcommande/initcommande.module#InitcommandePageModule' },
   { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' },
-  { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' }
+  { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' },
+  { path: 'support', loadChildren: './support/support.module#SupportPageModule' }
 
 ];
 @NgModule({
