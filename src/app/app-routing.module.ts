@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'inscription', loadChildren: './inscription/inscription.module#InscriptionPageModule' },
   { path: 'desmarchand', loadChildren: './desmarchand/desmarchand.module#DesmarchandPageModule' },
   { path: 'initcommande', loadChildren: './initcommande/initcommande.module#InitcommandePageModule' },
-  { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' }
+  { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' },
+  { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' }
 
 ];
 @NgModule({

@@ -1,0 +1,52 @@
+.profile_image {
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: 5px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.profile_info {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+    text-align: left;
+}
+
+.profile_stars {
+    display: inline-block;
+    text-align: left;
+    padding-left: 0px;
+}
+
+ion-header{
+    text-align: center;
+}
+
+ion-card{
+    display: inline-block;
+    width: 100%;
+}
+
+.tata{
+    display: inline-block;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+h1{
+    text-align: center;
+}
+
+.histlist{
+    width: 60%;
+}
+
+.elemhisto{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
