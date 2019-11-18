@@ -1,4 +1,5 @@
 <ion-header>
+
   <ion-toolbar>
     <ion-title>
       INSCRIPTION
@@ -8,16 +9,13 @@
 
 <ion-content padding center text-center>
     <ion-title> Distrib </ion-title>
-    <ion-list>
-        <ion-item>
-            <ion-input placeholder="Username" [(ngModel)] ="username"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input placeholder="Password" type="password"></ion-input>
-        </ion-item>
-                <ion-item>
-            <ion-input placeholder="Confirm_Password" type="password"></ion-input>
-        </ion-item>
-    </ion-list>
-    <ion-button color="primary" (click)="goRegister()" expand="full" routerLink="/role">Register</ion-button>
+
+    <firebase-ui></firebase-ui>
+    <h1 *ngIf ="afAuth.auth.currentUser">
+      Welcome {{afAuth.auth.currentUser.displayName}}
+    </h1>
+
+    <ion-button *ngIf="afAuth.auth.currentUser" (click)="signOut()">
+      Sign Out
+    </ion-button>
 </ion-content>
