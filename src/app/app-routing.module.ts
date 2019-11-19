@@ -21,7 +21,10 @@ const routes: Routes = [
   { path: 'initcommande', loadChildren: './initcommande/initcommande.module#InitcommandePageModule' },
   { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' },
   { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' },
-  { path: 'support', loadChildren: './support/support.module#SupportPageModule' }
+  { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
+  { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
 
 ];
 @NgModule({
