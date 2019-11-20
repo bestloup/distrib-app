@@ -1,4 +1,4 @@
-import { Todo, TodoService } from './../../services/todo.service';
+import { Marchand, TodoService } from './../../services/todo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
@@ -10,10 +10,8 @@ import { NavController, LoadingController } from '@ionic/angular';
 })
 export class TodoDetailsPage implements OnInit {
 
-  todo: Todo = {
-    task: 'test',
-    createdAt: new Date().getTime(),
-    priority: 2
+  todo: Marchand = {
+    createdAt: new Date().getTime()
   };
 
   todoId = null;
@@ -42,7 +40,7 @@ export class TodoDetailsPage implements OnInit {
   async saveTodo() {
 
     const loading = await this.loadingController.create({
-      message: 'Saving Todo..'
+      message: 'Sauvegarde du Marchand...'
     });
     await loading.present();
 

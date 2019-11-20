@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Ionic FireTodos
+      Table Marchand
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,10 +22,10 @@
     <ion-item-sliding *ngFor="let item of todos">
       <ion-item lines="inset" button [routerLink]="['/details', item.id]">
         <ion-label>
-          {{ item.task }}
+          {{ item.Nom }}
           <p>{{ item.createdAt | date:'short' }}</p>
         </ion-label>
-        <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
+        <ion-note slot="end" color="primary">{{ item.bio }}</ion-note>
       </ion-item>
 
       <ion-item-options side="end">

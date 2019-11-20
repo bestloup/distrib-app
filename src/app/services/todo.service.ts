@@ -3,10 +3,10 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export interface Todo {
+export interface Marchand {
   id?: string;
-  task: string;
-  priority: number;
+  Nom: string;
+  bio: string;
   createdAt: number;
 }
 
@@ -14,12 +14,12 @@ export interface Todo {
   providedIn: 'root'
 })
 export class TodoService {
-  private todosCollection: AngularFirestoreCollection<Todo>;
+  private todosCollection: AngularFirestoreCollection<Marchand>;
 
-  private todos: Observable<Todo[]>;
+  private todos: Observable<Marchand[]>;
 
   constructor(db: AngularFirestore) {
-    this.todosCollection = db.collection<Todo>('todos');
+    this.todosCollection = db.collection<Marchand>('todos');
 
     this.todos = this.todosCollection.snapshotChanges().pipe(
       map(actions => {
@@ -37,14 +37,14 @@ export class TodoService {
   }
 
   getTodo(id) {
-    return this.todosCollection.doc<Todo>(id).valueChanges();
+    return this.todosCollection.doc<Marchand>(id).valueChanges();
   }
 
-  updateTodo(todo: Todo, id: string) {
+  updateTodo(todo: Marchand, id: string) {
     return this.todosCollection.doc(id).update(todo);
   }
 
-  addTodo(todo: Todo) {
+  addTodo(todo: Marchand) {
     return this.todosCollection.add(todo);
   }
 
