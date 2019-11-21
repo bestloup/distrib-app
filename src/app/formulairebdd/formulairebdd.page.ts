@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo, MarchandService } from '../services/marchand.service';
+import { Users, UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-formulairebdd',
@@ -8,13 +8,13 @@ import { Todo, MarchandService } from '../services/marchand.service';
 })
 export class FormulairebddPage implements OnInit {
 
-  todos: Todo[];
+  user: Users[];
 
-  constructor(private todoService: MarchandService) { }
+  constructor(private todoService: UsersService) { }
 
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
-      this.todos = res;
+      this.user = res;
     });
   }
 
