@@ -23,6 +23,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
@@ -58,9 +60,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),IonicModule.forRoot(), AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase), IonicModule.forRoot(), AppRoutingModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'}), HttpClientModule,
     AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
       FirebaseUIModule.forRoot(firebaseUiAuthConfig) ],
   providers: [
     StatusBar,
