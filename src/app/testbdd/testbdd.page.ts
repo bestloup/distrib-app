@@ -1,7 +1,8 @@
-import { Todo, MarchandService } from './../services/marchand.service';
+import { Users, UsersService } from './../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-testbdd',
@@ -10,14 +11,16 @@ import { NavController, LoadingController } from '@ionic/angular';
 })
 export class TestbddPage implements OnInit {
 
-  todo: Todo = {
-    task: 'test',
+  todo: Users = {
+    Nom: 'titi',
+    Prenom: 'toto',
+    age: 12,
+    photo: 'je connais pas le format de stockage',
     createdAt: new Date().getTime(),
-    priority: 2
   };
 
   todoId = null;
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: MarchandService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: UsersService, private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];

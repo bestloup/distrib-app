@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo, TodoService } from '../services/todo.service';
+import { Marchand, TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { Todo, TodoService } from '../services/todo.service';
 })
 export class HomePage implements OnInit {
 
-  todos: Todo[];
+  todos: Marchand[];
 
   constructor(private todoService: TodoService) { }
 
