@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActionSheetController, Platform, AlertController } from '@ionic/angular';
+import { Map, tileLayer, marker } from 'leaflet';
 import {
   GoogleMaps,
   GoogleMap,
@@ -20,33 +20,23 @@ import {
 })
 
 export class CoursiersPage {
-  map: GoogleMap;
-  constructor(
-    public alertController: AlertController,
-    public actionCtrl: ActionSheetController,
-    private platform: Platform,
-    ) {
-    if (this.platform.is('cordova')) {
-      this.loadMap();
-    }
+  map: Map;
 
+  ionViewDidEnter() {
+    this.leafletMap();
   }
 
-  loadMap() {
-    Environment.setEnv({
-      API_KEY_FOR_BROWSER_RELEASE: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8',
-      API_KEY_FOR_BROWSER_DEBUG: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'
-    });
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {
-          lat: 45.75,
-          lng: 4.85
-        },
-        zoom: 12,
-        tilt: 30
-      }
-    });
+  leafletMap() {
+    this.map = new Map('mapId').setView([45.75, 4.85], 13);
+
+    tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);
+
+    const markPoint = marker([45.75, 4.85]);
+    markPoint.bindPopup('<p>Tashi Delek - Bangalore.</p>');
+    this.map.addLayer(markPoint);
+  }
+
+  ionViewWillLeave() {
+    this.map.remove();
   }
 }
-
