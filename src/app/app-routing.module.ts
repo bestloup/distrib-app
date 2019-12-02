@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'geo', loadChildren: './geo/geo.module#GeoPageModule' },
 ];
 @NgModule({
   imports: [

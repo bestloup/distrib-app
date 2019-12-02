@@ -1,16 +1,6 @@
 import { Component } from '@angular/core';
 import { Map, tileLayer, marker } from 'leaflet';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsMapTypeId,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker,
-  Environment
-} from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @Component({
@@ -21,9 +11,13 @@ import {
 
 export class CoursiersPage {
   map: Map;
+  geolocation: Geolocation;
+  lat: any;
+  lng: any;
 
   ionViewDidEnter() {
     this.leafletMap();
+    //this.Recuppos();
   }
 
   leafletMap() {
@@ -38,5 +32,16 @@ export class CoursiersPage {
 
   ionViewWillLeave() {
     this.map.remove();
+  }
+
+  Recuppos() {
+    console.log('toto');
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.lat = resp.coords.latitude;
+      this.lng = resp.coords.longitude;
+      console.log(resp);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
   }
 }
