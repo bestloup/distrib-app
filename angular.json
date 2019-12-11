@@ -42,10 +42,7 @@
               },
               {
                 "input": "src/global.scss"
-              },
-              {
-                "input": "./node_modules/leaflet/dist/leaflet.css"
-             }
+              }
             ],
             "scripts": []
           },
