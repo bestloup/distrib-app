@@ -1,8 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      Table Marchand
-    </ion-title>
+  <ion-toolbar>
+    <ion-title>Marchands</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,14 +17,23 @@
       </div>
     </ng-container>
 
-    <ion-item-sliding *ngFor="let item of todos">
-      <ion-item lines="inset" button [routerLink]="['/details', item.id]">
-        <ion-label>
-          {{ item.Nom }}
-          <p>{{ item.createdAt | date:'short' }}</p>
-        </ion-label>
-        <ion-note slot="end" color="primary">{{ item.bio }}</ion-note>
-      </ion-item>
+      <ion-item-sliding *ngFor="let item of todos">
+
+          <ion-item lines="inset" button [routerLink]="['/details', item.id]">
+            <ion-card class="profile_info">
+              <ion-card-header >
+                <ion-card-title>
+                  {{ item.Nom }}
+                  <!--<p>{{ item.createdAt | date:'short' }}</p>-->
+                </ion-card-title>
+                <ion-card-subtitle>{{ item.bio }}</ion-card-subtitle>
+                <ion-card-subtitle>{{ item.adresse }}</ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+        </ion-item>
+
+
+
 
       <ion-item-options side="end">
         <ion-item-option (click)="remove(item)" color="secondary">
