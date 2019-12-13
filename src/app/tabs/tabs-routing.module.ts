@@ -58,6 +58,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'paypal',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../paypal/paypal.module').then(m => m.PaypalPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/annonces',
         pathMatch: 'full'

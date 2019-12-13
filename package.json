@@ -29,6 +29,7 @@
     "@ionic-native/http": "^5.17.1",
     "@ionic-native/location-accuracy": "^5.17.1",
     "@ionic-native/native-geocoder": "^5.17.1",
+    "@ionic-native/paypal": "^5.18.0",
     "@ionic-native/splash-screen": "^5.17.1",
     "@ionic-native/sqlite": "^5.17.1",
     "@ionic-native/sqlite-porter": "^5.17.1",
@@ -36,6 +37,8 @@
     "@ionic/angular": "^4.11.5",
     "angular": "^1.7.9",
     "angularfire2": "^5.2.3",
+    "card.io.cordova.mobilesdk": "^2.1.0",
+    "com.paypal.cordova.mobilesdk": "^3.5.0",
     "cordova-android": "^8.1.0",
     "cordova-browser": "6.0.0",
     "cordova-ios": "^5.1.1",
@@ -111,7 +114,8 @@
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
       "cordova-plugin-advanced-http": {
         "OKHTTP_VERSION": "3.10.0"
-      }
+      },
+      "com.paypal.cordova.mobilesdk": {}
     },
     "platforms": [
       "ios",

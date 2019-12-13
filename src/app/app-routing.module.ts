@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'geo', loadChildren: './geo/geo.module#GeoPageModule' },
+  { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },
 ];
 @NgModule({
   imports: [

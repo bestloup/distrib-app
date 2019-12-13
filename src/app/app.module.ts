@@ -25,6 +25,8 @@ import { environment } from 'src/environments/environment';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
+import { PayPal } from '@ionic-native/paypal/ngx';
+
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
@@ -69,6 +71,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     SplashScreen,
     Geolocation,
     NativeGeocoder,
+    PayPal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SQLite,
     SQLitePorter
