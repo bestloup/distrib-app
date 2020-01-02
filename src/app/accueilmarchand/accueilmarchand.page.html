@@ -1,15 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inscription marchand</ion-title>
+    <ion-title>Gestion des produits</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <!--
   <ion-list>
 
-    <ng-container *ngIf="!todos || todos.length == 0">
+    <ng-container *ngIf="!produits || produits.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
         <ion-skeleton-text></ion-skeleton-text>
         <p>
@@ -18,15 +17,17 @@
       </div>
     </ng-container>
 
-      <ion-item-sliding *ngFor="let item of todos">
+      <ion-item-sliding *ngFor="let item of produits">
 
           <ion-item lines="inset" button [routerLink]="['/details', item.id]">
             <ion-card class="profile_info">
               <ion-card-header >
-                <ion-card-title>{{ item.Nom }}</ion-card-title>
-                <ion-card-subtitle>{{ item.bio }}</ion-card-subtitle>
-                <ion-card-subtitle>{{ item.adresse }}</ion-card-subtitle>
-                <ion-card-subtitle>{{ item.id }}</ion-card-subtitle>
+                <ion-card-title>
+                  {{ item.nom }}
+                  <!--<p>{{ item.createdAt | date:'short' }}</p>-->
+                </ion-card-title>
+                <ion-card-subtitle>{{ item.quantite }}</ion-card-subtitle>
+                <ion-card-subtitle>{{ item.idMarchandEnCours }}</ion-card-subtitle>
               </ion-card-header>
             </ion-card>
         </ion-item>
@@ -43,10 +44,11 @@
     </ion-item-sliding>
 
   </ion-list>
-  -->
 
-  <ion-fab vertical="center" horizontal="center" slot="fixed">
-    <ion-fab-button routerLink="/creationmarchand" routerDirection="forward">
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/produits" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

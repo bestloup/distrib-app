@@ -5,10 +5,10 @@ import { NavController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-todo-details',
-  templateUrl: './todo-details.page.html',
-  styleUrls: ['./todo-details.page.scss'],
+  templateUrl: './produit-details.page.html',
+  styleUrls: ['./produit-details.page.scss'],
 })
-export class TodoDetailsPage implements OnInit {
+export class ProduitDetailsPage implements OnInit {
 
   todo: Marchand = {
     createdAt: new Date().getTime(),
@@ -18,7 +18,6 @@ export class TodoDetailsPage implements OnInit {
   };
 
   todoId = null;
-  idMarchandEnCours = null;
 
   constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
 
@@ -31,7 +30,7 @@ export class TodoDetailsPage implements OnInit {
 
   async loadTodo() {
     const loading = await this.loadingController.create({
-      message: 'Loading Marchand...'
+      message: 'Loading Todo..'
     });
     await loading.present();
 
@@ -43,8 +42,6 @@ export class TodoDetailsPage implements OnInit {
 
   async saveTodo() {
 
-    this.idMarchandEnCours = this.route.snapshot.params['id'];
-
     const loading = await this.loadingController.create({
       message: 'Sauvegarde du Marchand...'
     });
@@ -53,12 +50,12 @@ export class TodoDetailsPage implements OnInit {
     if (this.todoId) {
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         loading.dismiss();
-        this.nav.back('produits');
+        //this.nav.back('home');
       });
     } else {
       this.todoService.addTodo(this.todo).then(() => {
         loading.dismiss();
-        this.nav.back('produits');
+        //this.nav.back('home');
       });
     }
   }

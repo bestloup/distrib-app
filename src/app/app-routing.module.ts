@@ -26,10 +26,14 @@ const routes: Routes = [
   { path: 'testbdd/:id', loadChildren: './testbdd/testbdd.module#TestbddPageModule' },
   { path: 'formulairebdd', loadChildren: './formulairebdd/formulairebdd.module#FormulairebddPageModule' },
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
-  { path: 'details', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'creationmarchand', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'geo', loadChildren: './geo/geo.module#GeoPageModule' },
   { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },
+  { path: 'detailsProduct', loadChildren: './pages/produit-details/produit-details.module#ProduitDetailsPageModule' },
+  { path: 'accueilmarchand', loadChildren: './accueilmarchand/accueilmarchand.module#AccueilmarchandPageModule' },
+  { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
+
 ];
 @NgModule({
   imports: [

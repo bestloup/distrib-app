@@ -7,6 +7,7 @@ export interface Marchand {
   id?: string;
   Nom: string;
   bio: string;
+  adresse : string;
   createdAt: number;
 }
 
@@ -19,7 +20,7 @@ export class TodoService {
   private todos: Observable<Marchand[]>;
 
   constructor(db: AngularFirestore) {
-    this.todosCollection = db.collection<Marchand>('todos');
+    this.todosCollection = db.collection<Marchand>('Marchand');
 
     this.todos = this.todosCollection.snapshotChanges().pipe(
       map(actions => {
@@ -32,10 +33,11 @@ export class TodoService {
     );
   }
 
+// Permet de voir l'intégralité des marchands
   getTodos() {
     return this.todos;
   }
-
+// Permet de selectionner le marchand avec un ID spécifique
   getTodo(id) {
     return this.todosCollection.doc<Marchand>(id).valueChanges();
   }

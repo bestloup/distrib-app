@@ -10,24 +10,24 @@
 <ion-content padding>
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Nom" [(ngModel)]="todo.Nom"></ion-input>
+      <ion-input required type="text" placeholder="Nom" [(ngModel)]="produit.nom"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="Bio" [(ngModel)]="todo.bio"></ion-input>
+      <ion-input required type="text" placeholder="Quantité" [(ngModel)]="produit.quantite"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="Adresse" [(ngModel)]="todo.adresse"></ion-input>
+      <ion-input required type="text" placeholder="Grandeur" [(ngModel)]="produit.grandeur"></ion-input>
     </ion-item>
 
     <!--
     <div class="bar bar-header bar-light">
       <h1 class="title">Produits à disposition :</h1>
     </div>
-    <ion-fab-button routerLink="/detailsProduct" routerDirection="forward">
+    <ion-fab-button routerLink="/accueilmarchand" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     -->
 
   </ion-list>
-  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+  <ion-button expand="full" (click)="saveProduit()">Save</ion-button>
 </ion-content>
