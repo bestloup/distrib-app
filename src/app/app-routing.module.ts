@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'detailsProduct', loadChildren: './pages/produit-details/produit-details.module#ProduitDetailsPageModule' },
   { path: 'accueilmarchand', loadChildren: './accueilmarchand/accueilmarchand.module#AccueilmarchandPageModule' },
   { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
+  { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
 
 ];
 @NgModule({

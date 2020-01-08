@@ -5,14 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProduitsPage } from './produits.page';
-
-//import { ProduitsRoutingModule } from './produits-routing.module';
-
+import { PicuploadPage } from './picupload.page';
+import { FileSizeFormatPipe } from './file-size-format.pipe';
 const routes: Routes = [
   {
     path: '',
-    component: ProduitsPage
+    component: PicuploadPage
   }
 ];
 
@@ -23,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProduitsPage]
+  declarations: [PicuploadPage,FileSizeFormatPipe]
 })
-export class ProduitsPageModule {}
+export class PicuploadPageModule {}

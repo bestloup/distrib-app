@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 
-import { TodoDetailsPage } from './pages/todo-details.page';
+//import { TodoDetailsPage } from './pages/todo-details.page';
 
 @Component({
   selector: 'produits-details',
@@ -15,7 +15,7 @@ export class ProduitsPage implements OnInit {
   produit: Produit = {
     nom: '',
     idMarchand: '', //idMarchandEnCours
-    quantite: '',
+    quantite: 0,
     grandeur: ''
   };
 
@@ -52,12 +52,12 @@ export class ProduitsPage implements OnInit {
     if (this.produitId) {
       this.produitsService.updateProduit(this.produit, this.produitId).then(() => {
         loading.dismiss();
-        this.nav.back('accueilmarchand');
+        this.nav.back();
       });
     } else {
       this.produitsService.addProduit(this.produit).then(() => {
         loading.dismiss();
-        this.nav.back('accueilmarchand');
+        this.nav.back();
       });
     }
   }

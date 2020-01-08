@@ -22,10 +22,13 @@ import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+//import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { PayPal } from '@ionic-native/paypal/ngx';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -65,7 +68,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireModule.initializeApp(environment.firebase), IonicModule.forRoot(), AppRoutingModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'}), HttpClientModule,
     AngularFireAuthModule, AngularFirestoreModule,
-      FirebaseUIModule.forRoot(firebaseUiAuthConfig) ],
+      FirebaseUIModule.forRoot(firebaseUiAuthConfig), AngularFireStorageModule ],
   providers: [
     StatusBar,
     SplashScreen,
