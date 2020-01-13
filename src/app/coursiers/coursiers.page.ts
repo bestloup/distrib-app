@@ -21,13 +21,19 @@ export class CoursiersPage {
   }
 
   leafletMap() {
-    this.map = new Map('mapId').setView([45.75, 4.85], 13);
+    this.map = new Map('mapId').setView([45.78368573921658, 4.872815740661602], 13);
 
     tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);
 
-    const markPoint = marker([45.75, 4.85]);
-    markPoint.bindPopup('<p>Tashi Delek - Bangalore.</p>');
+    const markPoint = marker([45.77233909078429, 4.865949285583477]);
+    markPoint.bindPopup('<p>Place Wilson</p>');
+    const mark = marker([45.78067042784339, 4.88337291534422]);
+    mark.bindPopup('<p>Croix-Luzet</p>');
+    const marche = marker([45.76824653667622, 4.880164160621652]);
+    marche.bindPopup('<p>Gratte-ciel</p>');
     this.map.addLayer(markPoint);
+    this.map.addLayer(mark);
+    this.map.addLayer(marche);
   }
 
   ionViewWillLeave() {
