@@ -24,4 +24,21 @@ describe('InfouserPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ InfouserPage ],
+      imports: [IonicModule.forRoot()]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HomePage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

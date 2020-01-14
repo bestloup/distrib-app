@@ -1,17 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController, LoadingController } from '@ionic/angular';
-import { Users, UsersService } from './../services/users.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
-
-
+import { Component } from '@angular/core';
 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
-
 
 export interface MyData {
   name: string;
@@ -20,29 +12,11 @@ export interface MyData {
 }
 
 @Component({
-  selector: 'app-infouser',
-  templateUrl: './infouser.page.html',
-  styleUrls: ['./infouser.page.scss'],
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
-
-
-
-export class InfouserPage {
-  user: Users = {
-    id: '',
-    Nom: '',
-    Prenom: '',
-    sexe: '',
-    role: ''
-  };
-
-  ngOnInit() {
-  }
-
-
-  push() {
-    this.usersService.addTodo(this.user);
-  }
+export class HomePage {
 
   // Upload Task
   task: AngularFireUploadTask;
@@ -68,19 +42,7 @@ export class InfouserPage {
   isUploaded:boolean;
 
   private imageCollection: AngularFirestoreCollection<MyData>;
-  constructor(private storage: AngularFireStorage, private database: AngularFirestore,public afAuth: AngularFireAuth,
-  private router: Router,
-  private usersService: UsersService) {
-    {
-      this.afAuth.authState.subscribe(auth => {
-        if (!auth) {
-          this.router.navigateByUrl('/connexion');
-        } else {
-          this.user.id = auth.uid;
-        }
-      });
-    }
-
+  constructor(private storage: AngularFireStorage, private database: AngularFirestore) {
     this.isUploading = false;
     this.isUploaded = false;
     //Set collection where our documents/ images info will save

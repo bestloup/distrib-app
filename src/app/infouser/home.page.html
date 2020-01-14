@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>infouser</ion-title>
+    <ion-title>
+      Firestore Image Upload
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -98,29 +100,3 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
-
-
-
-
-<ion-content>
-<ion-list>
-  <ion-item>
-    <ion-label>Nom</ion-label>
-    <ion-input [(ngModel)]="user.Nom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Prénom</ion-label>
-    <ion-input [(ngModel)]="user.Prenom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Sexe</ion-label>
-    <ion-input [(ngModel)]="user.sexe"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Rôle</ion-label>
-    <ion-input [(ngModel)]="user.role"></ion-input>
-  </ion-item>
-
-
-  <ion-button color="light" (click)="push()" expand="full">Enregistrement</ion-button>
-</ion-list>
