@@ -30,11 +30,17 @@ export class InfouserPage implements OnInit {
         this.router.navigateByUrl('/connexion');
       } else {
         this.user.id = auth.uid;
+        console.log(this.user.id);
+        if (this.usersService.getTodo(this.user.id)) {
+          console.log("info déjà connue")
+          this.router.navigateByUrl('/tabs/annonces');
+        }
       }
     });
   }
 
   ngOnInit() {
+
   }
 
 
