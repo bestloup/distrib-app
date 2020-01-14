@@ -22,8 +22,6 @@ const routes: Routes = [
   { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' },
   { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' },
   { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
-  { path: 'testbdd', loadChildren: './testbdd/testbdd.module#TestbddPageModule' },
-  { path: 'testbdd/:id', loadChildren: './testbdd/testbdd.module#TestbddPageModule' },
   { path: 'formulairebdd', loadChildren: './formulairebdd/formulairebdd.module#FormulairebddPageModule' },
   { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'creationmarchand', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
@@ -34,6 +32,7 @@ const routes: Routes = [
   { path: 'accueilmarchand', loadChildren: './accueilmarchand/accueilmarchand.module#AccueilmarchandPageModule' },
   { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
+  { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' },
 
 ];
 @NgModule({

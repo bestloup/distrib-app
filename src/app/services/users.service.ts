@@ -4,12 +4,11 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Users {
-  id?: string;
+  id: string;
   Nom: string;
   Prenom: string;
-  age: number;
-  photo: string;
-  createdAt: number;
+  sexe: string;
+  role: string;
 }
 
 @Injectable({
