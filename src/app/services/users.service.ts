@@ -7,7 +7,6 @@ export interface Users {
   id: string;
   nom: string;
   prenom: string;
-  sexe: string;
   role: string;
 }
 

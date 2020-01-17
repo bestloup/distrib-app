@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' },
   { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
   { path: 'formulairebdd', loadChildren: './formulairebdd/formulairebdd.module#FormulairebddPageModule' },
-  { path: 'creationmarchand', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'creationmarchand', loadChildren: './pages/marchand-details/marchand-details.module#TodoDetailsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'geo', loadChildren: './geo/geo.module#GeoPageModule' },
   { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },

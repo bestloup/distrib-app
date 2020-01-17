@@ -38,7 +38,6 @@ export class InfouserPage {
     id: '',
     nom: '',
     prenom: '',
-    sexe: '',
     role: ''
   };
   push() {
@@ -83,7 +82,7 @@ export class InfouserPage {
     {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {
-          
+
         } else {
           this.user.id = auth.uid;
           //this.userid = auth.uid;
