@@ -113,6 +113,14 @@
 
 <ion-content>
 <ion-list>
+        <ion-item>
+            <ion-label><b>Email:</b></ion-label>
+            <ion-input type="email" [(ngModel)]="dataUser.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label><b>Mot de passe:</b></ion-label>
+            <ion-input type="password" [(ngModel)]="dataUser.password"></ion-input>
+        </ion-item>
   <ion-item>
     <ion-label>Nom</ion-label>
     <ion-input [(ngModel)]="user.nom"></ion-input>

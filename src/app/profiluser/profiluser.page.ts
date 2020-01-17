@@ -2,14 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Users, UsersService } from './../services/users.service';
 
-export interface Users {
-  id: string;
-  Nom: string;
-  Prenom: string;
-  sexe: string;
-  role: string;
-}
 
 @Component({
   selector: 'app-profiluser',
@@ -17,6 +11,7 @@ export interface Users {
   styleUrls: ['./profiluser.page.scss'],
 })
 export class ProfiluserPage {
+
   connected: boolean;
 
   userId: string;
