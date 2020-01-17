@@ -1,0 +1,11 @@
+img {
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: 5px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}

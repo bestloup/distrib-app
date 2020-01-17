@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>infouser</ion-title>
+    <ion-title>Inscription</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,9 @@
     </ion-card-header>
     <ion-card-content>
       <div class="fileUpload btn btn-primary">
+        <!--
         <span>Charger</span>
+        -->
         <input
           id="uploadBtn"
           type="file"
@@ -34,8 +36,10 @@
         <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
       </div>
       <div *ngIf="snapshot | async as snap">
+        <!--
         File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
         {{ snap.bytesTransferred | fileSizePipe }}
+        -->
         <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
           <ion-button
             color="warning"
@@ -61,6 +65,13 @@
       </div>
     </ion-card-content>
   </ion-card>
+  <div *ngIf="UploadedFileURL | async as url">
+    <img [src]="url" />
+    <!--
+    <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
+    -->
+  </div>
+  <!--
   <ion-card text-center *ngIf="!isUploading && isUploaded">
     <ion-card-header>
       <ion-card-title>
@@ -78,22 +89,23 @@
         expand="full"
         color="success"
         (click)="isUploading = isUploaded = false"
-        >Upload More</ion-button
-      >
+        >Upload More</ion-button>
     </ion-card-content>
   </ion-card>
+-->
+<!--
 
-  <h2 text-center>Image Téléchargée</h2>
 
   <ion-card color="light" text-center *ngFor="let item of images | async">
 
 
 
     <ion-card-content *ngIf="item.idpicture == user.id && item.index == 0">
-      <img [src]="item.filepath" />
+      <img class="profile_image" [src]="item.filepath" />
       <a [href]="item.filepath" target="_blank" rel="noopener">Download</a>
     </ion-card-content>
   </ion-card>
+-->
 </ion-content>
 
 
