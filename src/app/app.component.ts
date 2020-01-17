@@ -3,9 +3,11 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @Component({
   selector: 'app-root',
@@ -13,12 +15,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  private todosCollection: AngularFirestoreCollection<Geo>;
   constructor(
     private router: Router,
     public afAuth: AngularFireAuth,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private geolocation: Geolocation,
+    db: AngularFirestore
   ) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -38,9 +43,14 @@ export class AppComponent {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {
           console.log('non connecté');
-          this.router.navigateByUrl('/connexion');
         } else {
           console.log('Connecté: ' + auth.uid);
+          this.geolocation.getCurrentPosition().then((resp) => {
+            console.log(resp.coords.latitude);
+            console.log(resp.coords.longitude);
+           }).catch((error) => {
+             console.log('Error getting location', error);
+           });
         }
       });
       this.statusBar.styleDefault();

@@ -26,7 +26,7 @@ export class ConnexionPage implements OnInit {
       } else {
         console.log('connecté: ' + auth.uid);
         this.connected = true;
-        this.router.navigateByUrl('/infouser');
+        this.router.navigateByUrl('/tabs/annonces');
       }
     });
   }
@@ -40,15 +40,11 @@ export class ConnexionPage implements OnInit {
        email: '',
        password: ''
      };
-     this.router.navigateByUrl('/infouser');
+     this.router.navigateByUrl('/tabs/annonces');
   }
 
   signUp() {
-    this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
-    this.dataUser = {
-      email: '',
-      password: ''
-    };
+    this.router.navigateByUrl('/infouser');
  }
 }
 

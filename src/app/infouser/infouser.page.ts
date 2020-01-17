@@ -29,6 +29,11 @@ export interface MyData {
 
 
 export class InfouserPage {
+  dataUser = {
+    email: '',
+    password: ''
+ };
+
   user: Users = {
     id: '',
     nom: '',
@@ -38,8 +43,14 @@ export class InfouserPage {
     isMarchand: false
   };
   push() {
-  this.router.navigateByUrl('/tabs/annonces');
   this.usersService.addTodo(this.user);
+  this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
+  this.dataUser = {
+    email: '',
+    password: ''
+  };
+  this.router.navigateByUrl('/tabs/annonces');
+
   }
 
 
@@ -88,7 +99,14 @@ export class InfouserPage {
     this.images = this.imageCollection.valueChanges();
   }
 
-
+    signUp() {
+      this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
+      this.dataUser = {
+        email: '',
+        password: ''
+      };
+      this.router.navigateByUrl('/tabs/annonces');
+  }
   uploadFile(event: FileList) {
 
 
