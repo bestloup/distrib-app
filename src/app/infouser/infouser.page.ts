@@ -83,7 +83,7 @@ export class InfouserPage {
     {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {
-          this.router.navigateByUrl('/connexion');
+          
         } else {
           this.user.id = auth.uid;
           //this.userid = auth.uid;
