@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' },
   { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
   { path: 'formulairebdd', loadChildren: './formulairebdd/formulairebdd.module#FormulairebddPageModule' },
-  { path: 'details/:id', loadChildren: './pages/marchand-details/marchand-details.module#MarchandDetailsPageModule' },
-  { path: 'creationmarchand', loadChildren: './pages/marchand-details/marchand-details.module#MarchandDetailsPageModule' },
+  { path: 'details/:id', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
+  { path: 'creationmarchand', loadChildren: './pages/todo-details/todo-details.module#TodoDetailsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'geo', loadChildren: './geo/geo.module#GeoPageModule' },
   { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },
@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
   { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' },
+  { path: 'tabsmarchand', loadChildren: './tabsmarchand/tabsmarchand.module#TabsmarchandPageModule' }
 
 ];
 @NgModule({
