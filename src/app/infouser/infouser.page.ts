@@ -4,13 +4,13 @@ import { NavController, LoadingController } from '@ionic/angular';
 import { Users, UsersService } from './../services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-
-
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
+import {FirebaseApp} from 'angularfire2';
 
 
 export interface MyData {
@@ -34,13 +34,14 @@ export class InfouserPage {
     password: ''
  };
 
-  user: Users = {
+ user: Users = {
     id: '',
     nom: '',
-    prenom: '',
+    prenom: '', 
     role: ''
   };
   push() {
+   // const rootDbRef = FirebaseApp.database().ref();
   this.usersService.addTodo(this.user);
   this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
   this.dataUser = {

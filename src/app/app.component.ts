@@ -15,7 +15,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  private todosCollection: AngularFirestoreCollection<Geo>;
+  //private todosCollection: AngularFirestoreCollection<Geo>;
   constructor(
     private router: Router,
     public afAuth: AngularFireAuth,
