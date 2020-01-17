@@ -66,7 +66,8 @@ export class MarchandDetailsPage implements OnInit {
     if (this.marchandId) {
       this.marchandService.updateMarchand(this.marchand, this.marchandId).then(docRef => {
         loading.dismiss();
-        if (docRef !== null) {
+        //if (docRef !== null) {
+        if (docRef.hasOwnProperty('id')) {
           this.idMarchandEnCours = docRef.id
         } else {
           console.log('error if')
@@ -90,7 +91,8 @@ export class MarchandDetailsPage implements OnInit {
         loading.dismiss();
 
         //console.log("Document written with ID: ", docRef.id);
-        if (docRef !== null) {
+        //if (docRef !== null) {
+        if (docRef.hasOwnProperty('id')) {
           this.idMarchandEnCours = docRef.id
         } else {
           console.log('error else')

@@ -9,7 +9,6 @@ export interface Users {
   prenom: string;
   sexe: string;
   role: string;
-  isMarchand: boolean;
 }
 
 @Injectable({

@@ -33,8 +33,7 @@ export class InfouserPage {
     nom: '',
     prenom: '',
     sexe: '',
-    role: '',
-    isMarchand: false
+    role: ''
   };
   push() {
   this.router.navigateByUrl('/tabs/annonces');
