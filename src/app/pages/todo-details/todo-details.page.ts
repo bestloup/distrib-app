@@ -1,7 +1,8 @@
 import { Marchand, TodoService } from './../../services/todo.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
+import { MarchandEnCoursService } from './../../services/marchandencours.service';
 
 @Component({
   selector: 'app-todo-details',
@@ -17,10 +18,12 @@ export class TodoDetailsPage implements OnInit {
     adresse: ''
   };
 
-  todoId = null;
-  idMarchandEnCours = null;
 
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
+
+
+  todoId = null;
+
+  constructor(private route: ActivatedRoute, private router: Router, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController, public marchandEnCoursService: MarchandEnCoursService) { }
 
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];
@@ -41,9 +44,18 @@ export class TodoDetailsPage implements OnInit {
     });
   }
 
+  get idMarchandEnCours():string { //marchandEnCours
+    return this.marchandEnCoursService.idMarchandEnCours;
+  }
+
+  set idMarchandEnCours(value: string) { //marchandEnCours
+    this.marchandEnCoursService.idMarchandEnCours = value;
+  }
+
+
+
   async saveTodo() {
 
-    this.idMarchandEnCours = this.route.snapshot.params['id'];
 
     const loading = await this.loadingController.create({
       message: 'Sauvegarde du Marchand...'
@@ -51,15 +63,42 @@ export class TodoDetailsPage implements OnInit {
     await loading.present();
 
     if (this.todoId) {
-      this.todoService.updateTodo(this.todo, this.todoId).then(() => {
+      this.todoService.updateTodo(this.todo, this.todoId).then(docRef => {
         loading.dismiss();
-        this.nav.back();
+        if (docRef !== null) {
+          this.idMarchandEnCours = docRef.id
+        } else {
+          console.log('error if')
+        }
+        console.log("if tododetails\n" + this.idMarchandEnCours)
+        this.router.navigate(['/accueilmarchand']);
       });
     } else {
+      /*
       this.todoService.addTodo(this.todo).then(() => {
         loading.dismiss();
-        this.nav.back();
+        //this.setIdMarchandEnCours(this.todoId);
+        this.idMarchandEnCours = this.route.snapshot.params['id']
+        //this.marchandEnCoursService.setIdMarchandEnCours('requin42');
+        console.log("lalalalalala else tododetails\n" + this.idMarchandEnCours)
+        this.router.navigate(['/accueilmarchand']); //fonctionne
+        //this.router.navigate(['/accueilmarchand', this.todoId]);
       });
+      */
+      this.todoService.addTodo(this.todo).then(docRef => {
+        loading.dismiss();
+
+        //console.log("Document written with ID: ", docRef.id);
+        if (docRef !== null) {
+          this.idMarchandEnCours = docRef.id
+        } else {
+          console.log('error else')
+        }
+        console.log("else tododetails\n" + this.idMarchandEnCours)
+        this.router.navigate(['/accueilmarchand']);
+      });
+
+
     }
   }
 
