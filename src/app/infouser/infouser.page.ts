@@ -39,8 +39,7 @@ export class InfouserPage {
     nom: '',
     prenom: '',
     sexe: '',
-    role: '',
-    isMarchand: false
+    role: ''
   };
   push() {
   this.usersService.addTodo(this.user);
