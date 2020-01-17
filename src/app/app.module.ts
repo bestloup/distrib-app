@@ -25,6 +25,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 //import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { PayPal } from '@ionic-native/paypal/ngx';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -68,7 +69,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   imports: [BrowserModule,
     AngularFireModule.initializeApp(environment.firebase), IonicModule.forRoot(), AppRoutingModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'}), HttpClientModule,
-    AngularFireAuthModule, AngularFirestoreModule,
+    AngularFireAuthModule, AngularFirestoreModule, AngularFireDatabaseModule,
       FirebaseUIModule.forRoot(firebaseUiAuthConfig), AngularFireStorageModule ],
   providers: [
     StatusBar,

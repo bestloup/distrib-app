@@ -5,6 +5,9 @@ import { Users, UsersService } from './../services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+//import { AngularFireDatabase } from "angularfire2";
+
 
 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
@@ -32,25 +35,47 @@ export class InfouserPage {
   dataUser = {
     email: '',
     password: ''
- };
+  };
 
   user: Users = {
     id: '',
     nom: '',
     prenom: '',
-    role: ''
+    role: '',
+    email: ''
   };
+
   push() {
-  this.usersService.addTodo(this.user);
-  this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
-  this.dataUser = {
-    email: '',
-    password: ''
-  };
-  if (this.user.role == 'marchand') {
-    this.router.navigateByUrl('/accueilmarchand');
-  } else if (this.user.role == 'client')
-    this.router.navigateByUrl('/tabs/annonces');
+    //this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
+    //this.push().bind(this);
+
+    var self = this;
+    var email = this.dataUser.email;
+
+    this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
+      //self.afd.object('user/' + firebaseUser.user.uid).set({id: firebaseUser.user.uid, name: 'cocorico'}); //
+
+      console.log("User " + firebaseUser.user.uid + " created successfully!");
+      self.user.email = email; // il manque juste le mail
+      self.user.id = firebaseUser.user.uid;
+      self.afd.object('user/' + firebaseUser.user.uid).set(self.user); // inserer le user dans la bdd
+    }).catch(function(error) {
+        console.error("ERROR: ", error);
+    });
+
+
+
+
+    //this.usersService.addUser(this.user);
+    this.dataUser = {
+      email: '',
+      password: ''
+    };
+    if (this.user.role == 'marchand') {
+      this.router.navigateByUrl('/accueilmarchand');
+    } else if (this.user.role == 'client') {
+      this.router.navigateByUrl('/tabs/annonces');
+    }
   }
 
 
@@ -78,9 +103,8 @@ export class InfouserPage {
   isUploaded:boolean;
 
   private imageCollection: AngularFirestoreCollection<MyData>;
-  constructor(private storage: AngularFireStorage, private database: AngularFirestore,  public afAuth: AngularFireAuth,
-    private router: Router,
-    private usersService: UsersService) {
+
+  constructor(private storage: AngularFireStorage, private database: AngularFirestore,  public afAuth: AngularFireAuth, private router: Router, private usersService: UsersService, private afd: AngularFireDatabase) {
     {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {
@@ -99,14 +123,15 @@ export class InfouserPage {
     this.images = this.imageCollection.valueChanges();
   }
 
-    signUp() {
-      this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
-      this.dataUser = {
-        email: '',
-        password: ''
-      };
-      this.router.navigateByUrl('/tabs/annonces');
+  signUp() {
+    this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
+    this.dataUser = {
+      email: '',
+      password: ''
+    };
+    this.router.navigateByUrl('/tabs/annonces');
   }
+
   uploadFile(event: FileList) {
 
 

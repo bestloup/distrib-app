@@ -111,24 +111,28 @@
 
 
 
-<ion-content>
+  
 <ion-list>
-        <ion-item>
-            <ion-label>Email</ion-label>
-            <ion-input type="email" [(ngModel)]="dataUser.email"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Mot de passe</ion-label>
-            <ion-input type="password" [(ngModel)]="dataUser.password"></ion-input>
-        </ion-item>
   <ion-item>
-    <ion-label>Nom</ion-label>
-    <ion-input [(ngModel)]="user.nom"></ion-input>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="dataUser.email"></ion-input>
   </ion-item>
+
+  <ion-item>
+      <ion-label>Mot de passe</ion-label>
+      <ion-input type="password" [(ngModel)]="dataUser.password"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-label>Prénom</ion-label>
     <ion-input [(ngModel)]="user.prenom"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label>Nom</ion-label>
+    <ion-input [(ngModel)]="user.nom"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-label>Rôle</ion-label>
     <ion-select [(ngModel)]="user.role">

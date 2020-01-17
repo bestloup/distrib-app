@@ -46,8 +46,8 @@ export class AppComponent {
         } else {
           console.log('Connecté: ' + auth.uid);
           this.geolocation.getCurrentPosition().then((resp) => {
-            console.log(resp.coords.latitude);
-            console.log(resp.coords.longitude);
+            console.log('latitude = ' + resp.coords.latitude);
+            console.log('longitude = ' + resp.coords.longitude);
            }).catch((error) => {
              console.log('Error getting location', error);
            });
