@@ -37,6 +37,7 @@ export class InfouserPage {
     isMarchand: false
   };
   push() {
+  this.router.navigateByUrl('/tabs/annonces');
   this.usersService.addTodo(this.user);
   }
 
