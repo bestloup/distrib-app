@@ -32,4 +32,14 @@ const routes: Routes = [
   { path: 'accueilmarchand', loadChildren: './accueilmarchand/accueilmarchand.module#AccueilmarchandPageModule' },
   { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
-  { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' },  { path: 'tabsmarchand', loadChildren: './tabsmarchand/tabsmarchand.module#TabsmarchandPageModule' },
+  { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' },
+  { path: 'tabsmarchand', loadChildren: './tabsmarchand/tabsmarchand.module#TabsmarchandPageModule' }
+
+];
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
