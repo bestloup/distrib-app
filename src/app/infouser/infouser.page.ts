@@ -17,6 +17,7 @@ export interface MyData {
   name: string;
   filepath: string;
   size: number;
+  idpicture : string;
 }
 
 @Component({
@@ -73,6 +74,7 @@ export class InfouserPage {
           this.router.navigateByUrl('/connexion');
         } else {
           this.user.id = auth.uid;
+          //this.userid = auth.uid;
         }
       });
     }
@@ -127,7 +129,8 @@ export class InfouserPage {
           this.addImagetoDB({
             name: file.name,
             filepath: resp,
-            size: this.fileSize
+            size: this.fileSize,
+            idpicture: this.user.id
           });
           this.isUploading = false;
           this.isUploaded = true;
