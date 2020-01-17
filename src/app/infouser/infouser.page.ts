@@ -36,6 +36,7 @@ export class InfouserPage {
     role: ''
   };
   push() {
+  this.router.navigateByUrl('/tabs/annonces');
   this.usersService.addTodo(this.user);
   }
 

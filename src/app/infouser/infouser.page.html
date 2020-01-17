@@ -114,12 +114,19 @@
   </ion-item>
   <ion-item>
     <ion-label>Sexe</ion-label>
-    <ion-input [(ngModel)]="user.sexe"></ion-input>
+    <ion-select [(ngModel)]="user.sexe">
+      <ion-select-option  value="female">Femme</ion-select-option>
+      <ion-select-option  value="male">Homme</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Rôle</ion-label>
-    <ion-input [(ngModel)]="user.role"></ion-input>
+    <ion-select [(ngModel)]="user.role">
+      <ion-select-option  value="client">Client</ion-select-option>
+      <ion-select-option  value="marchand">Marchanf</ion-select-option>
+    </ion-select>
   </ion-item>
+
 
 
   <ion-button color="light" (click)="push()" expand="full">Enregistrement</ion-button>
