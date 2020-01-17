@@ -9,7 +9,7 @@
   <!--
   <ion-list>
 
-    <ng-container *ngIf="!todos || todos.length == 0">
+    <ng-container *ngIf="!marchands || marchands.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
         <ion-skeleton-text></ion-skeleton-text>
         <p>
@@ -18,7 +18,7 @@
       </div>
     </ng-container>
 
-      <ion-item-sliding *ngFor="let item of todos">
+      <ion-item-sliding *ngFor="let item of marchands">
 
           <ion-item lines="inset" button [routerLink]="['/details', item.id]">
             <ion-card class="profile_info">

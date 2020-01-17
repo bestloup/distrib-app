@@ -1,59 +1,59 @@
-import { Marchand, TodoService } from './../../services/todo.service';
+import { Produit, ProduitService } from './../../services/produit.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-todo-details',
+  selector: 'app-produit-details',
   templateUrl: './produit-details.page.html',
   styleUrls: ['./produit-details.page.scss'],
 })
 export class ProduitDetailsPage implements OnInit {
 
-  todo: Marchand = {
-    createdAt: new Date().getTime(),
-    Nom: '',
-    bio: '',
-    adresse: ''
+  produit: Produit = {
+    nom: '',
+    idMarchand: '',
+    quantite: 0,
+    grandeur: ''
   };
 
-  todoId = null;
+  produitId = null;
 
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private produitService: ProduitService, private loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.todoId = this.route.snapshot.params['id'];
-    if (this.todoId)  {
-      this.loadTodo();
+    this.produitId = this.route.snapshot.params['id'];
+    if (this.produitId)  {
+      this.loadProduit();
     }
   }
 
-  async loadTodo() {
+  async loadProduit() {
     const loading = await this.loadingController.create({
-      message: 'Loading Todo..'
+      message: 'Loading Produit..'
     });
     await loading.present();
 
-    this.todoService.getTodo(this.todoId).subscribe(res => {
+    this.produitService.getProduit(this.produitId).subscribe(res => {
       loading.dismiss();
-      this.todo = res;
+      this.produit = res;
     });
   }
 
-  async saveTodo() {
+  async saveProduit() {
 
     const loading = await this.loadingController.create({
-      message: 'Sauvegarde du Marchand...'
+      message: 'Sauvegarde du Produit...'
     });
     await loading.present();
 
-    if (this.todoId) {
-      this.todoService.updateTodo(this.todo, this.todoId).then(() => {
+    if (this.produitId) {
+      this.produitService.updateProduit(this.produit, this.produitId).then(() => {
         loading.dismiss();
         //this.nav.back('home');
       });
     } else {
-      this.todoService.addTodo(this.todo).then(() => {
+      this.produitService.addProduit(this.produit).then(() => {
         loading.dismiss();
         //this.nav.back('home');
       });

@@ -17,6 +17,7 @@ import { AgmCoreModule } from '@agm/core';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
 
 import {AngularFireModule} from '@angular/fire';

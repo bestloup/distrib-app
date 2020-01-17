@@ -31,12 +31,14 @@ export interface MyData {
 export class InfouserPage {
   user: Users = {
     id: '',
-    Nom: '',
-    Prenom: '',
+    nom: '',
+    prenom: '',
     sexe: '',
-    role: ''
+    role: '',
+    isMarchand: false
   };
   push() {
+  this.router.navigateByUrl('/tabs/annonces');
   this.usersService.addTodo(this.user);
   }
 

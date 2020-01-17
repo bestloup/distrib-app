@@ -5,10 +5,11 @@ import { map } from 'rxjs/operators';
 
 export interface Users {
   id: string;
-  Nom: string;
-  Prenom: string;
+  nom: string;
+  prenom: string;
   sexe: string;
   role: string;
+  isMarchand: boolean;
 }
 
 @Injectable({

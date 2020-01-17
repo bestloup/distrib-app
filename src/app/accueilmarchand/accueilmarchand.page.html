@@ -19,17 +19,17 @@
 
       <ion-item-sliding *ngFor="let item of produits">
 
-          <ion-item lines="inset" button [routerLink]="['/details', item.id]">
-            <ion-card class="profile_info">
-              <ion-card-header >
-                <ion-card-title>
-                  {{ item.nom }}
-                  <!--<p>{{ item.createdAt | date:'short' }}</p>-->
-                </ion-card-title>
-                <ion-card-subtitle>{{ item.quantite }}</ion-card-subtitle>
-                <ion-card-subtitle>{{ item.idMarchandEnCours }}</ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
+        <ion-item *ngIf="item.idMarchand == idMarchandEnCours && isMarchand == true" lines="inset" button [routerLink]="['/details', item.id]">
+          <ion-card class="profile_info">
+            <ion-card-header >
+              <ion-card-title>
+                {{ item.nom }}
+                <!--<p>{{ item.createdAt | date:'short' }}</p>-->
+              </ion-card-title>
+              <ion-card-subtitle>{{ item.quantite }} {{ item.grandeur }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ item.idMarchandEnCours }}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
         </ion-item>
 
 

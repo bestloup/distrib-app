@@ -10,13 +10,16 @@
 <ion-content padding>
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Nom" [(ngModel)]="todo.Nom"></ion-input>
+      <ion-input required type="text" placeholder="Prénom" [(ngModel)]="marchand.prenom"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="Bio" [(ngModel)]="todo.bio"></ion-input>
+      <ion-input required type="text" placeholder="Nom" [(ngModel)]="marchand.nom"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="text" placeholder="Adresse" [(ngModel)]="todo.adresse"></ion-input>
+      <ion-input required type="text" placeholder="Biographie" [(ngModel)]="marchand.biographie"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Adresse" [(ngModel)]="marchand.adresse"></ion-input>
     </ion-item>
 
     <!--
@@ -29,5 +32,5 @@
     -->
 
   </ion-list>
-  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+  <ion-button expand="full" (click)="saveMarchand()">Save</ion-button>
 </ion-content>
