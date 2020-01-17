@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TodoDetailsPageRoutingModule } from './todo-details-routing.module';
+import { MarchandDetailsPageRoutingModule } from './marchand-details-routing.module';
 
-import { TodoDetailsPage } from './todo-details.page';
+import { MarchandDetailsPage } from './marchand-details.page';
 
 
 @NgModule({
@@ -14,8 +14,8 @@ import { TodoDetailsPage } from './todo-details.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TodoDetailsPageRoutingModule
+    MarchandDetailsPageRoutingModule
   ],
-  declarations: [TodoDetailsPage]
+  declarations: [MarchandDetailsPage]
 })
-export class TodoDetailsPageModule {}
+export class MarchandDetailsPageModule {}

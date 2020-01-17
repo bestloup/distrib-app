@@ -3,10 +3,12 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export interface Todo {
+export interface Marchand {
   id?: string;
-  task: string;
-  priority: number;
+  nom: string;
+  prenom: string;
+  biographie: string;
+  adresse : string;
   createdAt: number;
 }
 
@@ -14,11 +16,14 @@ export interface Todo {
   providedIn: 'root'
 })
 export class MarchandService {
-  private todosCollection: AngularFirestoreCollection<Todo>;
-  private todos: Observable<Todo[]>;
+  private marchandsCollection: AngularFirestoreCollection<Marchand>;
+
+  private marchands: Observable<Marchand[]>;
+
   constructor(db: AngularFirestore) {
-    this.todosCollection = db.collection<Todo>('todos');
-    this.todos = this.todosCollection.snapshotChanges().pipe(
+    this.marchandsCollection = db.collection<Marchand>('Marchand');
+
+    this.marchands = this.marchandsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -28,22 +33,25 @@ export class MarchandService {
       })
     );
   }
-  getTodos() {
-    return this.todos;
+
+// Permet de voir l'intégralité des marchands
+  getMarchands() {
+    return this.marchands;
   }
-  getTodo(id) {
-    return this.todosCollection.doc<Todo>(id).valueChanges();
+// Permet de selectionner le marchand avec un ID spécifique
+  getMarchand(id) {
+    return this.marchandsCollection.doc<Marchand>(id).valueChanges();
   }
 
-  updateTodo(todo: Todo, id: string) {
-    return this.todosCollection.doc(id).update(todo);
+  updateMarchand(marchand: Marchand, id: string) {
+    return this.marchandsCollection.doc(id).update(marchand);
   }
 
-  addTodo(todo: Todo) {
-    return this.todosCollection.add(todo);
+  addMarchand(marchand: Marchand) {
+    return this.marchandsCollection.add(marchand);
   }
 
-  removeTodo(id) {
-    return this.todosCollection.doc(id).delete();
+  removeMarchand(id) {
+    return this.marchandsCollection.doc(id).delete();
   }
 }

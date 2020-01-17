@@ -1,46 +1,47 @@
-import { Marchand, TodoService } from './../../services/todo.service';
+import { Marchand, MarchandService } from './../../services/marchand.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import { MarchandEnCoursService } from './../../services/marchandencours.service';
 
 @Component({
-  selector: 'app-todo-details',
-  templateUrl: './todo-details.page.html',
-  styleUrls: ['./todo-details.page.scss'],
+  selector: 'app-marchand-details',
+  templateUrl: './marchand-details.page.html',
+  styleUrls: ['./marchand-details.page.scss'],
 })
-export class TodoDetailsPage implements OnInit {
+export class MarchandDetailsPage implements OnInit {
 
-  todo: Marchand = {
+  marchand: Marchand = {
     createdAt: new Date().getTime(),
-    Nom: '',
-    bio: '',
+    nom: '',
+    prenom: '',
+    biographie: '',
     adresse: ''
   };
 
 
 
 
-  todoId = null;
+  marchandId = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController, public marchandEnCoursService: MarchandEnCoursService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private nav: NavController, private marchandService: MarchandService, private loadingController: LoadingController, public marchandEnCoursService: MarchandEnCoursService) { }
 
   ngOnInit() {
-    this.todoId = this.route.snapshot.params['id'];
-    if (this.todoId)  {
-      this.loadTodo();
+    this.marchandId = this.route.snapshot.params['id'];
+    if (this.marchandId)  {
+      this.loadMarchand();
     }
   }
 
-  async loadTodo() {
+  async loadMarchand() {
     const loading = await this.loadingController.create({
       message: 'Loading Marchand...'
     });
     await loading.present();
 
-    this.todoService.getTodo(this.todoId).subscribe(res => {
+    this.marchandService.getMarchand(this.marchandId).subscribe(res => {
       loading.dismiss();
-      this.todo = res;
+      this.marchand = res;
     });
   }
 
@@ -54,7 +55,7 @@ export class TodoDetailsPage implements OnInit {
 
 
 
-  async saveTodo() {
+  async saveMarchand() {
 
 
     const loading = await this.loadingController.create({
@@ -62,30 +63,30 @@ export class TodoDetailsPage implements OnInit {
     });
     await loading.present();
 
-    if (this.todoId) {
-      this.todoService.updateTodo(this.todo, this.todoId).then(docRef => {
+    if (this.marchandId) {
+      this.marchandService.updateMarchand(this.marchand, this.marchandId).then(docRef => {
         loading.dismiss();
         if (docRef !== null) {
           this.idMarchandEnCours = docRef.id
         } else {
           console.log('error if')
         }
-        console.log("if tododetails\n" + this.idMarchandEnCours)
+        console.log("if marchanddetails\n" + this.idMarchandEnCours)
         this.router.navigate(['/accueilmarchand']);
       });
     } else {
       /*
-      this.todoService.addTodo(this.todo).then(() => {
+      this.marchandService.addMarchand(this.marchand).then(() => {
         loading.dismiss();
-        //this.setIdMarchandEnCours(this.todoId);
+        //this.setIdMarchandEnCours(this.marchandId);
         this.idMarchandEnCours = this.route.snapshot.params['id']
         //this.marchandEnCoursService.setIdMarchandEnCours('requin42');
-        console.log("lalalalalala else tododetails\n" + this.idMarchandEnCours)
+        console.log("lalalalalala else marchanddetails\n" + this.idMarchandEnCours)
         this.router.navigate(['/accueilmarchand']); //fonctionne
-        //this.router.navigate(['/accueilmarchand', this.todoId]);
+        //this.router.navigate(['/accueilmarchand', this.marchandId]);
       });
       */
-      this.todoService.addTodo(this.todo).then(docRef => {
+      this.marchandService.addMarchand(this.marchand).then(docRef => {
         loading.dismiss();
 
         //console.log("Document written with ID: ", docRef.id);
@@ -94,7 +95,7 @@ export class TodoDetailsPage implements OnInit {
         } else {
           console.log('error else')
         }
-        console.log("else tododetails\n" + this.idMarchandEnCours)
+        console.log("else marchanddetails\n" + this.idMarchandEnCours)
         this.router.navigate(['/accueilmarchand']);
       });
 

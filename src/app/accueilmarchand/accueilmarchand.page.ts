@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Produit, ProduitsService } from '../services/produits.service';
+import { Produit, ProduitService } from '../services/produit.service';
 import { MarchandEnCoursService } from './../services/marchandencours.service';
 
 
@@ -14,10 +14,10 @@ export class AccueilmarchandPage implements OnInit {
   //marchand: Marchand;
 
 
-  constructor(private produitsService: ProduitsService, public marchandEnCoursService: MarchandEnCoursService) { }
+  constructor(private produitService: ProduitService, public marchandEnCoursService: MarchandEnCoursService) { }
 
   ngOnInit() {
-    this.produitsService.getProduits().subscribe(res => {
+    this.produitService.getProduits().subscribe(res => {
       this.produits = res;
     });
 
@@ -25,7 +25,7 @@ export class AccueilmarchandPage implements OnInit {
   }
 
   remove(item) {
-    this.produitsService.removeProduit(item.id);
+    this.produitService.removeProduit(item.id);
   }
 
   get idMarchandEnCours():string { //marchandEnCours

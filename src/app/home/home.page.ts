@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Marchand, TodoService } from '../services/todo.service';
+import { Marchand, MarchandService } from '../services/marchand.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +8,17 @@ import { Marchand, TodoService } from '../services/todo.service';
 })
 export class HomePage implements OnInit {
 
-  todos: Marchand[];
+  marchands: Marchand[];
 
-  constructor(private todoService: TodoService) { }
+  constructor(private marchandService: MarchandService) { }
 
   ngOnInit() {
-    this.todoService.getTodos().subscribe(res => {
-      this.todos = res;
+    this.marchandService.getMarchands().subscribe(res => {
+      this.marchands = res;
     });
   }
 
   remove(item) {
-    this.todoService.removeTodo(item.id);
+    this.marchandService.removeMarchand(item.id);
   }
 }

@@ -1,10 +1,10 @@
-import { Produit, ProduitsService } from './../services/produits.service';
+import { Produit, ProduitService } from './../services/produit.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router'; // Router
 import { NavController, LoadingController } from '@ionic/angular';
 import { MarchandEnCoursService } from './../services/marchandencours.service';
 
-import { TodoDetailsPage } from './../pages/todo-details/todo-details.page'; //..
+//import { TodoDetailsPage } from './../pages/todo-details/todo-details.page'; //..
 
 @Component({
   selector: 'produits-details',
@@ -22,7 +22,7 @@ export class ProduitsPage implements OnInit {
 
   produitId = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private nav: NavController, private produitsService: ProduitsService, private loadingController: LoadingController, public marchandEnCoursService: MarchandEnCoursService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private nav: NavController, private produitService: ProduitService, private loadingController: LoadingController, public marchandEnCoursService: MarchandEnCoursService) { }
 
   ngOnInit() {
     this.produitId = this.route.snapshot.params['id'];
@@ -45,7 +45,7 @@ export class ProduitsPage implements OnInit {
     });
     await loading.present();
 
-    this.produitsService.getProduit(this.produitId).subscribe(res => {
+    this.produitService.getProduit(this.produitId).subscribe(res => {
       loading.dismiss();
       this.produit = res;
     });
@@ -61,7 +61,7 @@ export class ProduitsPage implements OnInit {
     await loading.present();
 
     if (this.produitId) {
-      this.produitsService.updateProduit(this.produit, this.produitId).then(() => {
+      this.produitService.updateProduit(this.produit, this.produitId).then(() => {
         loading.dismiss();
         //this.nav.goForward('accueilmarchand/123');
         //this.nav.back(); //error here
@@ -69,7 +69,7 @@ export class ProduitsPage implements OnInit {
         //this.idMarchand = this.route.snapshot.paramMap.get('id');
       });
     } else {
-      this.produitsService.addProduit(this.produit).then(() => {
+      this.produitService.addProduit(this.produit).then(() => {
         loading.dismiss();
         this.router.navigate(['/accueilmarchand']);
         //this.nav.goForward('accueilmarchand/123');

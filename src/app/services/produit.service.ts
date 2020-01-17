@@ -14,7 +14,7 @@ export interface Produit {
 @Injectable({
   providedIn: 'root'
 })
-export class ProduitsService {
+export class ProduitService {
   private produitsCollection: AngularFirestoreCollection<Produit>;
 
   private produits: Observable<Produit[]>;
@@ -33,7 +33,7 @@ export class ProduitsService {
     );
   }
 
-// Permet de voir l'intégralité des Produits
+// Permet de voir l'intégralité des Produit
   getProduits() {
     return this.produits;
   }
