@@ -47,8 +47,10 @@ export class InfouserPage {
     email: '',
     password: ''
   };
-  this.router.navigateByUrl('/tabs/annonces');
-
+  if (this.user.role == 'marchand') {
+    this.router.navigateByUrl('/accueilmarchand');
+  } else if (this.user.role == 'client')
+    this.router.navigateByUrl('/tabs/annonces');
   }
 
 

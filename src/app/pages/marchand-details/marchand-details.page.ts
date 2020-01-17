@@ -64,17 +64,22 @@ export class MarchandDetailsPage implements OnInit {
     await loading.present();
 
     if (this.marchandId) {
-      this.marchandService.updateMarchand(this.marchand, this.marchandId).then(docRef => {
+      this.marchandService.updateMarchand(this.marchand, this.marchandId);/*.then(docRef => {
         loading.dismiss();
         //if (docRef !== null) {
-        if (docRef.hasOwnProperty('id')) {
-          this.idMarchandEnCours = docRef.id
+
+        if (typeof docRef !== 'undefined') { //typeof val !== 'undefined'
+          if (docRef.hasOwnProperty('id')) {
+            this.idMarchandEnCours = docRef.id
+          } else {
+            console.log('error if')
+          }
         } else {
-          console.log('error if')
+          console.log('error else')
         }
         console.log("if marchanddetails\n" + this.idMarchandEnCours)
         this.router.navigate(['/accueilmarchand']);
-      });
+      });*/
     } else {
       /*
       this.marchandService.addMarchand(this.marchand).then(() => {
@@ -92,8 +97,12 @@ export class MarchandDetailsPage implements OnInit {
 
         //console.log("Document written with ID: ", docRef.id);
         //if (docRef !== null) {
-        if (docRef.hasOwnProperty('id')) {
-          this.idMarchandEnCours = docRef.id
+        if (typeof docRef !== 'undefined') {
+          if (docRef.hasOwnProperty('id')) {
+            this.idMarchandEnCours = docRef.id
+          } else {
+            console.log('error if')
+          }
         } else {
           console.log('error else')
         }

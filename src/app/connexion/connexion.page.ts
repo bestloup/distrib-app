@@ -36,16 +36,14 @@ export class ConnexionPage implements OnInit {
 
   login() {
     this.afAuth.auth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
-     this.dataUser = {
+    this.dataUser = {
        email: '',
        password: ''
-     };
-     this.router.navigateByUrl('/tabs/annonces');
+    };
+    this.router.navigateByUrl('/tabs/annonces');
   }
 
   signUp() {
     this.router.navigateByUrl('/infouser');
  }
 }
-
-
