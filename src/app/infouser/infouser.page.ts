@@ -35,14 +35,10 @@ export class InfouserPage {
     sexe: '',
     role: ''
   };
-
-  ngOnInit() {
-  }
-
-
   push() {
-    this.usersService.addTodo(this.user);
+  this.usersService.addTodo(this.user);
   }
+
 
   // Upload Task
   task: AngularFireUploadTask;
@@ -68,9 +64,9 @@ export class InfouserPage {
   isUploaded:boolean;
 
   private imageCollection: AngularFirestoreCollection<MyData>;
-  constructor(private storage: AngularFireStorage, private database: AngularFirestore,public afAuth: AngularFireAuth,
-  private router: Router,
-  private usersService: UsersService) {
+  constructor(private storage: AngularFireStorage, private database: AngularFirestore,  public afAuth: AngularFireAuth,
+    private router: Router,
+    private usersService: UsersService) {
     {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {

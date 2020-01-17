@@ -14,11 +14,11 @@ export class ConnexionPage implements OnInit {
     password: ''
  };
  connected: boolean;
- 
+
   constructor(
     private router: Router,
     public afAuth: AngularFireAuth
-  ) 
+  )
   { this.afAuth.authState.subscribe(auth => {
       if (!auth) {
         console.log('non connecté');
@@ -26,7 +26,7 @@ export class ConnexionPage implements OnInit {
       } else {
         console.log('connecté: ' + auth.uid);
         this.connected = true;
-        this.router.navigateByUrl('/role');
+        this.router.navigateByUrl('/infouser');
       }
     });
   }
@@ -40,6 +40,7 @@ export class ConnexionPage implements OnInit {
        email: '',
        password: ''
      };
+     this.router.navigateByUrl('/infouser');
   }
 
   signUp() {
