@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Map, tileLayer, marker } from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Marche , MarcheService } from './../services/marche.service';
 
 
 @Component({
@@ -11,76 +12,62 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 export class CoursiersPage {
   map: Map;
-  geolocation: Geolocation;
   lat: any;
   lng: any;
 
-  ionViewDidEnter() {
-    this.leafletMap();
-    //this.Recuppos();
+  marche: Marche[];
+  constructor(
+    private marchesService: MarcheService,
+    private geolocation: Geolocation,
+  ) {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      //console.log('latitude = ' + resp.coords.latitude);
+      //console.log('longitude = ' + resp.coords.longitude);
+      this.lat = resp.coords.latitude;
+      this.lng = resp.coords.longitude;
+      this.map = new Map('mapId').setView([this.lat, this.lng], 13);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
   }
 
+  ionViewDidEnter() {
+     this.delay(300);
+     this.leafletMap();
+   }
   leafletMap() {
-    this.map = new Map('mapId').setView([45.78368573921658, 4.872815740661602], 13);
+
+    //this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
 
     tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);
 
-    const markPoint = marker([45.77233909078429, 4.865949285583477]);
-    markPoint.bindPopup('<p>Place Wilson</p>');
-    const mark = marker([45.78067042784339, 4.88337291534422]);
-    mark.bindPopup('<p>Croix-Luzet</p>');
-    const marche = marker([45.76824653667622, 4.880164160621652]);
-    marche.bindPopup('<p>Gratte-ciel</p>');
-    this.map.addLayer(markPoint);
-    this.map.addLayer(mark);
-    this.map.addLayer(marche);
+    this.marchesService.getMarches().subscribe(res => {
+      this.marche = res;
+      for (let entry of this.marche) {
+        //console.log(entry.nom + '   ' + entry.longitude + ' ' + entry.latitude ); // 1, "string", false
+        const markPoint = marker([entry.latitude, entry.longitude]);
+        //const toto = '<p>'+entry.nom+'<p><br> <a href="https://www.google.fr/maps/@' + entry.latitude + ',' + entry.longitude + ',18z">carte du marché ici</a>'
+        markPoint.bindPopup(entry.nom);
+        this.map.addLayer(markPoint);
+    }
+    });
+
+    // const markPoint = marker([45.77233909078429, 4.865949285583477]);
+    // markPoint.bindPopup('<p>Place Wilson</p>');
+    // const mark = marker([45.78067042784339, 4.88337291534422]);
+    // mark.bindPopup('<p>Croix-Luzet</p>');
+    // const marche = marker([45.76824653667622, 4.880164160621652]);
+    // marche.bindPopup('<p>Gratte-ciel</p>');
+    // this.map.addLayer(markPoint);
+    // this.map.addLayer(mark);
+    // this.map.addLayer(marche);
   }
 
   ionViewWillLeave() {
     this.map.remove();
   }
 
-  Recuppos() {
-    console.log('toto');
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.lat = resp.coords.latitude;
-      this.lng = resp.coords.longitude;
-      console.log(resp);
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
-
-  /* idee2() {
-    ngOnInit() {
-      this.leafletMap();
-    }
-
-    ngAfterViewInit(): void {
-      this.geolocation.getCurrentPosition().then((resp) => {
-        this.latitude = resp.coords.latitude;
-        this.longitude = resp.coords.longitude;
-        //console.log('latitude : ' + this.latitude + ' ,  longitude : ' + this.longitude);
-      }).catch((error) => {
-        console.log('Error getting location', error);
-      });
-  }
-
-    leafletMap() {
-      this.geolocation.getCurrentPosition().then((resp) => {
-        this.latitude = resp.coords.latitude;
-        this.longitude = resp.coords.longitude;
-        //console.log('latitude : ' + this.latitude + ' ,  longitude : ' + this.longitude);
-      }).catch((error) => {
-        console.log('Error getting location', error);
-      });
-      console.log(this.latitude);
-      console.log(this.longitude);
-      this.map = new Map('mapId').setView([45, 4.5], 13);
-
-      tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);
-
-    }
-  }
-*/
 }

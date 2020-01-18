@@ -69,11 +69,6 @@ export class ProfiluserPage {
     });
   }
 
-
-
-
-
-
   logout() {
    this.afAuth.auth.signOut();
    this.currentUser.unsubscribeAtLogout();
