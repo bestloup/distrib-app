@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit, ProduitService } from '../services/produit.service';
-import { MarchandEnCoursService } from './../services/marchandencours.service';
+import { Users, UsersService } from './../services/users.service';
+import { CurrentUserService } from './../services/currentuser.service';
 
 
 @Component({
@@ -11,29 +12,34 @@ import { MarchandEnCoursService } from './../services/marchandencours.service';
 export class AccueilmarchandPage implements OnInit {
 
   produits: Produit[];
-  //marchand: Marchand;
 
 
-  constructor(private produitService: ProduitService, public marchandEnCoursService: MarchandEnCoursService) { }
+  constructor(private produitService: ProduitService, public currentUser: CurrentUserService) { }
 
   ngOnInit() {
     this.produitService.getProduits().subscribe(res => {
       this.produits = res;
     });
-
-    console.log("accueilmarchand\n" + this.idMarchandEnCours)
   }
 
   remove(item) {
     this.produitService.removeProduit(item.id);
   }
 
-  get idMarchandEnCours():string { //marchandEnCours
-    return this.marchandEnCoursService.idMarchandEnCours;
+  get user():Users {
+    return this.currentUser.user;
   }
 
-  set idMarchandEnCours(value: string) { //marchandEnCours
-    this.marchandEnCoursService.idMarchandEnCours = value;
+  set user(value: Users) {
+    this.currentUser.user = value;
+  }
+
+  get idCurrentUser():string {
+    return this.currentUser.idCurrentUser;
+  }
+
+  set idCurrentUser(value: string) {
+    this.currentUser.idCurrentUser = value;
   }
 
 }

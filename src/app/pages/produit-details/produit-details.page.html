@@ -10,21 +10,28 @@
 <ion-content padding>
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Nom" [(ngModel)]="produit.Nom"></ion-input>
+      <ion-input required type="text" placeholder="Nom" [(ngModel)]="produit.nom"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-input required type="text" placeholder="Bio" [(ngModel)]="produit.bio"></ion-input>
+      <ion-input required type="text" placeholder="Quantité" [(ngModel)]="produit.quantite"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-input required type="text" placeholder="Adresse" [(ngModel)]="produit.adresse"></ion-input>
+      <ion-input required type="text" placeholder="Prix par {{produit.grandeur}}" [(ngModel)]="produit.prix"></ion-input>€
     </ion-item>
-    <div class="bar bar-header bar-light">
-      <h1 class="title">Produits à disposition :</h1>
-    </div>
-    <ion-fab-button routerLink="/detailsProduct" routerDirection="forward">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
+
+    <ion-select placeholder="Grandeur" [(ngModel)]="produit.grandeur">
+      <ion-select-option  value="kg">par kilogramme</ion-select-option>
+      <ion-select-option  value="g">par gramme</ion-select-option>
+      <ion-select-option  value="L">par litre</ion-select-option>
+      <ion-select-option  value="mL">par millilitre</ion-select-option>
+      <ion-select-option  value="unité">par unité</ion-select-option>
+    </ion-select>
+
+
+
 
   </ion-list>
-  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+  <ion-button expand="full" (click)="saveProduit()">Enregistrer</ion-button>
 </ion-content>

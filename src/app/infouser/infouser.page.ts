@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import { Users, UsersService } from './../services/users.service';
+import { CurrentUserService } from './../services/currentuser.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -37,6 +38,7 @@ export class InfouserPage {
     password: ''
   };
 
+  /*
   user: Users = {
     id: '',
     nom: '',
@@ -44,6 +46,23 @@ export class InfouserPage {
     role: '',
     email: ''
   };
+  */
+
+  get user():Users {
+    return this.currentUser.user;
+  }
+
+  set user(value: Users) {
+    this.currentUser.user = value;
+  }
+
+  get idCurrentUser():string {
+    return this.currentUser.idCurrentUser;
+  }
+
+  set idCurrentUser(value: string) {
+    this.currentUser.idCurrentUser = value;
+  }
 
   push() {
 
@@ -51,12 +70,12 @@ export class InfouserPage {
     var email = this.dataUser.email;
 
     this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
-      //self.afd.object('user/' + firebaseUser.user.uid).set({id: firebaseUser.user.uid, name: 'cocorico'}); //
-
       console.log("User " + firebaseUser.user.uid + " created successfully!");
-      self.user.email = email; // il manque juste le mail
+      self.user.email = email;
       self.user.id = firebaseUser.user.uid;
+      self.idCurrentUser = firebaseUser.user.uid;
       self.afd.object('user/' + firebaseUser.user.uid).set(self.user); // inserer le user dans la bdd
+      self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
     }).catch(function(error) {
         console.error("ERROR: ", error);
     });
@@ -66,11 +85,13 @@ export class InfouserPage {
       email: '',
       password: ''
     };
+    /*
     if (this.user.role == 'marchand') {
       this.router.navigateByUrl('/accueilmarchand');
     } else if (this.user.role == 'client') {
       this.router.navigateByUrl('/tabs/annonces');
     }
+    */
   }
 
 
@@ -99,7 +120,16 @@ export class InfouserPage {
 
   private imageCollection: AngularFirestoreCollection<MyData>;
 
-  constructor(private storage: AngularFireStorage, private database: AngularFirestore,  public afAuth: AngularFireAuth, private router: Router, private usersService: UsersService, private afd: AngularFireDatabase) {
+  constructor(
+    private storage: AngularFireStorage,
+    private database: AngularFirestore,
+    public afAuth: AngularFireAuth,
+    private router: Router,
+    private usersService: UsersService,
+    private currentUser: CurrentUserService,
+    private afd: AngularFireDatabase
+  )
+  {
     {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {

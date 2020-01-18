@@ -20,6 +20,7 @@ export class ProfiluserPage {
   //method: any;
 
 
+  /*
   user: Users = {
     id: '',
     nom: '',
@@ -27,6 +28,23 @@ export class ProfiluserPage {
     role: '',
     email: ''
   };
+  */
+
+  get user():Users {
+    return this.currentUser.user;
+  }
+
+  set user(value: Users) {
+    this.currentUser.user = value;
+  }
+
+  get idCurrentUser():string {
+    return this.currentUser.idCurrentUser;
+  }
+
+  set idCurrentUser(value: string) {
+    this.currentUser.idCurrentUser = value;
+  }
   /*
   */
 
@@ -37,7 +55,7 @@ export class ProfiluserPage {
     public usersService: UsersService,
     public currentUser: CurrentUserService
     //private todosCollection: AngularFirestoreCollection<Users>
-  ) {
+  ){
     //this.todosCollection = db.collection<Users>('user');
     //console.log(this.todosCollection.doc<Users>(this.userId));
     this.afAuth.authState.subscribe(auth => {
@@ -47,22 +65,19 @@ export class ProfiluserPage {
       } else { //
         console.log('connecté: ' + auth.uid);
         this.connected = true;
-        this.usersService.getUserDB(auth.uid).subscribe(user => { //this.disposable =
-           this.user = user;
-        });
       }
     });
+  }
 
-   }
 
 
 
 
 
   logout() {
-    this.afAuth.auth.signOut();
-    this.currentUser.unsubscribeAtLogout();
-    this.router.navigateByUrl('/connexion');
+   this.afAuth.auth.signOut();
+   this.currentUser.unsubscribeAtLogout();
+   this.router.navigateByUrl('/connexion');
   }
 
   updateProfile() { // reste la modification du mail ou du mot de passe à faire, parce que ici si je modifie le mail il n'est pas modifié dans la base auth

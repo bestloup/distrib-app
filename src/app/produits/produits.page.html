@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button defaultHref="/accueilmarchand"></ion-back-button>
     </ion-buttons>
     <ion-title>Details</ion-title>
   </ion-toolbar>
@@ -12,12 +12,32 @@
     <ion-item>
       <ion-input required type="text" placeholder="Nom" [(ngModel)]="produit.nom"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-input required type="text" placeholder="Quantité" [(ngModel)]="produit.quantite"></ion-input>
     </ion-item>
+
+    <ion-select placeholder="Grandeur" [(ngModel)]="produit.grandeur">
+      <ion-select-option  value="kg">kilogramme</ion-select-option>
+      <ion-select-option  value="g">gramme</ion-select-option>
+      <ion-select-option  value="L">litre</ion-select-option>
+      <ion-select-option  value="mL">millilitre</ion-select-option>
+      <ion-select-option  value="unité">unité</ion-select-option>
+    </ion-select>
+
     <ion-item>
-      <ion-input required type="text" placeholder="Grandeur" [(ngModel)]="produit.grandeur"></ion-input>
+      <ion-input required type="text" placeholder="Prix par {{produit.grandeur}}" [(ngModel)]="produit.prix">€</ion-input>
     </ion-item>
+
+    <!--
+    <ion-select [(ngModel)]="produit.prix">
+      <ion-select-option  value="0">kilogramme</ion-select-option>
+      <ion-select-option  value="g">gramme</ion-select-option>
+      <ion-select-option  value="L">litre</ion-select-option>
+      <ion-select-option  value="mL">millilitre</ion-select-option>
+      <ion-select-option  value="unité">unité</ion-select-option>
+    </ion-select>
+    -->
 
     <!--
     <div class="bar bar-header bar-light">
@@ -29,5 +49,5 @@
     -->
 
   </ion-list>
-  <ion-button expand="full" (click)="saveProduit()">Save</ion-button>
+  <ion-button expand="full" (click)="saveProduit()">Enregistrer</ion-button>
 </ion-content>

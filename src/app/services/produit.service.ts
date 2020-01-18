@@ -8,6 +8,7 @@ export interface Produit {
   nom: string;
   idMarchand: string;
   quantite: number;
+  prix: string;
   grandeur: string;
 }
 

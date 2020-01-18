@@ -1,6 +1,6 @@
 import { Produit, ProduitService } from './../../services/produit.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 
 @Component({
@@ -14,12 +14,19 @@ export class ProduitDetailsPage implements OnInit {
     nom: '',
     idMarchand: '',
     quantite: 0,
-    grandeur: ''
+    grandeur: '',
+    prix: ''
   };
 
   produitId = null;
 
-  constructor(private route: ActivatedRoute, private nav: NavController, private produitService: ProduitService, private loadingController: LoadingController) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private nav: NavController,
+    private produitService: ProduitService,
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
     this.produitId = this.route.snapshot.params['id'];
@@ -50,12 +57,12 @@ export class ProduitDetailsPage implements OnInit {
     if (this.produitId) {
       this.produitService.updateProduit(this.produit, this.produitId).then(() => {
         loading.dismiss();
-        //this.nav.back('home');
+        this.router.navigateByUrl('/accueilmarchand');
       });
     } else {
       this.produitService.addProduit(this.produit).then(() => {
         loading.dismiss();
-        //this.nav.back('home');
+        this.router.navigateByUrl('/accueilmarchand');
       });
     }
   }

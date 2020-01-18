@@ -7,6 +7,8 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Users, UsersService } from './services/users.service';
+import { CurrentUserService } from './services/currentuser.service';
 
 
 @Component({
@@ -23,8 +25,11 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private geolocation: Geolocation,
+    private usersService: UsersService,
+    public currentUser: CurrentUserService,
     db: AngularFirestore
-  ) {
+  )
+  {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     toggleDarkTheme(prefersDark.matches);
@@ -39,15 +44,21 @@ export class AppComponent {
   }
 
   initializeApp() {
+    var self = this;
     this.platform.ready().then(() => {
       this.afAuth.authState.subscribe(auth => {
         if (!auth) {
-          console.log('non connecté');
+          console.log('Non connecté');
         } else {
           console.log('Connecté: ' + auth.uid);
+          this.currentUser.subscribeToCurrentUser(auth.uid);
           this.geolocation.getCurrentPosition().then((resp) => {
             console.log('latitude = ' + resp.coords.latitude);
             console.log('longitude = ' + resp.coords.longitude);
+            //update user
+            this.user.latitude = resp.coords.latitude;
+            this.user.longitude = resp.coords.longitude;
+            this.usersService.updateUserDB(this.user, this.user.id);
            }).catch((error) => {
              console.log('Error getting location', error);
            });
@@ -56,5 +67,21 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  get user():Users {
+    return this.currentUser.user;
+  }
+
+  set user(value: Users) {
+    this.currentUser.user = value;
+  }
+
+  get idCurrentUser():string {
+    return this.currentUser.idCurrentUser;
+  }
+
+  set idCurrentUser(value: string) {
+    this.currentUser.idCurrentUser = value;
   }
 }

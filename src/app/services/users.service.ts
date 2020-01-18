@@ -10,6 +10,8 @@ export interface Users {
   prenom: string;
   role: string;
   email: string;
+  latitude: number;
+  longitude: number;
 }
 
 @Injectable({
