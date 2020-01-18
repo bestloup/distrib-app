@@ -21,6 +21,7 @@ export class CurrentUserService {
   constructor(private usersService: UsersService) {
   }
 
+
   subscribeToCurrentUser(id: string) {
     //var self = this;
     this.idCurrentUser = id;
