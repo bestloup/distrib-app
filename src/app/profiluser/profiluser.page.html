@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-card>
-  <ion-title>PROFIL USER</ion-title>
+  <ion-title>Profil</ion-title>
   <img class="logo" src="./assets/photo-user.jpeg" />
 </ion-card>
 
@@ -16,20 +16,24 @@
   </ion-item>
   <ion-item>
     <ion-label>Prénom</ion-label>
-    <ion-input placeholder="Annie"></ion-input>
+    <ion-input placeholder={{user.prenom}} [(ngModel)]="user.prenom"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Nom</ion-label>
-    <ion-input placeholder="Larson"></ion-input>
+    <ion-input placeholder={{user.nom}} [(ngModel)]="user.nom"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Email</ion-label>
-    <ion-input placeholder={{mail}}></ion-input>
+    <ion-input placeholder={{user.email}} [(ngModel)]="user.email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="parametre">Compte</ion-label>
   </ion-item>
+  <ion-button color="light" (click)="updateProfile()" expand="full">Enregistrer le profil</ion-button>
+  <!--
+  [(ngModel)]="user.email"
   <ion-button color="light" (click)="changpasswd()" expand="full">Changer le mot de passe</ion-button>
-  <ion-button color="block" (click)="logout()" expand="full">Déconnexion</ion-button>
+  -->
+  <ion-button color="light" (click)="logout()" expand="full">Déconnexion</ion-button>
 </ion-list>
 </ion-content>

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Users, UsersService } from './../services/users.service';
+import { CurrentUserService } from './../services/currentuser.service';
 
 
 @Component({
@@ -14,14 +15,27 @@ export class ProfiluserPage {
 
   connected: boolean;
 
-  userId: string;
-  mail: string;
-  method: any;
+  //userId: string;
+  //mail: string;
+  //method: any;
+
+
+  user: Users = {
+    id: '',
+    nom: '',
+    prenom: '',
+    role: '',
+    email: ''
+  };
+  /*
+  */
 
   constructor(
     private router: Router,
     public afAuth: AngularFireAuth,
     db: AngularFirestore,
+    public usersService: UsersService,
+    public currentUser: CurrentUserService
     //private todosCollection: AngularFirestoreCollection<Users>
   ) {
     //this.todosCollection = db.collection<Users>('user');
@@ -30,11 +44,12 @@ export class ProfiluserPage {
       if (!auth) {
         console.log('non connecté');
         this.connected = false;
-      } else {
+      } else { //
         console.log('connecté: ' + auth.uid);
         this.connected = true;
-        this.userId = auth.uid;
-        this.mail = auth.email;
+        this.usersService.getUserDB(auth.uid).subscribe(user => { //this.disposable =
+           this.user = user;
+        });
       }
     });
 
@@ -46,6 +61,12 @@ export class ProfiluserPage {
 
   logout() {
     this.afAuth.auth.signOut();
+    this.currentUser.unsubscribeAtLogout();
     this.router.navigateByUrl('/connexion');
+  }
+
+  updateProfile() {
+    console.log(this.user);
+    this.usersService.updateUser(this.user, this.currentUser.idCurrentUser);
   }
 }

@@ -46,8 +46,6 @@ export class InfouserPage {
   };
 
   push() {
-    //this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
-    //this.push().bind(this);
 
     var self = this;
     var email = this.dataUser.email;
@@ -64,9 +62,6 @@ export class InfouserPage {
     });
 
 
-
-
-    //this.usersService.addUser(this.user);
     this.dataUser = {
       email: '',
       password: ''

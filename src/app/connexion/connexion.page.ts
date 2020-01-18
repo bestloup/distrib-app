@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Users, UsersService } from './../services/users.service';
+import { CurrentUserService } from './../services/currentuser.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class ConnexionPage implements OnInit {
     private router: Router,
     public afAuth: AngularFireAuth,
     //private user: Users,
-    private usersService: UsersService
+    private usersService: UsersService,
+    public currentUser: CurrentUserService
   )
   {
     this.afAuth.authState.subscribe(auth => {
@@ -48,27 +50,43 @@ export class ConnexionPage implements OnInit {
   }
 
   login() {
-    var auth_id;
     var self = this;
     //this.afAuth.auth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
     this.afAuth.auth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
-      auth_id = firebaseUser.user.uid;
-      console.log('je me suis reconnecté avec cet id : ' + auth_id)
-      self.user.id = firebaseUser.user.uid;
-      var that = self;
+      self.usersService.getUserDB(firebaseUser.user.uid).subscribe(user => { // removed var userdb =
+         //console.log(user);
+         self.user = user;
+         self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
 
+         if (self.user.role == 'marchand') {
+           console.log('marchand par ici')
+           self.router.navigateByUrl('/accueilmarchand');
+         } else if (self.user.role == 'client') {
+           console.log('client par la')
+           self.router.navigateByUrl('/tabs/annonces');
+         }
+      });
+
+
+
+
+
+
+      //var that = self;
+      /*
       self.usersService.getUser(auth_id).subscribe(user => {
-        that.user = user
-        console.log('user retrieved with id ' + that.user.id + ' and mail ' + that.user.email);
+        self.user = user
+        console.log('user retrieved with id ' + self.user.id + ' and mail ' + self.user.email);
 
-        if (that.user.role == 'marchand') {
+        if (self.user.role == 'marchand') {
           console.log('marchand par ici')
-          that.router.navigateByUrl('/accueilmarchand');
-        } else if (that.user.role == 'client') {
+          self.router.navigateByUrl('/accueilmarchand');
+        } else if (self.user.role == 'client') {
           console.log('client par la')
-          that.router.navigateByUrl('/tabs/annonces');
+          self.router.navigateByUrl('/tabs/annonces');
         }
       });
+      */
     }).catch(function(error) {
         console.error("ERROR: ", error);
     });
@@ -78,7 +96,6 @@ export class ConnexionPage implements OnInit {
        password: ''
     };
 
-    console.log('et en dehor jai encore cet id : ' + auth_id)
 
 
 
