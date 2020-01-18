@@ -49,13 +49,11 @@ export class UsersService {
 
 
   getUserDB(id: string) {
-    return this.firedb.object('user/' + id).valueChanges(); // rajouter un / devant user ?
-    //return this.db.object<Users>('/users/' + uid).valueChanges();
-    //return this.usersCollection.doc<Users>(id).valueChanges();
+    return this.firedb.object('user/' + id).valueChanges();
   }
 
   updateUserDB(user: Users, id: string) {
-    return this.usersCollection.doc(id).update(user); //
+    return this.firedb.object('user/' + id).update(user);
   }
 
   addUserDB(user: Users, id: string) {
@@ -63,7 +61,7 @@ export class UsersService {
   }
 
   removeUserDB(id: string) {
-    return this.usersCollection.doc(id).delete(); //
+    return this.firedb.object('user/' + id).remove();
   }
 
 
@@ -72,6 +70,7 @@ export class UsersService {
     return this.users;
   }
 
+  /*
 
   getUser(id) {
     return this.usersCollection.doc<Users>(id).valueChanges();
@@ -81,29 +80,12 @@ export class UsersService {
     return this.usersCollection.doc(id).update(user);
   }
 
-  /*
-  // fonctionne et retourne id de user dans la base users
-  addUser(user: Users) {
-    this.usersCollection.add(user)
-    .then(function(docRef) {
-        console.log("User written with ID: ", docRef.id);
-        return docRef.id
-    })
-    .catch(function(error) {
-        console.error("Error adding user: ", error);
-    });
-    //return this.usersCollection.add(user);
-  }
-  */
-
-
   addUser(user: Users) {
     return this.usersCollection.add(user);
   }
 
-
-
   removeUser(id) {
     return this.usersCollection.doc(id).delete();
   }
+  */
 }

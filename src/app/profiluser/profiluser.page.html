@@ -10,30 +10,37 @@
 </ion-card>
 
 <ion-content>
-<ion-list>
-  <ion-item>
-    <ion-label class="parametre">Profil</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Prénom</ion-label>
-    <ion-input placeholder={{user.prenom}} [(ngModel)]="user.prenom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Nom</ion-label>
-    <ion-input placeholder={{user.nom}} [(ngModel)]="user.nom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Email</ion-label>
-    <ion-input placeholder={{user.email}} [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label class="parametre">Compte</ion-label>
-  </ion-item>
-  <ion-button color="light" (click)="updateProfile()" expand="full">Enregistrer le profil</ion-button>
-  <!--
-  [(ngModel)]="user.email"
-  <ion-button color="light" (click)="changpasswd()" expand="full">Changer le mot de passe</ion-button>
-  -->
-  <ion-button color="light" (click)="logout()" expand="full">Déconnexion</ion-button>
-</ion-list>
+  <ion-list>
+
+    <ion-item>
+      <ion-label class="parametre">Profil</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prénom</ion-label>
+      <ion-input placeholder={{user.prenom}} [(ngModel)]="user.prenom"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input placeholder={{user.nom}} [(ngModel)]="user.nom"></ion-input>
+    </ion-item>
+
+    <!--
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input placeholder={{user.email}} [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    -->
+
+    <ion-item>
+      <ion-label class="parametre">Compte</ion-label>
+    </ion-item>
+
+    <ion-button color="light" (click)="updateProfile()" expand="full">Enregistrer le profil</ion-button>
+    <!--
+    <ion-button color="light" (click)="changpasswd()" expand="full">Changer le mot de passe</ion-button>
+    -->
+    <ion-button color="light" (click)="logout()" expand="full">Déconnexion</ion-button>
+  </ion-list>
 </ion-content>

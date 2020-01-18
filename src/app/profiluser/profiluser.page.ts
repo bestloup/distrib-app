@@ -65,8 +65,12 @@ export class ProfiluserPage {
     this.router.navigateByUrl('/connexion');
   }
 
-  updateProfile() {
+  updateProfile() { // reste la modification du mail ou du mot de passe à faire, parce que ici si je modifie le mail il n'est pas modifié dans la base auth
     console.log(this.user);
-    this.usersService.updateUser(this.user, this.currentUser.idCurrentUser);
+    console.log(this.user.id);
+    this.usersService.updateUserDB(this.user, this.user.id);
+    console.log('Profil enregistré pour le user id : ' + this.user.id);
+    console.log('Avec les informations suivantes :');
+    console.log(this.user);
   }
 }
