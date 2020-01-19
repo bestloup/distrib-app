@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   //{ path: '', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule) }, //ligne initiale mais fonctionne comme celle en-dessous
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' }, //fonctionne comme celle au-dessus
-  
+
   { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' },
   { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' }, //vitrine
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
@@ -26,11 +26,14 @@ const routes: Routes = [
   { path: 'profiluser', loadChildren: './profiluser/profiluser.module#ProfiluserPageModule' },
   { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' }, //inscription
   { path: 'connexion', loadChildren: './connexion/connexion.module#ConnexionPageModule' }, //connexion
-  { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
-  { path: 'detailsProduct/:id', loadChildren: './pages/produit-details/produit-details.module#ProduitDetailsPageModule' },
+  { path: 'creationproduit', loadChildren: './creationproduit/creationproduit.module#CreationproduitPageModule' },
+  { path: 'detailsproduit/:id', loadChildren: './detailsproduit/detailsproduit.module#DetailsproduitPageModule' },
+  { path: 'detailscommande/:id', loadChildren: './detailscommande/detailscommande.module#DetailscommandePageModule' },
 
   { path: 'gestioncommande', loadChildren: './gestioncommande/gestioncommande.module#GestioncommandePageModule' }, // gestion des commandes
-  { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' } // gestion des stocks
+  { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' },
+  { path: 'creationcommande', loadChildren: './creationcommande/creationcommande.module#CreationcommandePageModule' }
+// gestion des stocks
 ];
 @NgModule({
   imports: [

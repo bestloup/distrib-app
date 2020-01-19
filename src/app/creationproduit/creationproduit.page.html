@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/gestionstock"></ion-back-button>
+      <ion-back-button defaultHref="/tabsmarchand/gestionstock"></ion-back-button>
     </ion-buttons>
     <ion-title>Details</ion-title>
   </ion-toolbar>
@@ -26,7 +26,7 @@
     </ion-select>
 
     <ion-item>
-      <ion-input required type="text" placeholder="Prix par {{produit.grandeur}}" [(ngModel)]="produit.prix">€</ion-input>
+      <ion-input required type="text" placeholder="Prix par {{produit.grandeur}}" [(ngModel)]="produit.prix"></ion-input>€
     </ion-item>
 
     <!--

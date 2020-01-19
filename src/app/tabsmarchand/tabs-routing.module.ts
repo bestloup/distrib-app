@@ -7,37 +7,48 @@ const routes: Routes = [
     path: 'tabsmarchand',
     component: TabsmarchandPage,
     children: [
+
       {
         path: 'gestioncommande',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../gestioncommande/gestioncommande.module').then(m => m.GestioncommandePageModule)
+            loadChildren: '../gestioncommande/gestioncommande.module#GestioncommandePageModule'
           }
         ]
       },
+
       {
         path: 'gestionstock',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../gestionstock/gestionstock.module').then(m => m.GestionstockPageModule)
+            loadChildren: '../gestionstock/gestionstock.module#GestionstockPageModule'
           }
         ]
       },
+
       {
-        path: 'parametres',
+        path: 'settings',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../parametres/parametres.module').then(m => m.ParametresPageModule)
+            loadChildren: '../settings/settings.module#SettingsPageModule'
           }
         ]
       },
+
+      {
+        path: '',
+        redirectTo: '/tabsmarchand/gestionstock',
+        pathMatch: 'full'
+      }
     ]
+  },
+  {
+    path: '',
+    redirectTo: '/tabsmarchand/gestionstock',
+    pathMatch: 'full'
   }
 ];
 
@@ -45,4 +56,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsmarchandPageRoutingModule {}

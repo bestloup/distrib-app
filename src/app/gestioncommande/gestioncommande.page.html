@@ -6,4 +6,49 @@
 
 <ion-content>
 
+  <ion-list>
+
+    <ng-container *ngIf="!commandes || commandes.length == 0">
+      <div *ngFor="let n of [0,1,2]" padding>
+        <ion-skeleton-text></ion-skeleton-text>
+        <p>
+          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container>
+
+      <ion-item-sliding *ngFor="let item of commandes">
+
+        <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'" lines="inset" button [routerLink]="['/detailscommande', item.id]">
+          <ion-card class="profile_info">
+            <ion-card-header >
+              <ion-card-title>{{ item.id }}</ion-card-title>
+              <ion-card-subtitle>dictProduits : {{ item.dictProduits }}</ion-card-subtitle>
+              <ion-card-subtitle>idClient : {{ item.idClient }}</ion-card-subtitle>
+              <ion-card-subtitle>idMarchand : {{ item.idMarchand }}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-item>
+
+
+
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(item)" color="secondary">
+          Check
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/creationcommande" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

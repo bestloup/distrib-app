@@ -17,19 +17,19 @@ export interface Users {
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
   private usersCollection: AngularFirestoreCollection<Users>;
   private firedb: AngularFireDatabase;
 
   private users: Observable<Users[]>;
-  private usersdb: AngularFireObject<Users[]>;
+  private usersdb: Observable<any[]>;
 
   constructor(db: AngularFirestore, firedb: AngularFireDatabase) {
     this.usersCollection = db.collection<Users>('user');
 
-    this.firedb = firedb; // utile ?
-    //this.usersdb = this.db.list(products/${this.userId}).valueChanges()
-    //this.usersdb = this.firedb.list('/user').valueChanges();
+    this.firedb = firedb;
+    this.usersdb = this.firedb.list('/user').valueChanges();
 
 
 
@@ -68,11 +68,11 @@ export class UsersService {
 
 
 
+  /*
   getUsers() {
     return this.users;
   }
 
-  /*
 
   getUser(id) {
     return this.usersCollection.doc<Users>(id).valueChanges();

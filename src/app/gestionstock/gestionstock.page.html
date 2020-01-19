@@ -19,7 +19,7 @@
 
       <ion-item-sliding *ngFor="let item of produits">
 
-        <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'" lines="inset" button [routerLink]="['/detailsProduct', item.id]">
+        <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'" lines="inset" button [routerLink]="['/detailsproduit', item.id]">
           <ion-card class="profile_info">
             <ion-card-header >
               <ion-card-title>{{ item.nom }}</ion-card-title>
@@ -45,7 +45,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/produits" routerDirection="forward">
+    <ion-fab-button routerLink="/creationproduit" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
