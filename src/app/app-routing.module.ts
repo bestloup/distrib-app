@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
+  //{ path: '', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule) }, //fonctionne comme celle en-dessous
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' }, //fonctionne comme celle au-dessus
   { path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule' },
   { path: 'mpaimment', loadChildren: './mpaimment/mpaimment.module#MpaimmentPageModule' },
   { path: 'annonces', loadChildren: './annonces/annonces.module#AnnoncesPageModule' },
@@ -28,10 +26,11 @@ const routes: Routes = [
   { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
   { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' },
-  { path: 'tabsmarchand', loadChildren: () => import('./tabsmarchand/tabsmarchand.module').then(m => m.TabsmarchandPageModule) },
-  { path: 'parametres', loadChildren: './parametres/parametres.module#ParametresPageModule' },
-  { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' },
-  { path: 'gestioncommande', loadChildren: './gestioncommande/gestioncommande.module#GestioncommandePageModule' }
+  { path: 'tabsmarchand', loadChildren: './tabsmarchand/tabsmarchand.module#TabsmarchandPageModule'}
+
+  //{ path: 'tabsmarchand/accueilmarchand', loadChildren: './accueilmarchand/accueilmarchand.module#AccueilmarchandPageModule' },
+  //{ path: 'tabsmarchand/settings', loadChildren: './settings/settings.module#SettingsPageModule' }
+  //{ path: 'tabsmarchand', loadChildren: () => import('./tabsmarchand/tabsmarchand.module').then(m => m.TabsmarchandPageModule) }
 ];
 @NgModule({
   imports: [

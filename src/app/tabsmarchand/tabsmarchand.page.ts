@@ -2,11 +2,21 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tabsmarchand',
-  templateUrl: './tabsmarchand.page.html',
-  styleUrls: ['./tabsmarchand.page.scss'],
+  templateUrl: 'tabsmarchand.page.html',
+  styleUrls: ['tabsmarchand.page.scss'],
 })
-export class TabsmarchandPage {
+/*
+export class TabsmarchandPage implements OnInit {
 
   constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+*/
+export class TabsmarchandPage {
+
+  constructor() {}
 
 }
