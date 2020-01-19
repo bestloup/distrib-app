@@ -7,25 +7,23 @@ const routes: Routes = [
     path: 'tabsmarchand',
     component: TabsmarchandPage,
     children: [
-      /*
+
       {
-        path: 'GestionCommande',
+        path: 'gestioncommande',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../GestionCommande/GestionCommande.module').then(m => m.GestionCommandePageModule)
+            loadChildren: '../gestioncommande/gestioncommande.module#GestioncommandePageModule'
           }
         ]
-      },*/
-
+      },
 
       {
-        path: 'accueilmarchand',
+        path: 'gestionstock',
         children: [
           {
             path: '',
-            loadChildren: '../accueilmarchand/accueilmarchand.module#AccueilmarchandPageModule'
+            loadChildren: '../gestionstock/gestionstock.module#GestionstockPageModule'
           }
         ]
       },
@@ -40,38 +38,16 @@ const routes: Routes = [
         ]
       },
 
-
-      /*
-      {
-        path: 'accueilmarchand',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../accueilmarchand/accueilmarchand.module').then(m => m.AccueilmarchandPageModule)
-          }
-        ]
-      },
-      {
-        path: 'settings',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../settings/settings.module').then(m => m.SettingsPageModule)
-          }
-        ]
-      }*/
       {
         path: '',
-        redirectTo: '/tabsmarchand/accueilmarchand',
+        redirectTo: '/tabsmarchand/gestionstock',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabsmarchand/accueilmarchand',
+    redirectTo: '/tabsmarchand/gestionstock',
     pathMatch: 'full'
   }
 ];
