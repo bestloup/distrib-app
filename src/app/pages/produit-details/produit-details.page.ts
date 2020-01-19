@@ -57,12 +57,12 @@ export class ProduitDetailsPage implements OnInit {
     if (this.produitId) {
       this.produitService.updateProduit(this.produit, this.produitId).then(() => {
         loading.dismiss();
-        this.router.navigateByUrl('/accueilmarchand');
+        this.router.navigateByUrl('/gestionstock');
       });
     } else {
       this.produitService.addProduit(this.produit).then(() => {
         loading.dismiss();
-        this.router.navigateByUrl('/accueilmarchand');
+        this.router.navigateByUrl('/gestionstock');
       });
     }
   }
