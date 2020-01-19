@@ -28,7 +28,10 @@ const routes: Routes = [
   { path: 'produits', loadChildren: './produits/produits.module#ProduitsPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
   { path: 'infouser', loadChildren: './infouser/infouser.module#InfouserPageModule' },
-  { path: 'tabsmarchand', loadChildren: './tabsmarchand/tabsmarchand.module#TabsmarchandPageModule' }
+  { path: 'tabsmarchand', loadChildren: () => import('./tabsmarchand/tabsmarchand.module').then(m => m.TabsmarchandPageModule) },
+  { path: 'parametres', loadChildren: './parametres/parametres.module#ParametresPageModule' },
+  { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' },
+  { path: 'gestioncommande', loadChildren: './gestioncommande/gestioncommande.module#GestioncommandePageModule' }
 ];
 @NgModule({
   imports: [
