@@ -25,32 +25,39 @@ export class CoursiersPage {
       //console.log('longitude = ' + resp.coords.longitude);
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
-      this.map = new Map('mapId').setView([this.lat, this.lng], 13);
+      //this.map = new Map('mapId').setView([this.lat, this.lng], 13);
      }).catch((error) => {
        console.log('Error getting location', error);
      });
   }
 
   ionViewDidEnter() {
-     this.delay(300);
      this.leafletMap();
    }
+
+   ionViewWillEnter() {
+     this.leafletMap();
+   }
+
+
   leafletMap() {
-
-    //this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
-
+    this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
     tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);
-
+    
     this.marchesService.getMarches().subscribe(res => {
       this.marche = res;
+      console.log('on a fait la requetes :' + this.marche);
       for (let entry of this.marche) {
         //console.log(entry.nom + '   ' + entry.longitude + ' ' + entry.latitude ); // 1, "string", false
         const markPoint = marker([entry.latitude, entry.longitude]);
-        //const toto = '<p>'+entry.nom+'<p><br> <a href="https://www.google.fr/maps/@' + entry.latitude + ',' + entry.longitude + ',18z">carte du marché ici</a>'
         markPoint.bindPopup(entry.nom);
+        // markPoint.on('click', function(e){this.map.setView([entry.latitude, entry.longitude], 18);});
         this.map.addLayer(markPoint);
     }
     });
+    
+
+
 
     // const markPoint = marker([45.77233909078429, 4.865949285583477]);
     // markPoint.bindPopup('<p>Place Wilson</p>');
@@ -63,6 +70,9 @@ export class CoursiersPage {
     // this.map.addLayer(marche);
   }
 
+  Zoommap(entry: Marche) {
+    this.map.setZoomAround([entry.latitude, entry.longitude],18);
+  }
   ionViewWillLeave() {
     this.map.remove();
   }
