@@ -8,38 +8,37 @@ const routes: Routes = [
     component: TabsmarchandPage,
     children: [
       {
-        path: 'GestionCommande',
+        path: 'gestioncommande',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../GestionCommande/GestionCommande.module').then(m => m.GestionCommandePageModule)
+              import('../gestioncommande/gestioncommande.module').then(m => m.GestioncommandePageModule)
           }
         ]
       },
       {
-        path: 'GestionStock',
+        path: 'gestionstock',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../GestionStock/GestionStock.module').then(m => m.GestionStockPageModule)
+              import('../gestionstock/gestionstock.module').then(m => m.GestionstockPageModule)
           }
         ]
       },
       {
-        path: 'Parametres',
+        path: 'parametres',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../Parametres/Parametres.module').then(m => m.ParametresPageModule)
+              import('../parametres/parametres.module').then(m => m.ParametresPageModule)
           }
         ]
-      }
+      },
     ]
-  },
-
+  }
 ];
 
 @NgModule({

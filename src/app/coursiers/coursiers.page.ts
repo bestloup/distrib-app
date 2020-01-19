@@ -18,7 +18,7 @@ export class CoursiersPage {
   marche: Marche[];
   constructor(
     private marchesService: MarcheService,
-    private geolocation: Geolocation,
+    private geolocation: Geolocation, 
   ) {
     this.geolocation.getCurrentPosition().then((resp) => {
       //console.log('latitude = ' + resp.coords.latitude);
