@@ -1,36 +1,32 @@
 import { Produit, ProduitService } from './../services/produit.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router'; // Router
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
-import { Users, UsersService } from './../services/users.service';
-import { CurrentUserService } from './../services/currentuser.service';
-
-//import { TodoDetailsPage } from './../pages/todo-details/todo-details.page'; //..
 
 @Component({
-  selector: 'produits-details',
-  templateUrl: './produits.page.html',
-  styleUrls: ['./produits.page.scss'],
+  selector: 'app-detailsproduit',
+  templateUrl: './detailsproduit.page.html',
+  styleUrls: ['./detailsproduit.page.scss'],
 })
-export class ProduitsPage implements OnInit {
+export class DetailsproduitPage implements OnInit {
 
   produit: Produit = {
     nom: '',
-    idMarchand: '', //idCurrentUser
+    idMarchand: '',
     quantite: 0,
-    prix: '',
-    grandeur: ''
+    grandeur: '',
+    prix: ''
   };
 
   produitId = null;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
+    private route: ActivatedRoute,
     private nav: NavController,
     private produitService: ProduitService,
-    private loadingController: LoadingController,
-    public currentUser: CurrentUserService) { }
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
     this.produitId = this.route.snapshot.params['id'];
@@ -39,27 +35,9 @@ export class ProduitsPage implements OnInit {
     }
   }
 
-
-  get user():Users {
-    return this.currentUser.user;
-  }
-
-  set user(value: Users) {
-    this.currentUser.user = value;
-  }
-
-  get idCurrentUser():string {
-    return this.currentUser.idCurrentUser;
-  }
-
-  set idCurrentUser(value: string) {
-    this.currentUser.idCurrentUser = value;
-  }
-
-
   async loadProduit() {
     const loading = await this.loadingController.create({
-      message: 'Loading Produit...'
+      message: 'Loading Produit..'
     });
     await loading.present();
 
@@ -69,11 +47,7 @@ export class ProduitsPage implements OnInit {
     });
   }
 
-
   async saveProduit() {
-    console.log('ici')
-    console.log(this.idCurrentUser)
-    this.produit.idMarchand = this.idCurrentUser;
 
     const loading = await this.loadingController.create({
       message: 'Sauvegarde du Produit...'
@@ -83,13 +57,14 @@ export class ProduitsPage implements OnInit {
     if (this.produitId) {
       this.produitService.updateProduit(this.produit, this.produitId).then(() => {
         loading.dismiss();
-        this.router.navigate(['/gestionstock']);
+        this.router.navigateByUrl('/tabsmarchand/gestionstock');
       });
     } else {
       this.produitService.addProduit(this.produit).then(() => {
         loading.dismiss();
-        this.router.navigate(['/gestionstock']);
+        this.router.navigateByUrl('/tabsmarchand/gestionstock');
       });
     }
   }
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Produit, ProduitService } from '../services/produit.service';
+import { Produit, ProduitService } from './../services/produit.service';
 import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
 
@@ -14,7 +14,14 @@ export class GestionstockPage implements OnInit {
   produits: Produit[];
 
 
-  constructor(private produitService: ProduitService, public currentUser: CurrentUserService) { }
+  constructor
+  (
+    private produitService: ProduitService,
+    public currentUser: CurrentUserService
+  )
+  {
+
+  }
 
   ngOnInit() {
     this.produitService.getProduits().subscribe(res => {

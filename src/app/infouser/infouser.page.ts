@@ -85,6 +85,17 @@ export class InfouserPage {
       email: '',
       password: ''
     };
+
+
+    var self = this;
+         if (self.user.role == 'marchand') {
+           console.log('marchand par ici')
+           self.router.navigateByUrl('/tabsmarchand');
+         } else if (self.user.role == 'client') {
+           console.log('client par la')
+           self.router.navigateByUrl('/tabs/annonces');
+         }
+         
     /*
     if (this.user.role == 'marchand') {
       this.router.navigateByUrl('/accueilmarchand');
@@ -127,7 +138,7 @@ export class InfouserPage {
     private router: Router,
     private usersService: UsersService,
     private currentUser: CurrentUserService,
-    private afd: AngularFireDatabase
+    private afd: AngularFireDatabase,
   )
   {
     {
@@ -154,7 +165,14 @@ export class InfouserPage {
       email: '',
       password: ''
     };
-    this.router.navigateByUrl('/tabs/annonces');
+    var self = this;
+         if (self.user.role == 'marchand') {
+           console.log('marchand par ici')
+           self.router.navigateByUrl('/tabsmarchand');
+         } else if (self.user.role == 'client') {
+           console.log('client par la')
+           self.router.navigateByUrl('/tabs/annonces');
+         }
   }
 
   uploadFile(event: FileList) {

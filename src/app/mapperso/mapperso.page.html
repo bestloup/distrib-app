@@ -5,5 +5,19 @@
 </ion-header>
 
 <ion-content>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
 
+  <body>
+      <!-- Le conteneur de notre carte (avec une contrainte CSS pour la taille -->
+      
+
+      <script>
+        var carte = L.map('macarte').setView([46.5630104, 1.4846608], 6);
+        tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(carte);
+        
+      </script>
+
+      <div id="macarte" style="width:545px; height:490px"></div>
+    </body>
 </ion-content>

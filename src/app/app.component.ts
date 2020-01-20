@@ -52,6 +52,7 @@ export class AppComponent {
         } else {
           console.log('Connecté: ' + auth.uid);
           this.currentUser.subscribeToCurrentUser(auth.uid);
+          console.log('fin de la maj')
           this.geolocation.getCurrentPosition().then((resp) => {
             console.log('latitude = ' + resp.coords.latitude);
             console.log('longitude = ' + resp.coords.longitude);

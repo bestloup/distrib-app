@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabsmarchand/gestioncommande"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type="text" placeholder="Nom" [(ngModel)]="commande.nom"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input required type="text" placeholder="Quantité" [(ngModel)]="commande.quantite"></ion-input>
+    </ion-item>
+
+    <ion-select multiple="true" placeholder="Produits" [(ngModel)]="produitsencommande">
+      <ng-container *ngFor="let item of produits">
+        <ion-select-option *ngIf="item.idMarchand == user.id && user.role == 'marchand'" value="{{item.nom}}">{{item.nom}}</ion-select-option>
+      </ng-container>
+      <!--
+      <ng-container *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'">
+        <ion-select-option *ngFor="let item of produits" value="{{item.nom}}">{{item.nom}}</ion-select-option>
+      </ng-container>
+      item.idMarchand == user.id && user.role == 'marchand'
+
+      <ng-container *ngFor="let item of produits" >
+        <li *ngIf="item.idMarchand == user.id && user.role == 'marchand'">
+          <ion-select-option value="{{item.nom}}">{{item.nom}}</ion-select-option>
+        </li>
+      </ng-container>
+
+    -->
+    </ion-select>
+    <!--
+    *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'"
+    <ion-select [(ngModel)]="commande.prix">
+      <ion-select-option  value="0">kilogramme</ion-select-option>
+      <ion-select-option  value="g">gramme</ion-select-option>
+      <ion-select-option  value="L">litre</ion-select-option>
+      <ion-select-option  value="mL">millilitre</ion-select-option>
+      <ion-select-option  value="unité">unité</ion-select-option>
+    </ion-select>
+    -->
+
+    <!--
+    <div class="bar bar-header bar-light">
+      <h1 class="title">Commandes à disposition :</h1>
+    </div>
+    <ion-fab-button routerLink="/gestionstock" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    -->
+
+  </ion-list>
+  <ion-button expand="full" (click)="saveCommande()">Enregistrer</ion-button>
+</ion-content>

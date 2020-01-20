@@ -5,12 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InfouserPage } from './infouser.page';
-import { FileSizeFormatPipe } from './file-size-format.pipe';
+import { CreationcommandePage } from './creationcommande.page';
+
+//import { CreationcommandeRoutingModule } from './creationcommande-routing.module';
+
 const routes: Routes = [
   {
     path: '',
-    component: InfouserPage
+    component: CreationcommandePage
   }
 ];
 
@@ -21,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [InfouserPage, FileSizeFormatPipe]
+  declarations: [CreationcommandePage]
 })
-export class InfouserPageModule {}
+export class CreationcommandePageModule {}
