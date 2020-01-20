@@ -30,7 +30,8 @@ const routes: Routes = [
   { path: 'detailsProduct/:id', loadChildren: './pages/produit-details/produit-details.module#ProduitDetailsPageModule' },
 
   { path: 'gestioncommande', loadChildren: './gestioncommande/gestioncommande.module#GestioncommandePageModule' }, // gestion des commandes
-  { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' } // gestion des stocks
+  { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' },   { path: 'mapperso', loadChildren: './mapperso/mapperso.module#MappersoPageModule' }
+// gestion des stocks
 ];
 @NgModule({
   imports: [

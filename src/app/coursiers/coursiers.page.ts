@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Map, tileLayer, marker } from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Marche , MarcheService } from './../services/marche.service';
-
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'app-coursiers',
@@ -19,6 +19,7 @@ export class CoursiersPage {
   constructor(
     private marchesService: MarcheService,
     private geolocation: Geolocation, 
+    public navCrtl: NavController
   ) {
     this.geolocation.getCurrentPosition().then((resp) => {
       //console.log('latitude = ' + resp.coords.latitude);
@@ -39,6 +40,11 @@ export class CoursiersPage {
      this.leafletMap();
    }
 
+  Trasnmi(entry) {
+    this.navCrtl.push(Mapperso, {
+      entry : entry
+    });
+  }
 
   leafletMap() {
     this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
