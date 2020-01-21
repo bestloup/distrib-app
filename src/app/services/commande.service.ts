@@ -5,17 +5,19 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Commande {
-  id: string;
+  id?: string;
   idClient: string;
   idMarchand: string;
-  dictProduits: { [id: string]: ProduitCommande; };
+  dictProduits: ProduitCommande[];
 }
 
 export interface ProduitCommande {
    idProduit: string;
    nomProduit: string;
-   quantiteProduit: number;
-   prixProduit: number;
+   quantiteAchatProduit: number;
+   prixProduitParGrandeur: number;
+   grandeurPourPrix: string;
+   //isChecked: boolean; //
 }
 
 @Injectable({

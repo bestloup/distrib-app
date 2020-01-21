@@ -9,27 +9,30 @@
 
 <ion-content padding>
   <ion-list lines="full">
+    <ion-title>Nom :</ion-title>
+    <br>
     <ion-item>
-      <ion-input required type="text" placeholder="Nom" [(ngModel)]="produit.nom"></ion-input>
+      <ion-input required type="text" [(ngModel)]="produit.nom"></ion-input>
     </ion-item>
+    <br>
 
-    <ion-item>
-      <ion-input required type="text" placeholder="Quantité" [(ngModel)]="produit.quantite"></ion-input>
+    <ion-title>Quantité en stock :</ion-title>
+    <br>
+    <ion-item>{{produit.quantiteStock}} {{produit.grandeurStock}}
+      <ion-fab horizontal="end">
+        <ion-button class="picker" (click)="openPickerForQuantity(stockColumnOptions)">Modifier</ion-button>
+      </ion-fab>
     </ion-item>
+    <br>
 
-    <ion-item>
-      <ion-input required type="text" placeholder="Prix par {{produit.grandeur}}" [(ngModel)]="produit.prix"></ion-input>€
+    <ion-title>Prix :</ion-title>
+    <br>
+    <ion-item>{{produit.prix}} €<ng-container *ngIf="produit.grandeurPrix">/{{produit.grandeurPrix}}</ng-container>
+      <ion-fab horizontal="end">
+        <ion-button class="picker" (click)="openPickerForPrice(priceColumnOptions)">Modifier</ion-button>
+      </ion-fab>
     </ion-item>
-
-    <ion-select placeholder="Grandeur" [(ngModel)]="produit.grandeur">
-      <ion-select-option  value="kg">par kilogramme</ion-select-option>
-      <ion-select-option  value="g">par gramme</ion-select-option>
-      <ion-select-option  value="L">par litre</ion-select-option>
-      <ion-select-option  value="mL">par millilitre</ion-select-option>
-      <ion-select-option  value="unité">par unité</ion-select-option>
-    </ion-select>
-
-
+    <br>
 
 
   </ion-list>

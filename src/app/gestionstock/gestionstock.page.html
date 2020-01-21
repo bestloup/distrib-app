@@ -19,12 +19,12 @@
 
       <ion-item-sliding *ngFor="let item of produits">
 
-        <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'" lines="inset" button [routerLink]="['/detailsproduit', item.id]">
+        <ion-item *ngIf="item.idMarchand == user.id" lines="inset" button [routerLink]="['/detailsproduit', item.id]">
           <ion-card class="profile_info">
             <ion-card-header >
               <ion-card-title>{{ item.nom }}</ion-card-title>
-              <ion-card-subtitle>Stock : {{ item.quantite }} {{ item.grandeur }}</ion-card-subtitle>
-              <ion-card-subtitle>Prix : {{ item.prix }}€ / {{ item.grandeur }}</ion-card-subtitle>
+              <ion-card-subtitle>Stock : {{ item.quantiteStock }} {{ item.grandeurStock }}</ion-card-subtitle>
+              <ion-card-subtitle>Prix : {{ item.prix }} € / {{ item.grandeurPrix }}</ion-card-subtitle>
             </ion-card-header>
           </ion-card>
         </ion-item>

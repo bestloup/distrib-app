@@ -7,9 +7,10 @@ export interface Produit {
   id?: string;
   nom: string;
   idMarchand: string;
-  quantite: number;
-  prix: string;
-  grandeur: string;
+  quantiteStock: number;
+  prix: number;
+  grandeurPrix: string;
+  grandeurStock: string;
 }
 
 @Injectable({

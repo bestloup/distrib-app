@@ -3,12 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabsmarchand/gestioncommande"></ion-back-button>
     </ion-buttons>
-    <ion-title>Details</ion-title>
+    <ion-title>Commande</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list lines="full">
+  <!--
     <ion-item>
       <ion-input required type="text" placeholder="Nom" [(ngModel)]="commande.nom"></ion-input>
     </ion-item>
@@ -21,7 +21,6 @@
       <ng-container *ngFor="let item of produits">
         <ion-select-option *ngIf="item.idMarchand == user.id && user.role == 'marchand'" value="{{item.nom}}">{{item.nom}}</ion-select-option>
       </ng-container>
-      <!--
       <ng-container *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'">
         <ion-select-option *ngFor="let item of produits" value="{{item.nom}}">{{item.nom}}</ion-select-option>
       </ng-container>
@@ -33,9 +32,62 @@
         </li>
       </ng-container>
 
-    -->
     </ion-select>
+  -->
     <!--
+    <ion-list>
+      <ion-item *ngFor="let item of produitsDisponibles; let i = index">
+        <ion-label>{{item.idProduit}}</ion-label>
+        <ion-label>{{item.nomProduit}}</ion-label>
+        <ion-label>{{item.quantiteAchatProduit}}</ion-label>
+        <ion-label>{{item.prixProduitParGrandeur}}</ion-label>
+        <ion-label>{{item.grandeurPourPrix}}</ion-label>
+      </ion-item>
+    </ion-list> -->
+    <!--
+      <ion-checkbox  value="{{employee.id}}" [(ngModel)]="employee.isChecked" (ionChange)="emplsChange($event.detail.checked, i)"></ion-checkbox>
+
+    <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'" lines="inset" button [routerLink]="['/detailsproduit', item.id]"></ion-item>
+
+    <ion-item-options side="end">
+    <ion-item-option (click)="remove(item)" color="secondary">
+    Check
+    <ion-icon name="checkmark" slot="end"></ion-icon>
+  </ion-item-option>
+</ion-item-options>
+<ion-checkbox value="{{item.isChecked}}" [(ngModel)]="item.isChecked" ></ion-checkbox>
+    -->
+
+    <ion-item-sliding *ngFor="let item of produitsDisponibles; let i = index">
+
+        <ion-card class="profile_info">
+          <ion-card-header >
+            <ion-card-title>{{item.nomProduit}}</ion-card-title>
+            <!--<ion-card-subtitle>{{item.idProduit}}</ion-card-subtitle>-->
+            <ion-card-subtitle>Quantité : {{item.quantiteAchatProduit}}{{item.grandeurPourPrix}}</ion-card-subtitle>
+            <ion-card-subtitle>Prix : {{item.prixProduitParGrandeur}}€/{{item.grandeurPourPrix}}</ion-card-subtitle>
+            <ion-card-subtitle>Prix total : {{item.prixProduitParGrandeur * item.quantiteAchatProduit}}€</ion-card-subtitle>
+          </ion-card-header>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="openPickerForOrderQuantity(2, 10, multiColumnOptions, item.grandeurPourPrix, i)">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-card>
+
+    </ion-item-sliding>
+
+
+
+    <!--
+    <ion-item>
+      <ion-button (click)="openPicker()">Open Single Column Picker</ion-button>
+      <ion-button (click)="openPickerForNumber(2, 10, multiColumnOptions, 'kg')">Open Multi Column Picker</ion-button>
+    </ion-item>
+
+
+
+
     *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'"
     <ion-select [(ngModel)]="commande.prix">
       <ion-select-option  value="0">kilogramme</ion-select-option>
@@ -53,8 +105,9 @@
     <ion-fab-button routerLink="/gestionstock" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
+    <ion-list lines="full">
+  </ion-list>
     -->
 
-  </ion-list>
-  <ion-button expand="full" (click)="saveCommande()">Enregistrer</ion-button>
+  <ion-button expand="full" (click)="saveCommande()">Commander</ion-button>
 </ion-content>

@@ -9,44 +9,31 @@
 
 <ion-content padding>
   <ion-list lines="full">
+    <ion-title>Nom du produit :</ion-title>
+    <br>
     <ion-item>
       <ion-input required type="text" placeholder="Nom" [(ngModel)]="produit.nom"></ion-input>
     </ion-item>
+    <br>
 
-    <ion-item>
-      <ion-input required type="text" placeholder="Quantité" [(ngModel)]="produit.quantite"></ion-input>
+    <ion-title>Quantité en stock :</ion-title>
+    <br>
+    <ion-item>{{produit.quantiteStock}} {{produit.grandeurStock}}
+      <ion-fab horizontal="end">
+        <ion-button class="picker" (click)="openPickerForQuantity(stockColumnOptions)">Modifier</ion-button>
+      </ion-fab>
     </ion-item>
+    <br>
 
-    <ion-select placeholder="Grandeur" [(ngModel)]="produit.grandeur">
-      <ion-select-option  value="kg">kilogramme</ion-select-option>
-      <ion-select-option  value="g">gramme</ion-select-option>
-      <ion-select-option  value="L">litre</ion-select-option>
-      <ion-select-option  value="mL">millilitre</ion-select-option>
-      <ion-select-option  value="unité">unité</ion-select-option>
-    </ion-select>
-
-    <ion-item>
-      <ion-input required type="text" placeholder="Prix par {{produit.grandeur}}" [(ngModel)]="produit.prix"></ion-input>€
+    <ion-title>Prix :</ion-title>
+    <br>
+    <ion-item>{{produit.prix}} €<ng-container *ngIf="produit.grandeurPrix">/{{produit.grandeurPrix}}</ng-container>
+      <ion-fab horizontal="end">
+        <ion-button class="picker" (click)="openPickerForPrice(priceColumnOptions)">Modifier</ion-button>
+      </ion-fab>
     </ion-item>
+    <br>
 
-    <!--
-    <ion-select [(ngModel)]="produit.prix">
-      <ion-select-option  value="0">kilogramme</ion-select-option>
-      <ion-select-option  value="g">gramme</ion-select-option>
-      <ion-select-option  value="L">litre</ion-select-option>
-      <ion-select-option  value="mL">millilitre</ion-select-option>
-      <ion-select-option  value="unité">unité</ion-select-option>
-    </ion-select>
-    -->
-
-    <!--
-    <div class="bar bar-header bar-light">
-      <h1 class="title">Produits à disposition :</h1>
-    </div>
-    <ion-fab-button routerLink="/gestionstock" routerDirection="forward">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-    -->
 
   </ion-list>
   <ion-button expand="full" (click)="saveProduit()">Enregistrer</ion-button>

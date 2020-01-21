@@ -14,7 +14,7 @@ export class DetailscommandePage implements OnInit {
     id: '',
     idClient: '',
     idMarchand: '',
-    dictProduits: {}
+    dictProduits: []
   };
 
 

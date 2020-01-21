@@ -13,7 +13,6 @@ export class GestionstockPage implements OnInit {
 
   produits: Produit[];
 
-
   constructor
   (
     private produitService: ProduitService,
