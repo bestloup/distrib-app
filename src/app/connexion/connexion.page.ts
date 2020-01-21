@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -51,11 +52,11 @@ export class ConnexionPage implements OnInit {
         //console.log('connecté: ' + auth.uid);
         this.connected = true;
         //
-        if (this.user.role == 'marchand') {
-          this.router.navigateByUrl('/accueilmarchand');
-        } else if (this.user.role == 'client') {
-          this.router.navigateByUrl('/tabs/annonces');
-        }
+        // if (this.user.role == 'marchand') {
+        //   this.router.navigateByUrl('/accueilmarchand');
+        // } else if (this.user.role == 'client') {
+        //   this.router.navigateByUrl('/tabs/annonces');
+        // }
         //this.router.navigateByUrl('/tabs/annonces'); // ???????????????????????????????????????????????????????????
       }
     });
@@ -71,15 +72,15 @@ export class ConnexionPage implements OnInit {
 
          //self.user = user;
          self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
-         /*
+        
          if (self.user.role == 'marchand') {
            console.log('marchand par ici')
-           self.router.navigateByUrl('/accueilmarchand');
+           self.router.navigateByUrl('/tabsmarchand');
          } else if (self.user.role == 'client') {
            console.log('client par la')
            self.router.navigateByUrl('/tabs/annonces');
          }
-         */
+         
       });
 
     }).catch(function(error) {
