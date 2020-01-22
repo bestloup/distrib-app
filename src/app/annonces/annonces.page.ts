@@ -11,13 +11,16 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./annonces.page.scss'],
 })
 export class AnnoncesPage {
-
+  users: Users[];
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router,
     private usersService: UsersService,
     public currentUser: CurrentUserService,
-  ) { 
+  ) {
+    this.usersService.getUsersDB().subscribe(res => {
+      this.users = res;
+    })
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
         console.log('Non connecté');
@@ -55,10 +58,6 @@ export class AnnoncesPage {
   set idCurrentUser(value: string) {
     this.currentUser.idCurrentUser = value;
   }
-
-  n() {
-
-    }
 
 
 }

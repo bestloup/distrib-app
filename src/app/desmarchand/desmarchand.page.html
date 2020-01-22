@@ -6,43 +6,42 @@
 </ion-header>
 
 <ion-content>
-
-    <ion-content class="en-tete">
+    <ion-content class="en-tete" color="success">
       <h1> Position </h1>
-      10Km
+      Place Wilson
     </ion-content>
-    <ion-content class="en-tete">
+    <ion-content class="en-tete" color="success">
       <h1> Disponibilité </h1>
-      tous les jours 
+      Mercredi, Samedi 
     </ion-content>
 
-    <ion-content class="bio">
+    <ion-content class="bio" color="success">
     <h1 id="titre"> BIO </h1>
     Nous sommes des agriculteurs biologiques dans la région lyonnaise. Nous produissons exclusivement des légumes de saison.
     </ion-content>
 
     <ion-list>
     <h1>Produits</h1>
-    <ion-item>
-      <ion-card>
-        <img class="pomme" src="./assets/pomme.png">
-        <ion-card-header>
-            <ion-card-title>Pommes</ion-card-title>
-            <ion-card-subtitle>100 Kg</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-item>
-    <ion-item>
-      <ion-card>
-        <img class="carotte" src="./assets/carotte.png">
-        <ion-card-header>
-            <ion-card-title>Carotte</ion-card-title>
-            <ion-card-subtitle>80 Kg</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-item>
+    
+    <ion-item-sliding *ngFor="let item of produit">
+    <ion-item *ngIf="item.idMarchand == marchandid">
+          <ion-card class="profile_info">
+            <ion-card-header >
+              <ion-card-title>{{ item.nom }}</ion-card-title>
+              <ion-card-subtitle>Stock : {{ item.quantite }} {{ item.grandeur }}</ion-card-subtitle>
+              <ion-card-subtitle>Prix : {{ item.prix }}€ / {{ item.grandeur }}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(item)" color="secondary">
+          Check
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
     </ion-list>
 
-        <ion-button class="but" color="success" routerLink="/initcommande">Commander</ion-button>
+        <ion-button class="but" color="success" [routerLink]="['/initcommande', marchandid]">Commander</ion-button>
 
 </ion-content>

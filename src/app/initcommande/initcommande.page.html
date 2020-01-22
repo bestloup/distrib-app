@@ -15,42 +15,35 @@
         <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
         4,9 / 5
       </ion-card-content>
-      Avec Julien dans 1 jour
     </ion-card-header>
+    
     <ion-list>
-    <ion-item>
-          <ion-label>Pomme</ion-label>
+      
+      <ion-item-sliding *ngFor="let item of produit">
+        <ion-item *ngIf="item.idMarchand == marchandid">
+        
+          <ion-label>{{ item.nom }}</ion-label>
+          <ion-text color="secondary">
+            <p>Prix : {{ item.prix }}€ / {{ item.grandeur }}</p>
+          </ion-text>
           <ion-select>
-            <ion-select-option selected>0kg</ion-select-option>
-            <ion-select-option>1kg</ion-select-option>
-            <ion-select-option>2kg</ion-select-option>
-            <ion-select-option>3kg</ion-select-option>
-            <ion-select-option>4kg</ion-select-option>
-            <ion-select-option>5kg</ion-select-option>
-            <ion-select-option>6kg</ion-select-option>
-            <ion-select-option>7kg</ion-select-option>
-            <ion-select-option>8kg</ion-select-option>
-            <ion-select-option>9kg</ion-select-option>
-            <ion-select-option>10kg</ion-select-option>
+            <ion-select-option>0{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>1{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>2{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>3{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>4{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>5{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>6{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>7{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>8{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>9{{ item.grandeur }}</ion-select-option>
+            <ion-select-option>10{{ item.grandeur }}</ion-select-option>
           </ion-select>
+          
+          
         </ion-item>
-      <ion-item>
-          <ion-label>Carotte</ion-label>
-          <ion-select>
-            <ion-select-option selected>0kg</ion-select-option>
-            <ion-select-option>1kg</ion-select-option>
-            <ion-select-option>2kg</ion-select-option>
-            <ion-select-option>3kg</ion-select-option>
-            <ion-select-option>4kg</ion-select-option>
-            <ion-select-option>5kg</ion-select-option>
-            <ion-select-option>6kg</ion-select-option>
-            <ion-select-option>7kg</ion-select-option>
-            <ion-select-option>8kg</ion-select-option>
-            <ion-select-option>9kg</ion-select-option>
-            <ion-select-option>10kg</ion-select-option>
-          </ion-select>
-        </ion-item>  
-  </ion-list>
+      </ion-item-sliding>
+  </ion-list> 
   <ion-button class="but" color="success" routerLink="/paypal">Commander</ion-button>
   </ion-card>
   
