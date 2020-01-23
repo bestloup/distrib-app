@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Users, UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-marchands',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./marchands.page.scss'],
 })
 export class MarchandsPage implements OnInit {
-
-  constructor() { }
+  users: Users[];
+  constructor(
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
+    this.usersService.getUsersDB().subscribe(res => {
+      this.users = res;
+    })
   }
 
 }

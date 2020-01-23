@@ -8,6 +8,28 @@
 
 <ion-content>
   <div id="mapId" (click)='onClickFuntion($event)'></div>
+  
+
+  <ion-list class="list-coursiers" >
+
+    <ion-item *ngFor="let item of marche">
+          <ion-card class="profile_info">
+          <img class="profile_image" src="{{ item.photo }}"/>
+            <ion-card-header >
+              <ion-card-title>{{ item.nom }}</ion-card-title>
+              <ion-card-subtitle>{{ item.dispo }}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(item)" color="secondary">
+          Check
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-list>
+  
+  
   <ion-list class="list-coursiers">
     <ion-card routerLink="/desmarchand">
       <img class="profile_image" src="http://www.cuisine-blog.fr/wp-content/uploads/2018/06/cover-juillet.jpg"/>
