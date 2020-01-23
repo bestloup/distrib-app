@@ -141,8 +141,15 @@
     </ion-select>
   </ion-item>
 
+  <ion-item *ngIf="user.role == 'marchand'">
+    <ion-label>Coordonnées Paypal</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-button *ngIf="user.role == 'marchand'" expand="full">Ajout certification de production</ion-button>
 
 
 
-  <ion-button color="light" (click)="push()" expand="full">Enregistrement</ion-button>
+  <ion-button *ngIf="user.role == 'marchand'"color="light" (click)="pushmarchand()" expand="full">Enregistrement</ion-button>
+  <ion-button *ngIf="user.role == 'client'"color="light" (click)="pushclient()" expand="full">Enregistrement</ion-button>
 </ion-list>

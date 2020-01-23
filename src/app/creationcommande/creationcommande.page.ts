@@ -54,7 +54,7 @@ export class CreationcommandePage implements OnInit {
 
 
   commandeId = null;
-
+  marchandid = null;
   constructor
   (
     public afAuth: AngularFireAuth,
@@ -73,7 +73,7 @@ export class CreationcommandePage implements OnInit {
   }
 
   ngOnInit() {
-    this.commandeId = this.route.snapshot.params['id'];
+    this.marchandid = this.route.snapshot.params['id'];
     if (this.commandeId)  {
       this.loadCommande();
     }
@@ -88,7 +88,7 @@ export class CreationcommandePage implements OnInit {
           this.produitService.getProduits().subscribe(res => {
             this.produits = res;
             for (let produit of this.produits) { // est-ce que je mets ce for à l'intérieur ou à l'extérieur du subscribe ? j'ai peur que si le marchand met un nouveau produit dans la base, ça rechange et nique la commande en cours du client...
-              if (produit.idMarchand == this.user.id && this.user.id != null) {
+              if (produit.idMarchand == this.marchandid && this.marchandid != null) {
                 //console.log("id = " + this.user.id);
                 //console.log(produit);
                 //this.produitsDisponibles[produit.id] = {
@@ -316,7 +316,7 @@ export class CreationcommandePage implements OnInit {
       }
     }
     console.log(productTable);
-    this.commande.idMarchand = this.user.id; // à changer pour mettre le marchand de la page en question
+    this.commande.idMarchand = this.marchandid; // à changer pour mettre le marchand de la page en question
     this.commande.idClient = this.user.id;
     this.commande.dictProduits = productTable;
     console.log(this.commande);
@@ -334,7 +334,7 @@ export class CreationcommandePage implements OnInit {
     } else {
       this.commandeService.addCommande(this.commande).then(() => {
         loading.dismiss();
-        this.router.navigate(['/tabsmarchand/gestioncommande']); // à changer vers panier
+        this.router.navigate(['/paypal']); // à changer vers panier
       });
     }
     /*

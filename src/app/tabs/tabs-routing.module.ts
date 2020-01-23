@@ -38,16 +38,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'favoris',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../favoris/favoris.module').then(m => m.FavorisPageModule)
-          }
-        ]
-      },
-      {
         path: 'settings',
         children: [
           {

@@ -64,7 +64,7 @@ export class InfouserPage {
     this.currentUser.idCurrentUser = value;
   }
 
-  push() {
+  pushmarchand() {
 
     var self = this;
     var email = this.dataUser.email;
@@ -79,32 +79,34 @@ export class InfouserPage {
     }).catch(function(error) {
         console.error("ERROR: ", error);
     });
-
-
     this.dataUser = {
       email: '',
       password: ''
     };
-
-
-    var self = this;
-         if (self.user.role == 'marchand') {
-           console.log('marchand par ici')
-           self.router.navigateByUrl('/tabsmarchand');
-         } else if (self.user.role == 'client') {
-           console.log('client par la')
-           self.router.navigateByUrl('/tabs/annonces');
-         }
-         
-    /*
-    if (this.user.role == 'marchand') {
-      this.router.navigateByUrl('/accueilmarchand');
-    } else if (this.user.role == 'client') {
-      this.router.navigateByUrl('/tabs/annonces');
-    }
-    */
+    self.router.navigateByUrl('/tabsmarchand');
   }
 
+  pushclient() {
+
+    var self = this;
+    var email = this.dataUser.email;
+
+    this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
+      console.log("User " + firebaseUser.user.uid + " created successfully!");
+      self.user.email = email;
+      self.user.id = firebaseUser.user.uid;
+      self.idCurrentUser = firebaseUser.user.uid;
+      self.afd.object('user/' + firebaseUser.user.uid).set(self.user); // inserer le user dans la bdd
+      self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
+    }).catch(function(error) {
+        console.error("ERROR: ", error);
+    });
+    this.dataUser = {
+      email: '',
+      password: ''
+    };
+    self.router.navigateByUrl('/tabs/annonces');
+  }
 
   // Upload Task
   task: AngularFireUploadTask;
@@ -157,22 +159,6 @@ export class InfouserPage {
     //Set collection where our documents/ images info will save
     this.imageCollection = database.collection<MyData>('freakyImages');
     this.images = this.imageCollection.valueChanges();
-  }
-
-  signUp() {
-    this.afAuth.auth.createUserWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
-    this.dataUser = {
-      email: '',
-      password: ''
-    };
-    var self = this;
-         if (self.user.role == 'marchand') {
-           console.log('marchand par ici')
-           self.router.navigateByUrl('/tabsmarchand');
-         } else if (self.user.role == 'client') {
-           console.log('client par la')
-           self.router.navigateByUrl('/tabs/annonces');
-         }
   }
 
   uploadFile(event: FileList) {

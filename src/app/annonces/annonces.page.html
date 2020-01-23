@@ -9,7 +9,7 @@
 
 <ion-list>
 <ion-item-sliding *ngFor="let item of users">
-    <ion-item *ngIf="item.role == 'marchand'" button [routerLink]="['/desmarchand', item.id]">
+    <ion-item *ngIf="item.role == 'marchand'" button [routerLink]="['/creationcommande', item.id]">
           <ion-card class="profile_info">
             <ion-card-header >
               <ion-card-title>{{ item.nom }} {{ item.prenom }}</ion-card-title>

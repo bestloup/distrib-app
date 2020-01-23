@@ -69,14 +69,11 @@ export class ConnexionPage implements OnInit {
     var self = this;
     this.afAuth.auth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
       self.usersService.getUserDB(firebaseUser.user.uid).subscribe(user => {
-
-         //self.user = user;
          self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
-        
-         if (self.user.role == 'marchand') {
+         if (user.role == 'marchand') {
            console.log('marchand par ici')
            self.router.navigateByUrl('/tabsmarchand');
-         } else if (self.user.role == 'client') {
+         } else if (user.role == 'client') {
            console.log('client par la')
            self.router.navigateByUrl('/tabs/annonces');
          }

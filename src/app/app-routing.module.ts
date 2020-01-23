@@ -32,7 +32,7 @@ const routes: Routes = [
 
   { path: 'gestioncommande', loadChildren: './gestioncommande/gestioncommande.module#GestioncommandePageModule' }, // gestion des commandes
   { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' },
-  { path: 'creationcommande', loadChildren: './creationcommande/creationcommande.module#CreationcommandePageModule' },
+  { path: 'creationcommande/:id', loadChildren: './creationcommande/creationcommande.module#CreationcommandePageModule' },
   { path: 'mapperso', loadChildren: './mapperso/mapperso.module#MappersoPageModule' }
 // gestion des stocks
 ];
