@@ -24,7 +24,10 @@ export class CreationcommandePage implements OnInit {
   commande: Commande = {
     idClient: '',
     idMarchand: '',
-    dictProduits: []
+    nomClient: '',
+    accepted: false,
+    dictProduits: [],
+    prixTotal: 0
   };
 
   produitsencommande: string[];
@@ -310,15 +313,19 @@ export class CreationcommandePage implements OnInit {
     console.log(this.produitsDisponibles);
     var productTable = [];
     //dictProduits
+    var prixTotal = 0;
     for (let produit of this.produitsDisponibles) {
       if (produit.quantiteAchatProduit != 0) {
         productTable.push(produit);
+        prixTotal = prixTotal + produit.quantiteAchatProduit*produit.prixProduitParGrandeur;
       }
     }
     console.log(productTable);
     this.commande.idMarchand = this.marchandid; // à changer pour mettre le marchand de la page en question
+    this.commande.accepted = false;
     this.commande.idClient = this.user.id;
     this.commande.dictProduits = productTable;
+    this.commande.prixTotal = prixTotal;
     console.log(this.commande);
 
     const loading = await this.loadingController.create({

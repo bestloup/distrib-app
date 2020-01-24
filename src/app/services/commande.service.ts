@@ -8,7 +8,10 @@ export interface Commande {
   id?: string;
   idClient: string;
   idMarchand: string;
+  nomClient: string;
+  accepted: boolean;
   dictProduits: ProduitCommande[];
+  prixTotal;
 }
 
 export interface ProduitCommande {

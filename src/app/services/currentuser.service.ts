@@ -46,8 +46,8 @@ export class CurrentUserService {
       this.user.email = user.email;
       this.user.latitude = user.latitude;
       this.user.longitude = user.longitude;
-      console.log('Current user :');
-      console.log(this.user);
+      //console.log('Current user :');
+      //console.log(this.user);
     });
     return this.usersService.getUserDB(id);
   }

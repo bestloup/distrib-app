@@ -38,15 +38,6 @@ export class InfouserPage {
     password: ''
   };
 
-  /*
-  user: Users = {
-    id: '',
-    nom: '',
-    prenom: '',
-    role: '',
-    email: ''
-  };
-  */
 
   get user():Users {
     return this.currentUser.user;
@@ -183,7 +174,7 @@ export class InfouserPage {
     const path = `freakyStorage/${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
-    const customMetadata = { app: 'Freaky Image Upload Demo' };
+    const customMetadata = { app: 'Freaky Image Upload Demo' }; //affichage html ?
 
     //File reference
     const fileRef = this.storage.ref(path);
@@ -199,7 +190,7 @@ export class InfouserPage {
         // Get uploaded file storage path
         this.UploadedFileURL = fileRef.getDownloadURL();
 
-        this.UploadedFileURL.subscribe(resp=>{
+        this.UploadedFileURL.subscribe(resp => {
           this.addImagetoDB({
             name: file.name,
             filepath: resp,

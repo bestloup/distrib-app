@@ -2,6 +2,8 @@ import { Commande, CommandeService, ProduitCommande } from './../services/comman
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
+import { Users, UsersService } from './../services/users.service';
+import { CurrentUserService } from './../services/currentuser.service';
 
 @Component({
   selector: 'app-detailscommande',
@@ -14,9 +16,21 @@ export class DetailscommandePage implements OnInit {
     id: '',
     idClient: '',
     idMarchand: '',
-    dictProduits: []
+    nomClient: '',
+    accepted: false,
+    dictProduits: [],
+    prixTotal: 0
   };
 
+  client: Users = {
+    id: '',
+    nom: '',
+    prenom: '',
+    role: '',
+    email: '',
+    latitude: 0,
+    longitude: 0
+  };
 
   commandeId = null;
 
@@ -25,6 +39,8 @@ export class DetailscommandePage implements OnInit {
     private route: ActivatedRoute,
     private nav: NavController,
     private commandeService: CommandeService,
+    private usersService: UsersService,
+    private currentUser: CurrentUserService,
     private loadingController: LoadingController
   ) { }
 
@@ -44,6 +60,12 @@ export class DetailscommandePage implements OnInit {
     this.commandeService.getCommande(this.commandeId).subscribe((res: any) => {
       loading.dismiss();
       this.commande = res;
+      console.log(this.commande);
+      this.usersService.getUserDB(this.commande.idClient).subscribe((user: any) => {
+        this.client = user;
+        //console.log("lalalalalalneflczelkfjnefkezfj");
+        //console.log(this.client);
+      });
     });
   }
 
@@ -65,6 +87,27 @@ export class DetailscommandePage implements OnInit {
         this.router.navigateByUrl('/tabsmarchand/gestioncommande');
       });
     }
+  }
+
+  accept() {
+
+    this.router.navigateByUrl('/tabsmarchand/gestioncommande');
+  }
+
+  get user():Users {
+    return this.currentUser.user;
+  }
+
+  set user(value: Users) {
+    this.currentUser.user = value;
+  }
+
+  get idCurrentUser():string {
+    return this.currentUser.idCurrentUser;
+  }
+
+  set idCurrentUser(value: string) {
+    this.currentUser.idCurrentUser = value;
   }
 
 }
