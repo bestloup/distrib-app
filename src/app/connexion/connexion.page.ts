@@ -68,7 +68,7 @@ export class ConnexionPage implements OnInit {
   login() {
     var self = this;
     this.afAuth.auth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
-      self.usersService.getUserDB(firebaseUser.user.uid).subscribe(user => {
+      self.usersService.getUserDB(firebaseUser.user.uid).subscribe((user: Users) => {
          self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
          if (user.role == 'marchand') {
            console.log('marchand par ici')
@@ -77,7 +77,7 @@ export class ConnexionPage implements OnInit {
            console.log('client par la')
            self.router.navigateByUrl('/tabs/annonces');
          }
-         
+
       });
 
     }).catch(function(error) {

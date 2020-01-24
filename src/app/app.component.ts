@@ -56,6 +56,7 @@ export class AppComponent {
               //console.log('latitude = ' + resp.coords.latitude);
               //console.log('longitude = ' + resp.coords.longitude);
               //update user
+              //console.log("AppComponent");
               this.user = user;
               //console.log(this.user);
               this.user.latitude = resp.coords.latitude;
