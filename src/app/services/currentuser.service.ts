@@ -20,8 +20,12 @@ export class CurrentUserService {
     prenom: '',
     role: '',
     email: '',
+    photo: '',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    paypal: '',
+    rcs: '',
+    bio: ''
   };
 
   constructor(

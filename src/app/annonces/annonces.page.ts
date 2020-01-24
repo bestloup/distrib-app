@@ -20,27 +20,20 @@ export class AnnoncesPage {
   ) {
     this.usersService.getUsersDB().subscribe(res => {
       this.users = res;
-    })
-    this.afAuth.authState.subscribe(auth => {
-      if (!auth) {
-        console.log('Non connecté');
-        this.router.navigateByUrl('/connexion');
-      } else {
-          //this.currentUser.subscribeToCurrentUser(auth.uid);
-          console.log('le this.user qui pose problème')
-          console.log(this.user)
-          if (this.user.role == 'marchand'){
-            this.router.navigateByUrl('/tabsmarchand');
-          }
-          else if (this.user.role == 'client'){
-            console.log('reste la poto')
-          }
-          else {
-            console.log("c'est puant")
-          }
-        //console.log('Connecté: ' + auth.uid);
+      if (this.users.role == 'marchand'){
+        this.router.navigateByUrl('/tabsmarchand');
       }
-    });
+      else if (this.users.role == 'client'){
+        console.log('reste la poto')
+      }
+      else {
+        console.log("c'est puant")
+      }
+    })
+          //this.currentUser.subscribeToCurrentUser(auth.uid);
+         
+        //console.log('Connecté: ' + auth.uid);
+      
   }
 
   get user(): Users {

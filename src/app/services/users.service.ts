@@ -8,10 +8,14 @@ export interface Users {
   id: string;
   nom: string;
   prenom: string;
+  photo: string;
   role: string;
   email: string;
   latitude: number;
   longitude: number;
+  paypal: string;
+  rcs: string;
+  bio: string;
 }
 
 @Injectable({

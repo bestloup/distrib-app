@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Users, UsersService } from '../services/users.service';
+import { CurrentUserService } from '../services/currentuser.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private usersService: UsersService,
+    public currentUser: CurrentUserService,
+  ) { }
 
   ngOnInit() {
+    this.usersService.updateUserDB(this.user, this.user.id);
   }
 
+  get user():Users {
+    return this.currentUser.user;
+  }
 }

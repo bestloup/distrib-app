@@ -264,4 +264,8 @@ export class DetailsproduitPage implements OnInit {
 
     return options;
   }
+  remove() {
+    this.produitService.removeProduit(this.produitId);
+    this.router.navigateByUrl('/tabsmarchand/gestionstock');
+  }
 }

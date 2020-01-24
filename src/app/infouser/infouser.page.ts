@@ -21,7 +21,7 @@ export interface MyData {
   name: string;
   filepath: string;
   size: number;
-  idpicture : string;
+  //idpicture : string;
 }
 
 @Component({
@@ -152,6 +152,7 @@ export class InfouserPage {
     this.images = this.imageCollection.valueChanges();
   }
 
+
   uploadFile(event: FileList) {
 
 
@@ -190,17 +191,18 @@ export class InfouserPage {
         // Get uploaded file storage path
         this.UploadedFileURL = fileRef.getDownloadURL();
 
-        this.UploadedFileURL.subscribe(resp => {
+        this.UploadedFileURL.subscribe(resp=>{
+          this.user.photo = resp;
           this.addImagetoDB({
             name: file.name,
             filepath: resp,
             size: this.fileSize,
-            idpicture: this.user.id
+            //idpicture: this.user.id
           });
           this.isUploading = false;
           this.isUploaded = true;
         },error=>{
-          console.error(error);
+          console.error("TOTO:" + error);
         })
       }),
       tap(snap => {
@@ -217,7 +219,7 @@ export class InfouserPage {
     this.imageCollection.doc(id).set(image).then(resp => {
       console.log(resp);
     }).catch(error => {
-      console.log("error " + error);
+      console.log("nique ta mère " + error);
     });
   }
 

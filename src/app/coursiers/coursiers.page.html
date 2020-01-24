@@ -11,60 +11,14 @@
   
 
   <ion-list class="list-coursiers" >
-
-    <ion-item *ngFor="let item of marche">
-          <ion-card class="profile_info">
+          <ion-card *ngFor="let item of marche">
           <img class="profile_image" src="{{ item.photo }}"/>
             <ion-card-header class="profile_info">
               <ion-card-title>{{ item.nom }}</ion-card-title>
               <ion-card-subtitle>{{ item.dispo }}</ion-card-subtitle>
             </ion-card-header>
           </ion-card>
-        </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="remove(item)" color="secondary">
-          Check
-          <ion-icon name="checkmark" slot="end"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
     </ion-list>
   
   
-  <ion-list class="list-coursiers">
-    <ion-card routerLink="/desmarchand">
-      <img class="profile_image" src="http://www.cuisine-blog.fr/wp-content/uploads/2018/06/cover-juillet.jpg"/>
-      <ion-card-header class="profile_info">
-        <ion-card-title>Le Maraîcher Lyonnais</ion-card-title>
-        <ion-card-subtitle>Place Wilson</ion-card-subtitle>
-        <ion-card-content class="profile_stars">
-          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-          4,9 / 5
-        </ion-card-content>
-      </ion-card-header>
-    </ion-card>
-
-    <ion-card routerLink="/desmarchand">
-      <img class="profile_image" src="https://lepetitjournal.com/sites/default/files/styles/main_article/public/accueil2.jpg?itok=lfnESmOT"/>
-      <ion-card-header class="profile_info">
-        <ion-card-title>Le Ptit Bio</ion-card-title>
-        <ion-card-subtitle>Croix-Luzet</ion-card-subtitle>
-        <ion-card-content class="profile_stars">
-          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-          4,7 / 5
-        </ion-card-content>
-      </ion-card-header>
-    </ion-card>
-
-    <ion-card routerLink="/desmarchand">
-      <img class="profile_image" src="https://www.funkyveggie.fr/wp-content/uploads/2018/07/lespetitsveganne-1.jpg"/>
-      <ion-card-header class="profile_info">
-        <ion-card-title>La Vromagerie</ion-card-title>
-        <ion-card-subtitle>Gratte-ciel</ion-card-subtitle>
-        <ion-card-content class="profile_stars">
-          <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-          4,8 / 5
-        </ion-card-content>
-      </ion-card-header>
-    </ion-card>
-    </ion-list>
 </ion-content>

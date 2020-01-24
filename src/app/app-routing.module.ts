@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
 
+
   { path: 'sqlite', loadChildren: './sqlite/sqlite.module#SqlitePageModule' }, //inutile
   { path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule' }, //inutile
   { path: 'role', loadChildren: './role/role.module#RolePageModule' }, //?
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'gestioncommande', loadChildren: './gestioncommande/gestioncommande.module#GestioncommandePageModule' }, // gestion des commandes
   { path: 'gestionstock', loadChildren: './gestionstock/gestionstock.module#GestionstockPageModule' },
   { path: 'creationcommande/:id', loadChildren: './creationcommande/creationcommande.module#CreationcommandePageModule' },
-  { path: 'mapperso', loadChildren: './mapperso/mapperso.module#MappersoPageModule' }
+  { path: 'mapperso', loadChildren: './mapperso/mapperso.module#MappersoPageModule' },
+  { path: 'profilmarchand', loadChildren: './profilmarchand/profilmarchand.module#ProfilmarchandPageModule' }
 // gestion des stocks
 ];
 @NgModule({

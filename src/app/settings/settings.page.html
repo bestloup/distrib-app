@@ -6,8 +6,17 @@
 
 <ion-content>
 <ion-list>
-  <ion-card>
+  <ion-card *ngIf="user.role == 'client'">
     <ion-item routerLink="/profiluser">
+        <ion-icon name="contact"></ion-icon>
+        <ion-card-header>
+          <ion-card-title>Profil</ion-card-title>
+        </ion-card-header>
+        </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="user.role == 'marchand'">
+    <ion-item routerLink="/profilmarchand">
         <ion-icon name="contact"></ion-icon>
         <ion-card-header>
           <ion-card-title>Profil</ion-card-title>
