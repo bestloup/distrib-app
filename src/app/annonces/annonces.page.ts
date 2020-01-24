@@ -21,11 +21,6 @@ export class AnnoncesPage {
     this.usersService.getUsersDB().subscribe(res => {
       this.users = res;
     })
-    this.afAuth.authState.subscribe(auth => {
-      if (!auth) {
-        console.log('Non connecté');
-        this.router.navigateByUrl('/connexion');
-      } else {
           //this.currentUser.subscribeToCurrentUser(auth.uid);
           console.log('le this.user qui pose problème')
           console.log(this.user)
@@ -39,8 +34,7 @@ export class AnnoncesPage {
             console.log("c'est puant")
           }
         //console.log('Connecté: ' + auth.uid);
-      }
-    });
+      
   }
 
   get user(): Users {

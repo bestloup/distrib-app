@@ -69,8 +69,11 @@ export class CreationcommandePage implements OnInit {
     public currentUser: CurrentUserService
   )
   {
-
+    this.marchandid = this.route.snapshot.params['id'];
+    if (this.commandeId)  {
+      this.loadCommande();
   }
+}
 
   ngOnInit() {
     this.marchandid = this.route.snapshot.params['id'];

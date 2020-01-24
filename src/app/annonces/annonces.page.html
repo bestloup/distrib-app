@@ -11,6 +11,7 @@
 <ion-item-sliding *ngFor="let item of users">
     <ion-item *ngIf="item.role == 'marchand'" button [routerLink]="['/creationcommande', item.id]">
           <ion-card class="profile_info">
+          <img class="profile_image" src="{{ item.photo }}"/>
             <ion-card-header >
               <ion-card-title>{{ item.nom }} {{ item.prenom }}</ion-card-title>
               <ion-card-subtitle>Id : {{ item.id }}</ion-card-subtitle>

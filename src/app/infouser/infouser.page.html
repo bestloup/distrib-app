@@ -7,7 +7,7 @@
 <ion-content padding>
   <ion-card text-center *ngIf="!isUploading && !isUploaded">
     <ion-card-header>
-      <ion-card-title>Choisir l'image à charger</ion-card-title>
+      <ion-card-title>Choisir votre photo de profil</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <div class="fileUpload btn btn-primary">
@@ -106,33 +106,41 @@
     </ion-card-content>
   </ion-card>
 -->
-</ion-content>
 
 
 
 
   
-<ion-list>
+<ion-list class="list">
+<ion-card>
   <ion-item>
       <ion-label>Email</ion-label>
       <ion-input type="email" [(ngModel)]="dataUser.email"></ion-input>
   </ion-item>
+  </ion-card>
 
+<ion-card>
   <ion-item>
       <ion-label>Mot de passe</ion-label>
       <ion-input type="password" [(ngModel)]="dataUser.password"></ion-input>
   </ion-item>
+  </ion-card>
 
+<ion-card>
   <ion-item>
     <ion-label>Prénom</ion-label>
     <ion-input [(ngModel)]="user.prenom"></ion-input>
   </ion-item>
+  </ion-card>
 
+<ion-card>
   <ion-item>
     <ion-label>Nom</ion-label>
     <ion-input [(ngModel)]="user.nom"></ion-input>
   </ion-item>
+  </ion-card>
 
+<ion-card>
   <ion-item>
     <ion-label>Rôle</ion-label>
     <ion-select [(ngModel)]="user.role">
@@ -140,16 +148,32 @@
       <ion-select-option  value="marchand">Marchand</ion-select-option>
     </ion-select>
   </ion-item>
+  </ion-card>
 
+<ion-card>
   <ion-item *ngIf="user.role == 'marchand'">
     <ion-label>Coordonnées Paypal</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="user.paypal"></ion-input>
   </ion-item>
+  </ion-card>
 
-  <ion-button *ngIf="user.role == 'marchand'" expand="full">Ajout certification de production</ion-button>
+<ion-card>
+  <ion-item *ngIf="user.role == 'marchand'">
+    <ion-label>Numéro RCS</ion-label>
+    <ion-input [(ngModel)]="user.rcs"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item *ngIf="user.role == 'marchand'">
+    <ion-label>Biographie</ion-label>
+    <ion-input [(ngModel)]="user.bio"></ion-input>
+  </ion-item>
+  </ion-card>
 
 
-
-  <ion-button *ngIf="user.role == 'marchand'"color="light" (click)="pushmarchand()" expand="full">Enregistrement</ion-button>
-  <ion-button *ngIf="user.role == 'client'"color="light" (click)="pushclient()" expand="full">Enregistrement</ion-button>
+  
 </ion-list>
+<ion-button *ngIf="user.role == 'marchand'"color="light" (click)="pushmarchand()" expand="full">Enregistrement</ion-button>
+  <ion-button *ngIf="user.role == 'client'"color="light" (click)="pushclient()" expand="full">Enregistrement</ion-button>
+</ion-content>

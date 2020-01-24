@@ -9,3 +9,18 @@ img {
     object-position: top;
     border-radius: 50%;
 }
+
+
+.list{
+    height: 60%;
+    overflow-y : auto;
+  }
+
+  ion-content{
+    display: inline-block;
+    width: 100%;
+  }
+
+  ion-card{
+    display:block;
+  }
