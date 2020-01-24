@@ -40,6 +40,7 @@ export class GestioncommandePage implements OnInit {
     set user(value: Users) {
       this.currentUser.user = value;
     }
+    
 
     get idCurrentUser():string {
       return this.currentUser.idCurrentUser;

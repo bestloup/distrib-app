@@ -1,18 +1,38 @@
 import { Component } from '@angular/core';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { ActivatedRoute, Router} from '@angular/router'; // Router
+import { Commande, CommandeService } from './../services/commande.service';
+
 
 @Component({
   selector: 'app-paypal',
   templateUrl: 'paypal.page.html',
   styleUrls: ['paypal.page.scss'],
 })
-export class PaypalPage {
-  constructor(private payPal: PayPal) {
 
+
+
+export class PaypalPage {
+  commandeid = '';
+  paymentAmount: string;
+  constructor(
+    private payPal: PayPal,
+    private route: ActivatedRoute,
+    private commandeService: CommandeService,
+    private router: Router
+    ) {
+      this.commandeid = this.route.snapshot.params['id'];
+      console.log('commandeid : ' + this.commandeid);
+      this.commandeService.getCommande(this.commandeid).subscribe( res => {
+        console.log(res);
+        this.paymentAmount = res.prixTotal;
+      })
   }
-  paymentAmount: string = '3.33';
-  currency: string = 'USD';
-  currencyIcon: string = '$';
+
+
+  //paymentAmount: string = '3.33';
+  currency: string = 'EUR';
+  currencyIcon: string = '€';
 
   payWithPaypal() {
     console.log('Pay ????');
@@ -58,4 +78,10 @@ export class PaypalPage {
       console.log("Error", " Error in initialization, maybe PayPal isn't supported or something else. Error: " + JSON.stringify(err));
     });
   }
+
+  removecommande(){
+    this.commandeService.removeCommande(this.commandeid);
+    this.router.navigate(['/tabs/annonces']);
+  }
+
 }

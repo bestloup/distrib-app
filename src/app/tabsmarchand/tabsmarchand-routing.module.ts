@@ -40,14 +40,14 @@ const routes: Routes = [
 
       {
         path: '',
-        redirectTo: '/tabsmarchand/gestionstock',
+        redirectTo: '/tabsmarchand/gestioncommande',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabsmarchand/gestionstock',
+    redirectTo: '/tabsmarchand/gestioncommande',
     pathMatch: 'full'
   }
 ];

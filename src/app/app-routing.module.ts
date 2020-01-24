@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'confcommande', loadChildren: './confcommande/confcommande.module#ConfcommandePageModule' },
   { path: 'histcommande', loadChildren: './histcommande/histcommande.module#HistcommandePageModule' },
   { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
-  { path: 'paypal', loadChildren: './paypal/paypal.module#PaypalPageModule' },
+  { path: 'paypal/:id', loadChildren: './paypal/paypal.module#PaypalPageModule' },
   { path: 'picupload', loadChildren: './picupload/picupload.module#PicuploadPageModule' },
 
 

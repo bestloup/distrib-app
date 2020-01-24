@@ -20,10 +20,10 @@ export class AnnoncesPage {
   ) {
     this.usersService.getUsersDB().subscribe(res => {
       this.users = res;
-      if (this.users.role == 'marchand'){
+      if (this.user.role == 'marchand'){
         this.router.navigateByUrl('/tabsmarchand');
       }
-      else if (this.users.role == 'client'){
+      else if (this.user.role == 'client'){
         console.log('reste la poto')
       }
       else {

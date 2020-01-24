@@ -52,7 +52,7 @@ export class CreationcommandePage implements OnInit {
   }
   */
 
-
+  testId = null;
   commandeId = null;
   marchandid = null;
   constructor
@@ -76,10 +76,6 @@ export class CreationcommandePage implements OnInit {
 }
 
   ngOnInit() {
-    this.marchandid = this.route.snapshot.params['id'];
-    if (this.commandeId)  {
-      this.loadCommande();
-    }
 
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
@@ -335,9 +331,10 @@ export class CreationcommandePage implements OnInit {
         this.router.navigate(['/tabsmarchand/gestioncommande']); // à changer vers panier
       });
     } else {
-      this.commandeService.addCommande(this.commande).then(() => {
+      this.commandeService.addCommande(this.commande).then(res => {
+        this.testId = res.id;
         loading.dismiss();
-        this.router.navigate(['/paypal']); // à changer vers panier
+        this.router.navigate(['/paypal', {id: this.testId}]); // à changer vers panier
       });
     }
     /*
