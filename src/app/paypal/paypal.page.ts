@@ -13,6 +13,17 @@ import { Commande, CommandeService } from './../services/commande.service';
 
 
 export class PaypalPage {
+  commande: Commande = {
+    idClient: '',
+    idMarchand: '',
+    nomClient: '',
+    accepted: false,
+    dictProduits: [],
+    prixTotal: 0,
+    payed: false,
+    realized: false,
+  };
+
   commandeid = '';
   paymentAmount: string;
   constructor(
@@ -25,6 +36,7 @@ export class PaypalPage {
       console.log('commandeid : ' + this.commandeid);
       this.commandeService.getCommande(this.commandeid).subscribe( res => {
         console.log(res);
+        this.commande = res;
         this.paymentAmount = res.prixTotal;
       })
   }
@@ -36,6 +48,8 @@ export class PaypalPage {
 
   payWithPaypal() {
     console.log('Pay ????');
+    this.commande.payed = true;
+    this.commandeService.updateCommande(this.commande, this.commandeid);
     this.payPal.init({
       PayPalEnvironmentProduction: '',
       PayPalEnvironmentSandbox: 'AdRsm5a_QtZBQiMPIU6NSfThuO_td7t94-Pm37QHcfrxD0eFRrPl5QysWk3LLIJ4d7t3nlp4OEy-fiTG'

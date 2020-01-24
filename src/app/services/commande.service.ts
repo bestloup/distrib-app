@@ -12,6 +12,8 @@ export interface Commande {
   accepted: boolean;
   dictProduits: ProduitCommande[];
   prixTotal;
+  payed: boolean;
+  realized: boolean;
 }
 
 export interface ProduitCommande {

@@ -15,7 +15,6 @@ export class SettingsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.usersService.updateUserDB(this.user, this.user.id);
   }
 
   get user():Users {

@@ -27,7 +27,9 @@ export class CreationcommandePage implements OnInit {
     nomClient: '',
     accepted: false,
     dictProduits: [],
-    prixTotal: 0
+    prixTotal: 0,
+    payed: false,
+    realized: false,
   };
 
   produitsencommande: string[];

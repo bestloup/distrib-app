@@ -19,7 +19,9 @@ export class DetailscommandePage implements OnInit {
     nomClient: '',
     accepted: false,
     dictProduits: [],
-    prixTotal: 0
+    prixTotal: 0, 
+    payed: false,
+    realized: false,
   };
 
   client: Users = {
@@ -29,7 +31,11 @@ export class DetailscommandePage implements OnInit {
     role: '',
     email: '',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    photo: '',
+    paypal: '',
+    rcs: '',
+    bio: ''
   };
 
   commandeId = null;
