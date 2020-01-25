@@ -19,7 +19,7 @@ export class DetailscommandePage {
     nomClient: '',
     accepted: false,
     payed: false,
-    done: false,
+    realized: false,
     dictProduits: [],
     prixTotal: 0
   };

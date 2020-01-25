@@ -11,7 +11,7 @@ export interface Commande {
   nomClient: string;
   accepted: boolean;
   payed: boolean;
-  done: boolean;
+  realized: boolean;
   dictProduits: ProduitCommande[];
   prixTotal: number;
 }
