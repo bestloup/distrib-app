@@ -1,0 +1,55 @@
+ion-header{
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    position: center;
+    width: 130px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.en-tete{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    height: 100px;
+    --ion-background-color:#85B53B;
+}
+
+.but{
+    width: 100%;
+}
+#titre{
+    text-align: center;
+}
+.bio{
+    display: inline-block;
+    text-align: justify;
+    height: 130px;
+    --ion-background-color:#85B53B;
+}
+
+ion-icon{
+    border-radius: 50%;
+    font-size: 90px;
+}
+
+ion-card{
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+ion-item{
+    display: inline-block;
+    width: 100%;
+}
+
+ion-card-header{
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+}

@@ -36,6 +36,20 @@ export class CreationcommandePage implements OnInit {
 
   produits: Produit[];
 
+  marchand: Users = {
+    id: '',
+    nom: '',
+    prenom: '',
+    role: '',
+    email: '',
+    latitude: 0,
+    longitude: 0,
+    photo: '',
+    paypal: '',
+    rcs: '',
+    bio: ''
+  };
+
   //produitsDisponibles: { [id: string]: ProduitCommande; } = {};
   produitsDisponibles: ProduitCommande[] = [];
 
@@ -78,6 +92,11 @@ export class CreationcommandePage implements OnInit {
     if (this.commandeId)  {
       this.loadCommande();
   }
+  this.usersService.getUserDB(this.marchandid).subscribe((res: any) => {
+    this.marchand = res;
+    console.log(res);
+  });
+
 }
 
   ngOnInit() {
