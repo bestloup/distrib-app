@@ -19,7 +19,7 @@
 
       <ion-item-sliding *ngFor="let item of commandes">
 
-        <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand'" lines="inset" button [routerLink]="['/detailscommande', item.id]">
+        <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand' && item.payed == true" lines="inset" button [routerLink]="['/detailscommande', item.id]">
           <ion-card class="profile_info">
             <ion-card-header >
               <ion-card-title>{{ item.nomClient }}</ion-card-title>

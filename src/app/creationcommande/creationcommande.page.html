@@ -3,11 +3,26 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    
     <ion-title>Commande</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+<img class="logo" src="{{marchand.photo}}"/>
+<ion-content class="en-tete" color="success">
+      <h1> Position </h1>
+      Place Wilson
+    </ion-content>
+    <ion-content class="en-tete" color="success">
+      <h1> Disponibilité </h1>
+      Mercredi, Samedi 
+    </ion-content>
+
+    <ion-content class="bio" color="success">
+    <h1 id="titre"> BIO </h1>
+    {{ marchand.bio }}
+    </ion-content>
   <!--
     <ion-item>
       <ion-input required type="text" placeholder="Nom" [(ngModel)]="commande.nom"></ion-input>
