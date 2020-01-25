@@ -9,7 +9,7 @@ import { PickerController } from '@ionic/angular';
   templateUrl: './detailsproduit.page.html',
   styleUrls: ['./detailsproduit.page.scss'],
 })
-export class DetailsproduitPage implements OnInit {
+export class DetailsproduitPage {
 
   produit: Produit = {
     nom: '',
@@ -29,14 +29,14 @@ export class DetailsproduitPage implements OnInit {
     private nav: NavController,
     private produitService: ProduitService,
     private loadingController: LoadingController
-  ) { }
-
-  ngOnInit() {
+  )
+  {
     this.produitId = this.route.snapshot.params['id'];
     if (this.produitId)  {
       this.loadProduit();
     }
   }
+
 
   async loadProduit() {
     const loading = await this.loadingController.create({

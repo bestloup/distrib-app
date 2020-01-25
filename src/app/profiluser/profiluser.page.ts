@@ -15,20 +15,6 @@ export class ProfiluserPage {
 
   connected: boolean;
 
-  //userId: string;
-  //mail: string;
-  //method: any;
-
-
-  /*
-  user: Users = {
-    id: '',
-    nom: '',
-    prenom: '',
-    role: '',
-    email: ''
-  };
-  */
 
   get user():Users {
     return this.currentUser.user;

@@ -7,18 +7,20 @@ import { CurrentUserService } from '../services/currentuser.service';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage {
 
   constructor(
     private usersService: UsersService,
     public currentUser: CurrentUserService,
   ) { }
 
-  ngOnInit() {
-    this.usersService.updateUserDB(this.user, this.user.id);
-  }
+
 
   get user():Users {
     return this.currentUser.user;
+  }
+
+  set user(value: Users) {
+    this.currentUser.user = value;
   }
 }

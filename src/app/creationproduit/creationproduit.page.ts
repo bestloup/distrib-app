@@ -13,7 +13,7 @@ import { PickerController } from '@ionic/angular';
   templateUrl: './creationproduit.page.html',
   styleUrls: ['./creationproduit.page.scss'],
 })
-export class CreationproduitPage implements OnInit {
+export class CreationproduitPage {
 
   produit: Produit = {
     nom: '',
@@ -37,15 +37,13 @@ export class CreationproduitPage implements OnInit {
     private currentUser: CurrentUserService
   )
   {
-
-  }
-
-  ngOnInit() {
     this.produitId = this.route.snapshot.params['id'];
     if (this.produitId)  {
       this.loadProduit();
     }
   }
+
+
 
 
   get user():Users {

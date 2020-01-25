@@ -91,6 +91,19 @@ export class CurrentUserService {
   unsubscribeAtLogout() {
     //this.disposable.unsubscribe();
     this.idCurrentUser = '';
+    this.user = {
+      id: '',
+      nom: '',
+      prenom: '',
+      role: '',
+      email: '',
+      photo: '',
+      latitude: 0,
+      longitude: 0,
+      paypal: '',
+      rcs: '',
+      bio: ''
+    };
   }
 
   /*
