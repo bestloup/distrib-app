@@ -20,7 +20,7 @@ import { PickerController } from '@ionic/angular';
   styleUrls: ['./creationcommande.page.scss'],
 })
 export class CreationcommandePage {
- 
+
   commande: Commande = {
     id: '',
     idClient: '',
@@ -339,7 +339,8 @@ export class CreationcommandePage {
     for (let produit of this.produitsDisponibles) {
       if (produit.quantiteAchatProduit != 0) {
         productTable.push(produit);
-        prixTotal = parseFloat(prixTotal + parseFloat((produit.quantiteAchatProduit*produit.prixProduitParGrandeur).toFixed(2)));
+        var prixTotalstr = prixTotal + parseFloat((produit.quantiteAchatProduit*produit.prixProduitParGrandeur).toFixed(2));
+        prixTotal = parseFloat(prixTotalstr.toString());
       }
     }
     prixTotal = parseFloat(prixTotal.toFixed(2));
