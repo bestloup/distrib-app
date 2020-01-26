@@ -94,10 +94,10 @@ export class CreationcommandePage {
           console.log(user);
           this.user = user;
         });
-      });
-    };
-  });
-}
+      }
+    });
+  }
+
 
 
   async loadAvailableProducts() {
@@ -405,6 +405,7 @@ export class CreationcommandePage {
     await loading.present();
     */
 
+    /*
     if (this.commandeId) {
       this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
         //loading.dismiss();
@@ -412,12 +413,11 @@ export class CreationcommandePage {
       });
     } else {
       this.commandeService.addCommande(this.commande).then(res => {
-        this.testId = res.id;
+        this.commandeId = res.id;
         //loading.dismiss();
-        this.router.navigate(['/paypal', this.testId]); // à changer vers panier
+        this.router.navigate(['/paypal', this.commandeId]); // à changer vers panier
       });
     }
-    /*
     */
   }
 }
