@@ -39,6 +39,18 @@ h1 {
   font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
+h2 {
+  text-align: center;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 1em;
+}
+
+h3 {
+  text-align: center;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 0.9em;
+}
+
 
 ion-content{
   display: inline-block;
@@ -46,7 +58,7 @@ ion-content{
 }
 
 
-//ajout de mathéo pour que la vue ressemble a celle que l'on voualais 
+//ajout de mathéo pour que la vue ressemble a celle que l'on voualais
 .list-coursiers{
   height: 30%;
   overflow-y : auto;

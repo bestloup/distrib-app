@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Carte    
+      Carte
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div id="mapId" (click)='onClickFuntion($event)'></div>
-  
+
 
   <ion-list class="list-coursiers" >
           <ion-card *ngFor="let item of marche">
@@ -19,9 +19,10 @@
             </ion-card-header>
             <br>
 
-            {{ item.relais }}
+            <h2>Point relais :</h2>
+            <h3>{{ item.relais }}</h3>
           </ion-card>
     </ion-list>
-  
-  
+
+
 </ion-content>
