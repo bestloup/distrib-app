@@ -18,16 +18,19 @@ export class AnnoncesPage {
     private usersService: UsersService,
     public currentUser: CurrentUserService,
   ) {
+    this.afAuth.authState.subscribe(auth => {
+      if (!auth) {
+        this.router.navigateByUrl('/connexion');
+        console.log('Non connecté');
+      }});
+
     this.usersService.getUsersDB().pipe(first()).subscribe(res => {
       this.users = res;
       if (this.user.role == 'marchand'){
         this.router.navigateByUrl('/tabsmarchand');
       }
       else if (this.user.role == 'client'){
-        console.log('reste la poto')
-      }
-      else {
-        console.log("c'est puant")
+        //console.log('reste la poto')
       }
     })
           //this.currentUser.subscribeToCurrentUser(auth.uid);

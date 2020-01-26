@@ -33,8 +33,9 @@
 
 .profile_info {
   display: inline-block;
-  vertical-align: middle;
-  width: 100%;
+  vertical-align: baseline;
+  width: 60%;
+  height: 100%;
   text-align: left;
 }
 
@@ -50,8 +51,7 @@ ion-header{
 }
 
 ion-card{
-    display: inline-block;
-    width: 100%;
+    display: block;
 }
 
 .tata{

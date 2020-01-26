@@ -50,9 +50,8 @@ export class PaypalPage {
 
   payWithPaypal() {
     console.log('Pay ????');
-    this.commande.payed = true;
-    this.commandeService.updateCommande(this.commande, this.commandeid);
-    console.log('Payed');
+    //this.router.navigate(['/tabs/annonces']);
+    console.log('commande mis à jour')
     this.payPal.init({
       PayPalEnvironmentProduction: '',
       PayPalEnvironmentSandbox: 'AdRsm5a_QtZBQiMPIU6NSfThuO_td7t94-Pm37QHcfrxD0eFRrPl5QysWk3LLIJ4d7t3nlp4OEy-fiTG'
@@ -65,6 +64,9 @@ export class PaypalPage {
         let payment = new PayPalPayment(this.paymentAmount, this.currency, 'Description', 'sale');
         this.payPal.renderSinglePaymentUI(payment).then((res) => {
           console.log(res);
+          this.commande.payed = true;
+          this.commandeService.updateCommande(this.commande, this.commandeid);
+          this.router.navigate(['/tabs/annonces']);
           // Successfully paid
 
           // Example sandbox response

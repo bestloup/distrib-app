@@ -22,10 +22,7 @@ export class HistcommandePage implements OnInit {
   }
 
   ngOnInit() {
-    this.commandeService.getCommandes().subscribe(res => {
-      this.commandes = res;
-      console.log(this.commandes);
-    });
+
   }
 
   remove(item) {
