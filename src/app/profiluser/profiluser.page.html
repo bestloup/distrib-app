@@ -1,13 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-back-button></ion-back-button>
+    <ion-title>Profil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/settings"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
   <ion-list>
-    <ion-title>Profil</ion-title>
     <div class='cadre'>
     <img class="logo" src={{user.photo}} />
     </div>
