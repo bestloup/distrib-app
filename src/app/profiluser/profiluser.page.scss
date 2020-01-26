@@ -1,9 +1,13 @@
 .logo {
-    display: block;
+    display: inline-block;
     width: 130px;
-    height: 110px;
-    border-radius: 50%;
+    height: 130px;
     overflow: hidden;
+    vertical-align: middle;
+    margin: 5px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
 }
 
 .parametre{
@@ -12,4 +16,8 @@
 
 ion-header{
     text-align: center;
+}
+
+.droite {
+  text-align: right;
 }

@@ -1,15 +1,60 @@
-.logo {
-    display: block;
-    width: 130px;
-    height: 110px;
-    border-radius: 50%;
-    overflow: hidden;
+.profile_image {
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 5px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+
+
+  background-position:top;
+  position: relative;
+  z-index:2;
 }
 
+
+
+.etal_image {
+  position: absolute;
+  left: 0px;
+	bottom: 0px;
+  z-index: 1;
+  background-position: absolute;
+}
+/*
+#Promotion  {
+	position:relative;
+	width:701px;
+	height:239px;
+	background-color:#ffffff;
+	background-position:top;
+	background-repeat:no-repeat;
+	}
+
+#CalqueNoir  {
+	position:absolute;
+	left:6px;
+	bottom:10px;
+	width:375px;
+	height: 94px;
+	background-image: url("Theme/CalqueNoir.png");
+	background-position: absolute;
+	z-index:1;
+	margin-top:-70px;
+	}
+*/
+
 .parametre{
-    background: rgb(236,239,246) ;
+  background: rgb(236,239,246) ;
 }
 
 ion-header{
-    text-align: center;
+  text-align: center;
+}
+
+.droite {
+  text-align: right;
 }

@@ -1,12 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-back-button></ion-back-button>
+    <ion-title>{{user.prenom}} {{user.nom}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-card>
-  <ion-title>Profil</ion-title>
-  <img class="logo" src={{user.photo}} />
+  <img class="profile_image" src={{user.photo}} />
+  <img class="etal_image" src={{user.photoEtal}} />
 </ion-card>
 
 <ion-content>
@@ -20,37 +21,37 @@
 
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input placeholder={{user.email}}></ion-input>
+      <ion-input class="droite" placeholder={{user.email}}></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Prénom</ion-label>
-      <ion-input placeholder={{user.prenom}} [(ngModel)]="user.prenom"></ion-input>
+      <ion-input class="droite" placeholder={{user.prenom}} [(ngModel)]="user.prenom"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Nom</ion-label>
-      <ion-input placeholder={{user.nom}} [(ngModel)]="user.nom"></ion-input>
+      <ion-input class="droite" placeholder={{user.nom}} [(ngModel)]="user.nom"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Role</ion-label>
-      <ion-input placeholder={{user.role}}></ion-input>
+      <ion-input class="droite" placeholder={{user.role}}></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Paypal</ion-label>
-      <ion-input placeholder={{user.paypal}}></ion-input>
+      <ion-input class="droite" placeholder={{user.paypal}}></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Numéro RCS</ion-label>
-      <ion-input placeholder={{user.rcs}}></ion-input>
+      <ion-input class="droite" placeholder={{user.rcs}}></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Biographie</ion-label>
-      <ion-input placeholder={{user.bio}}></ion-input>
+      <ion-input class="droite" placeholder={{user.biographie}}></ion-input>
     </ion-item>
 
     <!--
@@ -76,4 +77,3 @@
     <ion-button color="light" (click)="logout()" expand="full">Déconnexion</ion-button>
   </ion-list>
 </ion-content>
-

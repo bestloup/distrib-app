@@ -11,6 +11,8 @@ export interface Produit {
   prix: number;
   grandeurPrix: string;
   grandeurStock: string;
+  bio: boolean;
+  origine: string;
 }
 
 @Injectable({

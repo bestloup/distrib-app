@@ -7,7 +7,7 @@
 <ion-content padding>
   <ion-card text-center *ngIf="!isUploading && !isUploaded">
     <ion-card-header>
-      <ion-card-title>Choisir votre photo de profil</ion-card-title>
+      <ion-card-title>Chargez votre photo de profil</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <div class="fileUpload btn btn-primary">
@@ -23,11 +23,11 @@
       </div>
     </ion-card-content>
   </ion-card>
+
   <ion-card text-center *ngIf="isUploading && !isUploaded">
     <ion-card-header>
       <ion-card-title
-        >Fichier séléctionné:<b>{{ fileName }}</b></ion-card-title
-      >
+        >Fichier sélectionné:<b>{{ fileName }}</b></ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -64,13 +64,13 @@
         </div>
       </div>
     </ion-card-content>
+    <div *ngIf="UploadedFileURL | async as url">
+      <img [src]="url" />
+      <!--
+        <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
+      -->
+    </div>
   </ion-card>
-  <div *ngIf="UploadedFileURL | async as url">
-    <img [src]="url" />
-    <!--
-    <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
-    -->
-  </div>
   <!--
   <ion-card text-center *ngIf="!isUploading && isUploaded">
     <ion-card-header>
@@ -110,42 +110,42 @@
 
 
 
-  
+
 <ion-list class="list">
 <ion-card>
   <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="dataUser.email"></ion-input>
+      <ion-input class="droite" type="email" [(ngModel)]="dataUser.email"></ion-input>
   </ion-item>
   </ion-card>
 
 <ion-card>
   <ion-item>
       <ion-label>Mot de passe</ion-label>
-      <ion-input type="password" [(ngModel)]="dataUser.password"></ion-input>
+      <ion-input class="droite" type="password" [(ngModel)]="dataUser.password"></ion-input>
   </ion-item>
   </ion-card>
 
 <ion-card>
   <ion-item>
     <ion-label>Prénom</ion-label>
-    <ion-input [(ngModel)]="user.prenom"></ion-input>
+    <ion-input class="droite" [(ngModel)]="user.prenom"></ion-input>
   </ion-item>
   </ion-card>
 
 <ion-card>
   <ion-item>
     <ion-label>Nom</ion-label>
-    <ion-input [(ngModel)]="user.nom"></ion-input>
+    <ion-input class="droite" [(ngModel)]="user.nom"></ion-input>
   </ion-item>
   </ion-card>
 
 <ion-card>
   <ion-item>
-    <ion-label>Rôle</ion-label>
-    <ion-select [(ngModel)]="user.role">
-      <ion-select-option  value="client">Client</ion-select-option>
-      <ion-select-option  value="marchand">Marchand</ion-select-option>
+    <ion-label>Marchand ou client ?</ion-label>
+    <ion-select class="droite" [(ngModel)]="user.role">
+      <ion-select-option value="client">Client</ion-select-option>
+      <ion-select-option value="marchand">Marchand</ion-select-option>
     </ion-select>
   </ion-item>
   </ion-card>
@@ -153,27 +153,59 @@
 <ion-card>
   <ion-item *ngIf="user.role == 'marchand'">
     <ion-label>Coordonnées Paypal</ion-label>
-    <ion-input [(ngModel)]="user.paypal"></ion-input>
+    <ion-input class="droite" [(ngModel)]="user.paypal"></ion-input>
   </ion-item>
-  </ion-card>
+</ion-card>
 
 <ion-card>
   <ion-item *ngIf="user.role == 'marchand'">
     <ion-label>Numéro RCS</ion-label>
-    <ion-input [(ngModel)]="user.rcs"></ion-input>
+    <ion-input class="droite" [(ngModel)]="user.rcs"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item *ngIf="user.role == 'marchand'">
+    <ion-label class="gauche">Certifié Agriculture Biologique</ion-label>
+    <div class="droite"><ion-checkbox value="{{user.bio}}" [(ngModel)]="user.bio"></ion-checkbox></div>
   </ion-item>
 </ion-card>
 
 <ion-card>
   <ion-item *ngIf="user.role == 'marchand'">
     <ion-label>Biographie</ion-label>
-    <ion-input [(ngModel)]="user.bio"></ion-input>
+    <ion-input class="droite" [(ngModel)]="user.biographie"></ion-input>
   </ion-item>
-  </ion-card>
+</ion-card>
+
+<ion-card text-center *ngIf="user.role == 'marchand'">
+  <ion-card-header>
+    <ion-card-title>Photo de votre stand au marché</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <div class="fileUpload btn btn-primary">
+      <!--
+      <span>Charger</span>
+      -->
+      <input
+        id="uploadBtn"
+        type="file"
+        class="upload"
+        (change)="uploadFilePhotoEtal($event.target.files)"
+      />
+    </div>
+  </ion-card-content>
+  <div *ngIf="UploadedFileURL | async as url">
+    <img [src]="url" />
+    <!--
+    <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
+    -->
+  </div>
+</ion-card>
 
 
-  
+
 </ion-list>
 <ion-button *ngIf="user.role == 'marchand'"color="light" (click)="pushmarchand()" expand="full">Enregistrement</ion-button>
-  <ion-button *ngIf="user.role == 'client'"color="light" (click)="pushclient()" expand="full">Enregistrement</ion-button>
+<ion-button *ngIf="user.role == 'client'"color="light" (click)="pushclient()" expand="full">Enregistrement</ion-button>
 </ion-content>

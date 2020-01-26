@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
+import { Produit, ProduitService } from './../services/produit.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detailscommande',
@@ -29,14 +31,27 @@ export class DetailscommandePage {
     nom: '',
     prenom: '',
     photo: '',
+    photoEtal: '',
     role: '',
     email: '',
     latitude: 0,
     longitude: 0,
     paypal: '',
     rcs: '',
-    bio: ''
+    bio: false,
+    biographie: ''
   };
+
+  produit: Produit = {
+    nom: '',
+    idMarchand: '',
+    quantiteStock: 0,
+    prix: 0,
+    grandeurPrix: '',
+    grandeurStock: '',
+    bio: false,
+    origine: ''
+  }
 
   commandeId = null;
 
@@ -45,6 +60,7 @@ export class DetailscommandePage {
     private route: ActivatedRoute,
     private nav: NavController,
     private commandeService: CommandeService,
+    private produitService: ProduitService,
     private usersService: UsersService,
     private currentUser: CurrentUserService,
     private loadingController: LoadingController
@@ -81,7 +97,7 @@ export class DetailscommandePage {
     const loading = await this.loadingController.create({
       message: 'Sauvegarde du Commande...'
     });
-    await loading.present();
+    await loading.present(); // pour creation commande
 
     if (this.commandeId) {
       this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
@@ -97,8 +113,88 @@ export class DetailscommandePage {
   }
 
   accept() {
+    console.log("accept");
+    console.log(this.commande);
+    console.log("boucle for");
 
-    this.router.navigateByUrl('/tabsmarchand/gestioncommande');
+    var productTableInStock = [];
+
+    for (let produit of this.commande.dictProduits) {
+      console.log(produit);
+      this.produitService.getProduit(produit.idProduit).pipe(first()).subscribe((product: any) => {
+        this.produit = product;
+        console.log(this.produit);
+        var stockBackup = this.produit.quantiteStock;
+        if (this.produit.grandeurStock == produit.grandeurPourPrix) {
+          console.log(this.produit.quantiteStock);
+          this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit;
+          console.log(this.produit.quantiteStock);
+        } else {
+          if (this.produit.grandeurStock == 'kg' && produit.grandeurPourPrix == 'g'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit / 1000;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'g' && produit.grandeurPourPrix == 'kg'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit * 1000;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'L' && produit.grandeurPourPrix == 'mL'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit / 1000;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'mL' && produit.grandeurPourPrix == 'L'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit * 1000;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'm' && produit.grandeurPourPrix == 'cm'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit / 100;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'cm' && produit.grandeurPourPrix == 'm'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit * 100;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'm²' && produit.grandeurPourPrix == 'cm²'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit / 100;
+            console.log(this.produit.quantiteStock);
+          } else if (this.produit.grandeurStock == 'cm²' && produit.grandeurPourPrix == 'm²'){
+            console.log(this.produit.quantiteStock);
+            this.produit.quantiteStock = this.produit.quantiteStock - produit.quantiteAchatProduit * 100;
+            console.log(this.produit.quantiteStock);
+          }
+        }
+        if (this.produit.quantiteStock >= 0) {
+          console.log('update du stock acceptée pour le produit' + this.produit.nom);
+          this.produitService.updateProduit(this.produit, produit.idProduit);
+          console.log(productTableInStock);
+          productTableInStock.push(produit);
+          console.log(productTableInStock);
+        } else {
+          this.produit.quantiteStock = stockBackup;
+          console.log('erreur stock insuffisant ... je supprime le produit correspondant de la commande');
+        }
+      });
+
+    }
+
+
+    this.commande.accepted = true;
+    this.commande.dictProduits = productTableInStock;
+    this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
+      console.log(this.commande);
+      this.router.navigateByUrl('/tabsmarchand/gestioncommande');
+    });
+  }
+
+  deliver() {
+    console.log("deliver");
+    console.log(this.commande);
+    this.commande.realized = true;
+    this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
+      console.log(this.commande);
+      this.router.navigateByUrl('/tabsmarchand/gestioncommande');
+    });
   }
 
   get user():Users {

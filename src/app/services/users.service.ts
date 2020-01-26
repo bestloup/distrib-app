@@ -9,13 +9,15 @@ export interface Users {
   nom: string;
   prenom: string;
   photo: string;
+  photoEtal: string;
   role: string;
   email: string;
   latitude: number;
   longitude: number;
   paypal: string;
   rcs: string;
-  bio: string;
+  bio: boolean;
+  biographie: string;
 }
 
 @Injectable({

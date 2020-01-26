@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
-import { delay } from 'rxjs/operators';
+import { delay, first } from 'rxjs/operators';
 
 
 @Component({
@@ -66,7 +66,7 @@ export class ConnexionPage {
   login() {
     var self = this;
     this.afAuth.auth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password).then(function(firebaseUser) {
-      self.usersService.getUserDB(firebaseUser.user.uid).subscribe((user: Users) => {
+      self.usersService.getUserDB(firebaseUser.user.uid).pipe(first()).subscribe((user: Users) => {
          self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
          if (user.role == 'marchand') {
            console.log('marchand par ici')

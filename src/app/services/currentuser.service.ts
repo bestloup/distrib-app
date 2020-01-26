@@ -21,11 +21,13 @@ export class CurrentUserService {
     role: '',
     email: '',
     photo: '',
+    photoEtal: '',
     latitude: 0,
     longitude: 0,
     paypal: '',
     rcs: '',
-    bio: ''
+    bio: false,
+    biographie: ''
   };
 
   constructor(
@@ -61,24 +63,7 @@ export class CurrentUserService {
       if (!auth) {
         console.log('Non connecté');
         var obs = of('non connecté');
-        /*
-        const myObservable = of(1, 2, 3);
 
-        // Create observer object
-        const myObserver = {
-          next: x => console.log('Observer got a next value: ' + x),
-          error: err => console.error('Observer got an error: ' + err),
-          complete: () => console.log('Observer got a complete notification'),
-        };
-
-        // Execute with the observer object
-        myObservable.subscribe(myObserver);
-        */
-
-        //return new Observable(observer => observer.complete());
-        //return obs;
-
-        //return empty();
         return of();
 
       } else {
@@ -98,11 +83,13 @@ export class CurrentUserService {
       role: '',
       email: '',
       photo: '',
+      photoEtal: '',
       latitude: 0,
       longitude: 0,
       paypal: '',
       rcs: '',
-      bio: ''
+      bio: false,
+      biographie: ''
     };
   }
 

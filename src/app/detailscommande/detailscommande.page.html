@@ -36,5 +36,7 @@
   </ion-item-sliding>
 
   </ion-list>
-  <ion-button expand="full" (click)="accept()">Accepter la commande</ion-button>
+  <ion-item lines="inset">ID commande : {{commande.id}}</ion-item>
+  <ion-button *ngIf="commande.accepted == false" expand="full" (click)="accept()">Accepter la commande</ion-button>
+  <ion-button *ngIf="commande.realized == false && commande.accepted == true" expand="full" (click)="deliver()">Commande effectuée</ion-button>
 </ion-content>

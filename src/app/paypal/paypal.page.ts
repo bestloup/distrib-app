@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { ActivatedRoute, Router} from '@angular/router'; // Router
 import { Commande, CommandeService } from './../services/commande.service';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { Commande, CommandeService } from './../services/commande.service';
 
 export class PaypalPage {
   commande: Commande = {
+    id: '',
     idClient: '',
     idMarchand: '',
     nomClient: '',
@@ -34,7 +36,7 @@ export class PaypalPage {
     ) {
       this.commandeid = this.route.snapshot.params['id'];
       console.log('commandeid : ' + this.commandeid);
-      this.commandeService.getCommande(this.commandeid).subscribe( res => {
+      this.commandeService.getCommande(this.commandeid).pipe(first()).subscribe( res => {
         console.log(res);
         this.commande = res;
         this.paymentAmount = res.prixTotal.toString();
@@ -50,6 +52,7 @@ export class PaypalPage {
     console.log('Pay ????');
     this.commande.payed = true;
     this.commandeService.updateCommande(this.commande, this.commandeid);
+    console.log('Payed');
     this.payPal.init({
       PayPalEnvironmentProduction: '',
       PayPalEnvironmentSandbox: 'AdRsm5a_QtZBQiMPIU6NSfThuO_td7t94-Pm37QHcfrxD0eFRrPl5QysWk3LLIJ4d7t3nlp4OEy-fiTG'

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Commande {
-  id?: string;
+  id: string;
   idClient: string;
   idMarchand: string;
   nomClient: string;

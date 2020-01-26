@@ -21,7 +21,9 @@ export class CreationproduitPage {
     quantiteStock: 0,
     prix: 0,
     grandeurPrix: '',
-    grandeurStock: ''
+    grandeurStock: '',
+    bio: false,
+    origine: ''
   };
 
   produitId = null;
@@ -40,6 +42,11 @@ export class CreationproduitPage {
     this.produitId = this.route.snapshot.params['id'];
     if (this.produitId)  {
       this.loadProduit();
+    }
+    console.log("here");
+    console.log(this.user);
+    if (this.user.role == "marchand") {
+      this.produit.bio = this.user.bio;
     }
   }
 

@@ -1,16 +1,35 @@
 .profile_image {
-    display: inline-block;
-    width: 130px;
-    height: 130px;
-    overflow: hidden;
-    vertical-align: middle;
-    margin: 5px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 50%;
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 5px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+
+
+  background-position:top;
+  position: relative;
+  z-index:2;
+}
+
+.profile_text {
+  background-position:top;
+  position: relative;
+  z-index:2;
+  background-color: white;
 }
 
 
+.etal_image {
+  position: absolute;
+  left: 0px;
+	bottom: 0px;
+  z-index: 1;
+  background-position: absolute;
+}
 
 .profile_info {
   display: inline-block;

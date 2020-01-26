@@ -16,18 +16,51 @@ ion-header{
     width: 50%;
     text-align: center;
     height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     --ion-background-color:#85B53B;
 }
 
-.but{
+
+.profile_image {
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 5px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+
+
+  background-position:top;
+  position: relative;
+  z-index:2;
+}
+
+
+
+.etal_image {
+  position: absolute;
+  left: 0px;
+	top: 0px;
+  z-index: 1;
+  background-position: absolute;
+}
+
+
+.but {
     width: 100%;
 }
-#titre{
+
+.titre{
     text-align: center;
 }
-.bio{
+.biographie {
     display: inline-block;
     text-align: justify;
+    text-align: center;
     height: 130px;
     --ion-background-color:#85B53B;
 }

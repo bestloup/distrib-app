@@ -34,6 +34,16 @@
     </ion-item>
     <br>
 
+    <ion-title>Origine du produit :</ion-title>
+    <br>
+    <ion-item>
+      <ion-input required type="text" placeholder="Origine" [(ngModel)]="produit.origine"></ion-input>
+    </ion-item>
+    <br>
+
+    <div class="gauche"><ion-title>Certifié Agriculture Biologique :</ion-title></div><div class="droite"><ion-checkbox value="{{produit.bio}}" [(ngModel)]="produit.bio"></ion-checkbox></div>
+    <br>
+    <br>
 
   </ion-list>
   <ion-button expand="full" (click)="saveProduit()">Enregistrer</ion-button>

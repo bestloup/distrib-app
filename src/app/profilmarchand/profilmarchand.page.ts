@@ -37,7 +37,8 @@ export class ProfilmarchandPage {
     public usersService: UsersService,
     public currentUser: CurrentUserService
     //private todosCollection: AngularFirestoreCollection<Users>
-  ){
+  )
+  {
     //this.todosCollection = db.collection<Users>('user');
     //console.log(this.todosCollection.doc<Users>(this.userId));
     this.afAuth.authState.subscribe(auth => {
@@ -66,4 +67,3 @@ export class ProfilmarchandPage {
      console.log(this.user);
    }
  }
- 

@@ -17,7 +17,9 @@ export class DetailsproduitPage {
     quantiteStock: 0,
     prix: 0,
     grandeurPrix: '',
-    grandeurStock: ''
+    grandeurStock: '',
+    bio: false,
+    origine: ''
   };
 
   produitId = null;

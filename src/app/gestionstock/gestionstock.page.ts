@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produit, ProduitService } from './../services/produit.service';
 import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
+import { NavController, LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -16,15 +17,24 @@ export class GestionstockPage {
   constructor
   (
     private produitService: ProduitService,
+    private loadingController: LoadingController,
     public currentUser: CurrentUserService
   )
   {
-    this.produitService.getProduits().subscribe(res => {
-      this.produits = res;
-    });
+    this.loadProduits();
   }
 
 
+  async loadProduits() {
+    const loading = await this.loadingController.create({
+      message: 'Chargement des produits disponibles...'
+    });
+    await loading.present();
+    this.produitService.getProduits().subscribe(res => {
+      this.produits = res;
+      loading.dismiss();
+    });
+  }
 
   remove(item) {
     this.produitService.removeProduit(item.id);

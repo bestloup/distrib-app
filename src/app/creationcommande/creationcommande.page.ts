@@ -7,7 +7,7 @@ import { CurrentUserService } from './../services/currentuser.service';
 import { Produit, ProduitService } from './../services/produit.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { isEmpty } from 'rxjs/operators';
+import { isEmpty, first } from 'rxjs/operators';
 import { PickerController } from '@ionic/angular';
 
 
@@ -22,6 +22,7 @@ import { PickerController } from '@ionic/angular';
 export class CreationcommandePage {
 
   commande: Commande = {
+    id: '',
     idClient: '',
     idMarchand: '',
     nomClient: '',
@@ -32,16 +33,30 @@ export class CreationcommandePage {
     prixTotal: 0
   };
 
+  marchand: Users = {
+    id: '',
+    nom: '',
+    prenom: '',
+    photo: '',
+    photoEtal: '',
+    role: '',
+    email: '',
+    latitude: 0,
+    longitude: 0,
+    paypal: '',
+    rcs: '',
+    bio: false,
+    biographie: ''
+  };
+
   produitsencommande: string[];
 
   produits: Produit[];
 
-  //produitsDisponibles: { [id: string]: ProduitCommande; } = {};
-  produitsDisponibles: ProduitCommande[] = [];
+  produitsDisponibles: ProduitCommande[]; //{nomProduit: "Patate"} //= []
 
 
 
-  testId = null;
   commandeId = null;
   marchandid = null;
   constructor
@@ -58,7 +73,11 @@ export class CreationcommandePage {
     public currentUser: CurrentUserService
   )
   {
-    this.marchandid = this.route.snapshot.params['id'];
+
+    this.loadAvailableProducts();
+
+
+
     if (this.commandeId)  {
       this.loadCommande();
     }
@@ -68,31 +87,47 @@ export class CreationcommandePage {
         console.log('Erreur : non connecté');
       } else {
         console.log('Connecté: ' + auth.uid);
-        this.currentUser.subscribeToCurrentUser(auth.uid).subscribe((user :any) => {
+        this.currentUser.subscribeToCurrentUser(auth.uid).pipe(first()).subscribe((user :any) => {
+          console.log("je charge le user, promis");
+          console.log(user);
           this.user = user;
-          this.produitService.getProduits().subscribe(res => {
-            this.produits = res;
-            for (let produit of this.produits) { // est-ce que je mets ce for à l'intérieur ou à l'extérieur du subscribe ? j'ai peur que si le marchand met un nouveau produit dans la base, ça rechange et nique la commande en cours du client...
-              if (produit.idMarchand == this.marchandid && this.marchandid != null) {
-                //console.log("id = " + this.user.id);
-                //console.log(produit);
-                //this.produitsDisponibles[produit.id] = {
-                this.produitsDisponibles.push({
-                  idProduit: produit.id,
-                  nomProduit: produit.nom,
-                  quantiteAchatProduit: 0,
-                  prixProduitParGrandeur: produit.prix,
-                  grandeurPourPrix: produit.grandeurPrix
-                });
-              }
-            }
-          });
         });
       };
     });
   }
 
+  async loadAvailableProducts() {
+    const loading = await this.loadingController.create({
+      message: 'Chargement des produits disponibles...'
+    });
+    await loading.present();
 
+    this.marchandid = this.route.snapshot.params['id'];
+
+    this.usersService.getUserDB(this.marchandid).pipe(first()).subscribe((user: any) => {
+      this.marchand = user;
+
+      this.produitService.getProduits().pipe(first()).subscribe(res => {
+        console.log("je charge les produits, promis");
+        this.produits = res;
+        this.produitsDisponibles = [];
+        for (let produit of this.produits) { // est-ce que je mets ce for à l'intérieur ou à l'extérieur du subscribe ? j'ai peur que si le marchand met un nouveau produit dans la base, ça rechange et nique la commande en cours du client...
+          if (produit.idMarchand == this.marchandid && this.marchandid != null) {
+            //console.log(produit);
+            this.produitsDisponibles.push({
+              idProduit: produit.id,
+              nomProduit: produit.nom,
+              quantiteAchatProduit: 0,
+              prixProduitParGrandeur: produit.prix,
+              grandeurPourPrix: produit.grandeurPrix
+            });
+          }
+        }
+        console.log("je charge les produits dispo, promis");
+        loading.dismiss();
+      });
+    });
+  }
 
   get user():Users {
     return this.currentUser.user;
@@ -300,31 +335,64 @@ export class CreationcommandePage {
     for (let produit of this.produitsDisponibles) {
       if (produit.quantiteAchatProduit != 0) {
         productTable.push(produit);
-        prixTotal = prixTotal + produit.quantiteAchatProduit*produit.prixProduitParGrandeur;
+        prixTotal = parseFloat(prixTotal + parseFloat((produit.quantiteAchatProduit*produit.prixProduitParGrandeur).toFixed(2)));
       }
     }
+    prixTotal = parseFloat(prixTotal.toFixed(2));
     console.log(productTable);
     this.commande.idMarchand = this.marchandid; // à changer pour mettre le marchand de la page en question
     this.commande.accepted = false;
     this.commande.idClient = this.user.id;
     this.commande.dictProduits = productTable;
     this.commande.prixTotal = prixTotal;
-    this.usersService.getUserDB(this.commande.idClient).subscribe((user: any) => {
-      this.commande.nomClient = user.prenom + ' ' + user.nom;
-      console.log(this.commande);
-      if (this.commandeId) {
-        this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
-          //loading.dismiss();
-          this.router.navigate(['/tabsmarchand/gestioncommande']); // à changer vers panier
-        });
-      } else {
-        this.commandeService.addCommande(this.commande).then(res => {
-          this.testId = res.id;
-          //loading.dismiss();
-          this.router.navigate(['/paypal', {id: this.testId}]); // à changer vers panier
-        });
-      }
-    });
+
+    if (this.commande.dictProduits == []) {
+      return;
+    } else {
+      this.usersService.getUserDB(this.commande.idClient).pipe(first()).subscribe((user: any) => {
+        this.commande.nomClient = user.prenom + ' ' + user.nom;
+        console.log(this.commande);
+        if (this.commandeId) {
+          this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
+            //loading.dismiss();
+            this.router.navigate(['/paypal/' + this.commandeId.toString()]); // à changer vers panier
+            this.commandeId = null;
+            this.commande = {
+              id: '',
+              idClient: '',
+              idMarchand: '',
+              nomClient: '',
+              accepted: false,
+              payed: false,
+              realized: false,
+              dictProduits: [],
+              prixTotal: 0
+            };
+          });
+        } else {
+          this.commandeService.addCommande(this.commande).then(res => {
+            this.commandeId = res.id;
+            this.commande.id = res.id;
+            this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
+              this.router.navigate(['/paypal/' + this.commandeId.toString()]); // à changer vers panier
+              this.commandeId = null;
+              this.commande = {
+                id: '',
+                idClient: '',
+                idMarchand: '',
+                nomClient: '',
+                accepted: false,
+                payed: false,
+                realized: false,
+                dictProduits: [],
+                prixTotal: 0
+              };
+            });
+          });
+        }
+      });
+    }
+
 
     /*
     const loading = await this.loadingController.create({

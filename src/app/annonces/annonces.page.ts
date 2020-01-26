@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Users, UsersService } from '../services/users.service';
 import { CurrentUserService } from '../services/currentuser.service';
-import { delay } from 'rxjs/operators';
+import { delay, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-annonces',
@@ -18,7 +18,7 @@ export class AnnoncesPage {
     private usersService: UsersService,
     public currentUser: CurrentUserService,
   ) {
-    this.usersService.getUsersDB().subscribe(res => {
+    this.usersService.getUsersDB().pipe(first()).subscribe(res => {
       this.users = res;
       if (this.user.role == 'marchand'){
         this.router.navigateByUrl('/tabsmarchand');
@@ -31,9 +31,9 @@ export class AnnoncesPage {
       }
     })
           //this.currentUser.subscribeToCurrentUser(auth.uid);
-         
+
         //console.log('Connecté: ' + auth.uid);
-      
+
   }
 
   get user(): Users {

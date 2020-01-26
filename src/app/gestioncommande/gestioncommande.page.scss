@@ -4,3 +4,31 @@
   width: 100%;
   text-align: left;
 }
+
+ion-header{
+    text-align: center;
+}
+
+.toPrepareList {
+  height: 40%;
+  overflow-y : auto;
+}
+
+.toAcceptList {
+  height: 40%;
+  overflow-y : auto;
+}
+
+.list_title {
+  text-align: center;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.prepare {
+  color: darkorange;
+}
+
+.accept {
+  color: limegreen;
+}
