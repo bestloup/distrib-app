@@ -30,6 +30,7 @@ export class CoursiersPage {
        console.log('Error getting location', error);
      });
   }
+  
 
   ionViewDidEnter() {
      this.leafletMap();

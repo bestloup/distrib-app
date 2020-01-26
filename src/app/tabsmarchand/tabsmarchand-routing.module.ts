@@ -29,11 +29,11 @@ const routes: Routes = [
       },
 
       {
-        path: 'settings',
+        path: 'profilmarchand',
         children: [
           {
             path: '',
-            loadChildren: '../settings/settings.module#SettingsPageModule'
+            loadChildren: '../profilmarchand/profilmarchand.module#ProfilmarchandPageModule'
           }
         ]
       },
