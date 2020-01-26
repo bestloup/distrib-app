@@ -25,11 +25,12 @@ export class CoursiersPage {
       //console.log('longitude = ' + resp.coords.longitude);
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
-      //this.map = new Map('mapId').setView([this.lat, this.lng], 13);
+      this.map = new Map('mapId').setView([this.lat, this.lng], 13);
      }).catch((error) => {
        console.log('Error getting location', error);
      });
   }
+  
 
   ionViewDidEnter() {
      this.leafletMap();
@@ -54,7 +55,7 @@ onClickFuntion(event){
 }
 
   leafletMap() {
-    this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
+    //this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
     tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);
     //this.map.on('click', this.placerMarqueur());
     this.marchesService.getMarches().subscribe(res => {
