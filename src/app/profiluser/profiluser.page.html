@@ -4,14 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-card>
-  <ion-title>Profil</ion-title>
-  <img class="logo" src={{user.photo}} />
-</ion-card>
 
 <ion-content>
   <ion-list>
-
+    <ion-title>Profil</ion-title>
+    <div class='cadre'>
+    <img class="logo" src={{user.photo}} />
+    </div>
     <!--
     <ion-item>
       <ion-label class="parametre">Profil</ion-label>
@@ -53,11 +52,11 @@
 
     <br>
 
-    <ion-button color="light" (click)="updateProfile()" expand="full">Enregistrer le profil</ion-button>
+    <ion-button (click)="updateProfile()" expand="block">Enregistrer le profil</ion-button>
     <!--
     <ion-button color="light" (click)="changpasswd()" expand="full">Changer le mot de passe</ion-button>
     -->
     <br>
-    <ion-button color="light" (click)="logout()" expand="full">Déconnexion</ion-button>
+    <ion-button color="danger" (click)="logout()" expand="block">Déconnexion</ion-button>
   </ion-list>
 </ion-content>

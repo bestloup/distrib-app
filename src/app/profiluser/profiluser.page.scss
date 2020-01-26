@@ -1,9 +1,11 @@
 .logo {
-    display: block;
+    display: inline;
     width: 130px;
     height: 110px;
     border-radius: 50%;
     overflow: hidden;
+    position: relative;
+    transform: translate(90%, 0%);
 }
 
 .parametre{
@@ -12,4 +14,14 @@
 
 ion-header{
     text-align: center;
+}
+
+ion-title{
+    text-align: center;
+}
+
+.cadre{
+    display : inline-block;
+    width: 100%;
+    height: 110px;;
 }
