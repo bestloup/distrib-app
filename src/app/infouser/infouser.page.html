@@ -64,14 +64,22 @@
         </div>
       </div>
     </ion-card-content>
-    <div *ngIf="UploadedFileURL | async as url">
-      <img [src]="url" />
-      <!--
-        <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
-      -->
-    </div>
   </ion-card>
+
+  <ion-card-content>
+    <div *ngIf="UploadedFileURL | async as url">
+      <img class="profile_image" [src]="url" />
+    </div>
+  </ion-card-content>
+
   <!--
+  <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
+  File Size: {{ fileSize | fileSizePipe }}
+  <ion-button
+  expand="full"
+  color="success"
+  (click)="isUploading = isUploaded = false"
+  >Upload More</ion-button>
   <ion-card text-center *ngIf="!isUploading && isUploaded">
     <ion-card-header>
       <ion-card-title>
@@ -79,18 +87,6 @@
       </ion-card-title>
     </ion-card-header>
 
-    <ion-card-content>
-      <div *ngIf="UploadedFileURL | async as url">
-        <img [src]="url" />
-        <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
-      </div>
-      File Size: {{ fileSize | fileSizePipe }}
-      <ion-button
-        expand="full"
-        color="success"
-        (click)="isUploading = isUploaded = false"
-        >Upload More</ion-button>
-    </ion-card-content>
   </ion-card>
 -->
 <!--
@@ -178,7 +174,30 @@
   </ion-item>
 </ion-card>
 
+
+
+<!--
 <ion-card text-center *ngIf="user.role == 'marchand'">
+  <ion-card-header>
+    <ion-card-title>Photo de votre stand au marché</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <div class="fileUpload btn btn-primary">
+
+      <input
+        id="uploadBtn"
+        type="file"
+        class="upload"
+        (change)="uploadFilePhotoEtal($event.target.files)"
+      />
+    </div>
+  </ion-card-content>
+</ion-card>
+-->
+
+
+
+<ion-card text-center *ngIf="!isUploadingEtal && !isUploadedEtal && user.role == 'marchand'">
   <ion-card-header>
     <ion-card-title>Photo de votre stand au marché</ion-card-title>
   </ion-card-header>
@@ -195,13 +214,55 @@
       />
     </div>
   </ion-card-content>
-  <div *ngIf="UploadedFileURL | async as url">
-    <img [src]="url" />
-    <!--
-    <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
-    -->
-  </div>
 </ion-card>
+
+<ion-card text-center *ngIf="isUploadingEtal && !isUploadedEtal">
+  <ion-card-header>
+    <ion-card-title
+      >Fichier sélectionné:<b>{{ fileName }}</b></ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div *ngIf="percentageEtal | async as pctEtal">
+      Progress: {{ pct | number }}%
+      <ion-progress-bar value="{{ pctEtal / 100 }}"></ion-progress-bar>
+    </div>
+    <div *ngIf="snapshotEtal | async as snapEtal">
+      <!--
+      File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
+      {{ snap.bytesTransferred | fileSizePipe }}
+      -->
+      <div *ngIf="snapshotEtal && snapEtal.bytesTransferred != snapEtal.totalBytes">
+        <ion-button
+          color="warning"
+          size="small"
+          (click)="task.pause()"
+          class="button is-warning"
+          >Pause</ion-button
+        >
+        <ion-button
+          size="small"
+          (click)="task.resume()"
+          class="button is-info"
+          >Continuer</ion-button
+        >
+        <ion-button
+          color="danger"
+          size="small"
+          (click)="task.cancel()"
+          class="button is-danger"
+          >Annuler</ion-button
+        >
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>
+
+<ion-card-content>
+  <div *ngIf="UploadedFileURLEtal | async as urlEtal">
+    <img [src]="urlEtal" />
+  </div>
+</ion-card-content>
 
 
 

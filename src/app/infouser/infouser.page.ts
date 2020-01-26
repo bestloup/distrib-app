@@ -101,15 +101,19 @@ export class InfouserPage {
 
   // Upload Task
   task: AngularFireUploadTask;
+  taskEtal: AngularFireUploadTask;
 
   // Progress in percentage
   percentage: Observable<number>;
+  percentageEtal: Observable<number>;
 
   // Snapshot of uploading file
   snapshot: Observable<any>;
+  snapshotEtal: Observable<any>;
 
   // Uploaded File URL
   UploadedFileURL: Observable<string>;
+  UploadedFileURLEtal: Observable<string>;
 
   //Uploaded Image List
   images: Observable<MyData[]>;
@@ -121,6 +125,9 @@ export class InfouserPage {
   //Status check
   isUploading:boolean;
   isUploaded:boolean;
+
+  isUploadingEtal:boolean;
+  isUploadedEtal:boolean;
 
   private imageCollection: AngularFirestoreCollection<MyData>;
 
@@ -147,6 +154,8 @@ export class InfouserPage {
 
     this.isUploading = false;
     this.isUploaded = false;
+    this.isUploadingEtal = false;
+    this.isUploadedEtal = false;
     //Set collection where our documents/ images info will save
     this.imageCollection = database.collection<MyData>('freakyImages');
     this.images = this.imageCollection.valueChanges();
@@ -222,8 +231,8 @@ export class InfouserPage {
      return;
     }
 
-    this.isUploading = true;
-    this.isUploaded = false;
+    this.isUploadingEtal = true;
+    this.isUploadedEtal = false;
 
 
     this.fileName = file.name;
@@ -238,16 +247,16 @@ export class InfouserPage {
     const fileRef = this.storage.ref(path);
 
     // The main task
-    this.task = this.storage.upload(path, file, { customMetadata });
+    this.taskEtal = this.storage.upload(path, file, { customMetadata });
 
     // Get file progress percentage
-    this.percentage = this.task.percentageChanges();
-    this.snapshot = this.task.snapshotChanges().pipe(
+    this.percentageEtal = this.taskEtal.percentageChanges();
+    this.snapshotEtal = this.taskEtal.snapshotChanges().pipe(
       finalize(() => {
         // Get uploaded file storage path
-        this.UploadedFileURL = fileRef.getDownloadURL();
+        this.UploadedFileURLEtal = fileRef.getDownloadURL();
 
-        this.UploadedFileURL.subscribe(resp=>{
+        this.UploadedFileURLEtal.subscribe(resp=>{
           this.user.photoEtal = resp;
           this.addImagetoDB({
             name: file.name,
@@ -255,8 +264,8 @@ export class InfouserPage {
             size: this.fileSize,
             //idpicture: this.user.id
           });
-          this.isUploading = false;
-          this.isUploaded = true;
+          this.isUploadingEtal = false;
+          this.isUploadedEtal = true;
         },error=>{
           console.error("TOTO:" + error);
         })
