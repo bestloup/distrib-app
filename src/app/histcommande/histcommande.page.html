@@ -17,24 +17,16 @@
         </p>
       </div>
     </ng-container>
-
-      <ion-item-sliding *ngFor="let item of commandes">
-        <ion-item *ngIf="item.idClient == idCurrentUser" lines="inset" button [routerLink]="['/detailscommande', item.id]">
-          <ion-card class="profile_info">
+    <ion-item-sliding *ngFor="let item of commandes">
+          <ion-card class="profile_info" *ngIf="item.idClient == idCurrentUser" lines="inset" button [routerLink]="['/detailscommande', item.id]">
             <ion-card-header >
               <ion-card-title>{{ item.id }}</ion-card-title>
-              <ion-card-subtitle>dictProduits : {{ item.dictProduits }}</ion-card-subtitle>
-              <ion-card-subtitle>idClient : {{ item.idClient }}</ion-card-subtitle>
-              <ion-card-subtitle>idMarchand : {{ item.idMarchand }}</ion-card-subtitle>
+              <ion-card-subtitle *ngFor="let produit of item.dictProduits">{{ produit.nomProduit }} : {{ produit.quantiteAchatProduit }} {{produit.grandeurPourPrix}}</ion-card-subtitle>
+
+              <ion-card-subtitle>Prix total : {{ item.prixTotal }}€</ion-card-subtitle>
+
             </ion-card-header>
           </ion-card>
-        </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="remove(item)" color="secondary">
-          Check
-          <ion-icon name="checkmark" slot="end"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
     </ion-item-sliding>
 
   </ion-list>

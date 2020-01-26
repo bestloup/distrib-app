@@ -4,24 +4,26 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     
-    <ion-title>Commande</ion-title>
+    <ion-title>Commande auprès de {{ marchand.prenom }} {{ marchand.nom }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-<img class="logo" src="{{marchand.photo}}"/>
-<ion-content class="en-tete" color="success">
+<div class=cadre>
+  <img class="logo" src="{{marchand.photo}}"/>
+</div>
+<ion-content class="en-tete">
       <h1> Position </h1>
       Place Wilson
     </ion-content>
-    <ion-content class="en-tete" color="success">
+    <ion-content class="en-tete">
       <h1> Disponibilité </h1>
       Mercredi, Samedi 
     </ion-content>
 
-    <ion-content class="bio" color="success">
+    <ion-content class="bio">
     <h1 id="titre"> BIO </h1>
-    {{ marchand.bio }}
+    {{ marchand.biographie }}
     </ion-content>
   <!--
     <ion-item>

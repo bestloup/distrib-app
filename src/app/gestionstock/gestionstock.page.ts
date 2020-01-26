@@ -19,13 +19,13 @@ export class GestionstockPage implements OnInit {
     public currentUser: CurrentUserService
   )
   {
-
-  }
-
-  ngOnInit() {
     this.produitService.getProduits().subscribe(res => {
       this.produits = res;
     });
+  }
+
+  ngOnInit() {
+
   }
 
   remove(item) {

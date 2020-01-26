@@ -96,38 +96,37 @@ export class CreationcommandePage implements OnInit {
     this.marchand = res;
     console.log(res);
   });
-
+  this.afAuth.authState.subscribe(auth => {
+    if (!auth) {
+      console.log('Erreur : non connecté');
+    } else {
+      console.log('Connecté: ' + auth.uid);
+      this.currentUser.subscribeToCurrentUser(auth.uid).subscribe((user :any) => {
+        this.user = user;
+        this.produitService.getProduits().subscribe(res => {
+          this.produits = res;
+          for (let produit of this.produits) { // est-ce que je mets ce for à l'intérieur ou à l'extérieur du subscribe ? j'ai peur que si le marchand met un nouveau produit dans la base, ça rechange et nique la commande en cours du client...
+            if (produit.idMarchand == this.marchandid && this.marchandid != null) {
+              //console.log("id = " + this.user.id);
+              //console.log(produit);
+              //this.produitsDisponibles[produit.id] = {
+              this.produitsDisponibles.push({
+                idProduit: produit.id,
+                nomProduit: produit.nom,
+                quantiteAchatProduit: 0,
+                prixProduitParGrandeur: produit.prix,
+                grandeurPourPrix: produit.grandeurPrix
+              });
+            }
+          }
+        });
+      });
+    };
+  });
 }
 
   ngOnInit() {
 
-    this.afAuth.authState.subscribe(auth => {
-      if (!auth) {
-        console.log('Erreur : non connecté');
-      } else {
-        console.log('Connecté: ' + auth.uid);
-        this.currentUser.subscribeToCurrentUser(auth.uid).subscribe((user :any) => {
-          this.user = user;
-          this.produitService.getProduits().subscribe(res => {
-            this.produits = res;
-            for (let produit of this.produits) { // est-ce que je mets ce for à l'intérieur ou à l'extérieur du subscribe ? j'ai peur que si le marchand met un nouveau produit dans la base, ça rechange et nique la commande en cours du client...
-              if (produit.idMarchand == this.marchandid && this.marchandid != null) {
-                //console.log("id = " + this.user.id);
-                //console.log(produit);
-                //this.produitsDisponibles[produit.id] = {
-                this.produitsDisponibles.push({
-                  idProduit: produit.id,
-                  nomProduit: produit.nom,
-                  quantiteAchatProduit: 0,
-                  prixProduitParGrandeur: produit.prix,
-                  grandeurPourPrix: produit.grandeurPrix
-                });
-              }
-            }
-          });
-        });
-      };
-    });
   }
 
 
@@ -362,7 +361,7 @@ export class CreationcommandePage implements OnInit {
       this.commandeService.addCommande(this.commande).then(res => {
         this.testId = res.id;
         loading.dismiss();
-        this.router.navigate(['/paypal', {id: this.testId}]); // à changer vers panier
+        this.router.navigate(['/paypal', this.testId]); // à changer vers panier
       });
     }
     /*

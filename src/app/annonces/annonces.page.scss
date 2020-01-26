@@ -1,21 +1,22 @@
 .profile_image {
     display: inline-block;
-    width: 130px;
-    height: 130px;
-    overflow: hidden;
-    vertical-align: middle;
-    margin: 5px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  vertical-align: baseline;
+  margin: 5px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
 }
 
 
 
 .profile_info {
   display: inline-block;
-  vertical-align: middle;
-  width: 100%;
+  vertical-align: baseline;
+  width: 60%;
+  height: 100%;
   text-align: left;
 }
 
@@ -31,8 +32,7 @@ ion-header{
 }
 
 ion-card{
-    display: inline-block;
-    width: 100%;
+    display: block;
 }
 
 .tata{
@@ -44,3 +44,4 @@ ion-card{
 h1{
     text-align: center;
 }
+

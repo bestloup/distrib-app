@@ -7,7 +7,6 @@
 
 <ion-content>
 <ion-card>
-    <img class="profile_image" src="http://www.cuisine-blog.fr/wp-content/uploads/2018/06/cover-juillet.jpg"/>
     <ion-card-header class="profile_info">
       <ion-card-title>Le Maraîcher Lyonnais</ion-card-title>
       <ion-card-subtitle>Légumes de saison</ion-card-subtitle>
@@ -22,7 +21,7 @@
       <ion-item-sliding *ngFor="let item of produit">
         <ion-item *ngIf="item.idMarchand == marchandid">
         
-          <ion-label>{{ item.nom }}</ion-label>
+          <ion-label class='nomproduit'>{{ item.nom }}</ion-label>
           <ion-text color="secondary">
             <p>Prix : {{ item.prix }}€ / {{ item.grandeur }}</p>
           </ion-text>

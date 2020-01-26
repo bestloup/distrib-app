@@ -18,14 +18,12 @@ export class GestioncommandePage implements OnInit {
       public currentUser: CurrentUserService
     )
     {
-
-    }
-
-    ngOnInit() {
-
       this.commandeService.getCommandes().subscribe(res => {
         this.commandes = res;
       });
+    }
+
+    ngOnInit() {
 
     }
 

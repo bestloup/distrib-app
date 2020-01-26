@@ -1,29 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Annonces</ion-title>
+    <ion-title>Marchands</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <ion-searchbar></ion-searchbar>
 
-<ion-list>
+<ion-list >
 <ion-item-sliding *ngFor="let item of users">
-    <ion-item *ngIf="item.role == 'marchand'" button [routerLink]="['/creationcommande', item.id]">
-          <ion-card class="profile_info">
+          <ion-card  *ngIf="item.role == 'marchand'" [routerLink]="['/creationcommande', item.id]">
           <img class="profile_image" src="{{ item.photo }}"/>
-            <ion-card-header >
+            <ion-card-header class="profile_info">
               <ion-card-title>{{ item.nom }} {{ item.prenom }}</ion-card-title>
-              <ion-card-subtitle>Id : {{ item.id }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ item.biographie }}</ion-card-subtitle>
             </ion-card-header>
           </ion-card>
-        </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="remove(item)" color="secondary">
-          Check
-          <ion-icon name="checkmark" slot="end"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
     </ion-item-sliding>
     </ion-list>
 
