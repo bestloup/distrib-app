@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>{{marchand.prenom}} {{marchand.nom}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/annonces"></ion-back-button>
@@ -12,22 +12,27 @@
 <ion-card>
 </ion-card>
 -->
+<div class="cadre">
   <img class="profile_image" src="{{ marchand.photo }}"/>
+  </div>
   <img class="etal_image" src="{{ marchand.photoEtal }}"/>
-<ion-content class="en-tete" color="success">
-      <h1> Position </h1>
-      Place Wilson
-</ion-content>
-<ion-content class="en-tete" color="success">
-      <h1> Disponibilité </h1>
-      Mercredi, Samedi
-</ion-content>
-
-    <ion-content class="biographie" color="success">
-    <h1 id="titre"> BIO </h1>
-    {{ marchand.biographie }}
-    </ion-content>
-
+<hr>
+<ion-card>
+<ion-card-header >
+            <ion-card-title>Place Wilson </ion-card-title>
+            <br>
+            <ion-card-subtitle>Mercredi, Samedi</ion-card-subtitle>
+            <ion-card-subtitle>8h-13h</ion-card-subtitle>
+          </ion-card-header>
+</ion-card>
+<ion-card>
+<ion-card-header >
+            <ion-card-title>Biographie</ion-card-title>
+            <br>
+            <ion-card-subtitle>{{ marchand.biographie }}</ion-card-subtitle>
+          </ion-card-header>
+</ion-card>
+<hr>
 
     <ion-item-sliding *ngFor="let item of produitsDisponibles; let i = index">
 

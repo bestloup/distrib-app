@@ -20,7 +20,7 @@ import { PickerController } from '@ionic/angular';
   styleUrls: ['./creationcommande.page.scss'],
 })
 export class CreationcommandePage {
-
+ 
   commande: Commande = {
     id: '',
     idClient: '',

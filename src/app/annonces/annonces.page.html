@@ -9,8 +9,7 @@
 
 <ion-list >
   <ion-item-sliding *ngFor="let item of users">
-    <ion-item *ngIf="item.role == 'marchand'" button [routerLink]="['/creationcommande', item.id]">
-      <ion-card class="profile_info">
+      <ion-card class="profile_info" *ngIf="item.role == 'marchand'" button [routerLink]="['/creationcommande', item.id]">
         <ion-card-header class="profile_text">
           <ion-card-title>{{ item.prenom }} {{ item.nom }}</ion-card-title>
           <ion-card-subtitle></ion-card-subtitle>
@@ -18,7 +17,6 @@
         <img class="profile_image" src="{{ item.photo }}"/>
         <img class="etal_image" src="{{ item.photoEtal }}"/>
       </ion-card>
-    </ion-item>  
   </ion-item-sliding>
 </ion-list>
 
