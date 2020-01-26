@@ -2,27 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { Commande, CommandeService } from './../services/commande.service';
 import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
+import { NavController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-histcommande',
   templateUrl: './histcommande.page.html',
   styleUrls: ['./histcommande.page.scss'],
 })
-export class HistcommandePage implements OnInit {
+export class HistcommandePage {
 
   commandes: Commande[];
   constructor(
     private commandeService: CommandeService,
+    private loadingController: LoadingController,
     public currentUser: CurrentUserService
-  ) { 
-    this.commandeService.getCommandes().subscribe(res => {
-      this.commandes = res;
-      console.log(this.commandes);
-    });
+  )
+  {
+    this.loadCommandes();
   }
 
-  ngOnInit() {
 
+
+  async loadCommandes() {
+    const loading = await this.loadingController.create({
+      message: 'Chargement des commandes...'
+    });
+    await loading.present();
+
+    this.commandeService.getCommandes().subscribe(res => {
+      this.commandes = res;
+      loading.dismiss();
+      console.log(this.commandes);
+    });
   }
 
   remove(item) {
