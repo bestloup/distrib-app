@@ -32,6 +32,20 @@ export class CreationcommandePage {
     prixTotal: 0
   };
 
+  marchand: Users = {
+    id: '',
+    nom: '',
+    prenom: '',
+    photo: '',
+    role: '',
+    email: '',
+    latitude: 0,
+    longitude: 0,
+    paypal: '',
+    rcs: '',
+    bio: false,
+    biographie: '',
+  }
   produitsencommande: string[];
 
   produits: Produit[];
@@ -95,9 +109,6 @@ export class CreationcommandePage {
   });
 }
 
-  ngOnInit() {
-
-  }
 
 
 
@@ -342,13 +353,13 @@ export class CreationcommandePage {
 
     if (this.commandeId) {
       this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
-        loading.dismiss();
+        //loading.dismiss();
         this.router.navigate(['/tabsmarchand/gestioncommande']); // à changer vers panier
       });
     } else {
       this.commandeService.addCommande(this.commande).then(res => {
         this.testId = res.id;
-        loading.dismiss();
+        //loading.dismiss();
         this.router.navigate(['/paypal', this.testId]); // à changer vers panier
       });
     }

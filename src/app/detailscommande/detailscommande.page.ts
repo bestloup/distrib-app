@@ -35,7 +35,8 @@ export class DetailscommandePage {
     longitude: 0,
     paypal: '',
     rcs: '',
-    bio: ''
+    bio: false,
+    biographie:'',
   };
 
   commandeId = null;

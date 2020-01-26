@@ -15,7 +15,8 @@ export interface Users {
   longitude: number;
   paypal: string;
   rcs: string;
-  bio: string;
+  biographie: string;
+  bio: boolean;
 }
 
 @Injectable({

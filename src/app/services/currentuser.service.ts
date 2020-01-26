@@ -25,7 +25,8 @@ export class CurrentUserService {
     longitude: 0,
     paypal: '',
     rcs: '',
-    bio: ''
+    bio: false,
+    biographie: '',
   };
 
   constructor(
@@ -102,7 +103,8 @@ export class CurrentUserService {
       longitude: 0,
       paypal: '',
       rcs: '',
-      bio: ''
+      bio: false,
+      biographie: '',
     };
   }
 
