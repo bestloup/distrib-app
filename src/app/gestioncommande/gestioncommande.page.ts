@@ -8,7 +8,7 @@ import { CurrentUserService } from './../services/currentuser.service';
   templateUrl: './gestioncommande.page.html',
   styleUrls: ['./gestioncommande.page.scss'],
 })
-export class GestioncommandePage implements OnInit {
+export class GestioncommandePage {
 
     commandes: Commande[];
 
@@ -23,9 +23,7 @@ export class GestioncommandePage implements OnInit {
       });
     }
 
-    ngOnInit() {
 
-    }
 
     remove(item) {
       this.commandeService.removeCommande(item.id);
@@ -38,7 +36,7 @@ export class GestioncommandePage implements OnInit {
     set user(value: Users) {
       this.currentUser.user = value;
     }
-    
+
 
     get idCurrentUser():string {
       return this.currentUser.idCurrentUser;

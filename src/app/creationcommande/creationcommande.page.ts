@@ -19,57 +19,27 @@ import { PickerController } from '@ionic/angular';
   templateUrl: './creationcommande.page.html',
   styleUrls: ['./creationcommande.page.scss'],
 })
-export class CreationcommandePage implements OnInit {
+export class CreationcommandePage {
 
   commande: Commande = {
     idClient: '',
     idMarchand: '',
     nomClient: '',
     accepted: false,
-    dictProduits: [],
-    prixTotal: 0,
     payed: false,
     realized: false,
+    dictProduits: [],
+    prixTotal: 0
   };
 
   produitsencommande: string[];
 
   produits: Produit[];
 
-  marchand: Users = {
-    id: '',
-    nom: '',
-    prenom: '',
-    role: '',
-    email: '',
-    latitude: 0,
-    longitude: 0,
-    photo: '',
-    paypal: '',
-    rcs: '',
-    bio: ''
-  };
-
   //produitsDisponibles: { [id: string]: ProduitCommande; } = {};
   produitsDisponibles: ProduitCommande[] = [];
 
-  /*
-  export interface Commande {
-    id: string;
-    idClient: string;
-    idMarchand: string;
-    dictProduits: { [id: string]: ProduitCommande; };
-  }
 
-  export interface ProduitCommande {
-    idProduit: string;
-    nomProduit: string;
-    quantiteAchatProduit: number;
-    prixProduitParGrandeur: number;
-    grandeurPourPrix: string;
-    isChecked: boolean;
-  }
-  */
 
   testId = null;
   commandeId = null;
@@ -128,6 +98,7 @@ export class CreationcommandePage implements OnInit {
   ngOnInit() {
 
   }
+
 
 
   get user():Users {
@@ -345,12 +316,29 @@ export class CreationcommandePage implements OnInit {
     this.commande.idClient = this.user.id;
     this.commande.dictProduits = productTable;
     this.commande.prixTotal = prixTotal;
-    console.log(this.commande);
+    this.usersService.getUserDB(this.commande.idClient).subscribe((user: any) => {
+      this.commande.nomClient = user.prenom + ' ' + user.nom;
+      console.log(this.commande);
+      if (this.commandeId) {
+        this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
+          //loading.dismiss();
+          this.router.navigate(['/tabsmarchand/gestioncommande']); // à changer vers panier
+        });
+      } else {
+        this.commandeService.addCommande(this.commande).then(res => {
+          this.testId = res.id;
+          //loading.dismiss();
+          this.router.navigate(['/paypal', {id: this.testId}]); // à changer vers panier
+        });
+      }
+    });
 
+    /*
     const loading = await this.loadingController.create({
       message: 'Sauvegarde de la commande...'
     });
     await loading.present();
+    */
 
     if (this.commandeId) {
       this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {

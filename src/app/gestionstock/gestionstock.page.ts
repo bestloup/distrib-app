@@ -9,7 +9,7 @@ import { CurrentUserService } from './../services/currentuser.service';
   templateUrl: 'gestionstock.page.html',
   styleUrls: ['gestionstock.page.scss'],
 })
-export class GestionstockPage implements OnInit {
+export class GestionstockPage {
 
   produits: Produit[];
 
@@ -24,9 +24,6 @@ export class GestionstockPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
 
   remove(item) {
     this.produitService.removeProduit(item.id);

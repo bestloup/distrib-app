@@ -10,10 +10,10 @@ export interface Commande {
   idMarchand: string;
   nomClient: string;
   accepted: boolean;
-  dictProduits: ProduitCommande[];
-  prixTotal;
   payed: boolean;
   realized: boolean;
+  dictProduits: ProduitCommande[];
+  prixTotal: number;
 }
 
 export interface ProduitCommande {

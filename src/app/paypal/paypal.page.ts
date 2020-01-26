@@ -37,7 +37,7 @@ export class PaypalPage {
       this.commandeService.getCommande(this.commandeid).subscribe( res => {
         console.log(res);
         this.commande = res;
-        this.paymentAmount = res.prixTotal;
+        this.paymentAmount = res.prixTotal.toString();
       })
   }
 

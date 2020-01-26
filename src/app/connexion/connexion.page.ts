@@ -11,7 +11,7 @@ import { delay } from 'rxjs/operators';
   templateUrl: './connexion.page.html',
   styleUrls: ['./connexion.page.scss'],
 })
-export class ConnexionPage implements OnInit {
+export class ConnexionPage {
   dataUser = {
     email: '',
     password: ''
@@ -62,8 +62,6 @@ export class ConnexionPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
 
   login() {
     var self = this;

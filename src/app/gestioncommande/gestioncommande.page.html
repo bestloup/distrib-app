@@ -22,7 +22,7 @@
         <ion-item *ngIf="item.idMarchand == idCurrentUser && user.role == 'marchand' && item.payed == true" lines="inset" button [routerLink]="['/detailscommande', item.id]">
           <ion-card class="profile_info">
             <ion-card-header >
-              <ion-card-title>{{ item.id }}</ion-card-title>
+              <ion-card-title>{{ item.nomClient }}</ion-card-title>
               <ion-card-subtitle *ngFor="let produit of item.dictProduits">{{ produit.nomProduit }} : {{ produit.quantiteAchatProduit }} {{produit.grandeurPourPrix}}</ion-card-subtitle>
 
               <ion-card-subtitle>Prix total : {{ item.prixTotal }}€</ion-card-subtitle>

@@ -10,7 +10,7 @@ import { CurrentUserService } from './../services/currentuser.service';
   templateUrl: './detailscommande.page.html',
   styleUrls: ['./detailscommande.page.scss'],
 })
-export class DetailscommandePage implements OnInit {
+export class DetailscommandePage {
 
   commande: Commande = {
     id: '',
@@ -18,21 +18,21 @@ export class DetailscommandePage implements OnInit {
     idMarchand: '',
     nomClient: '',
     accepted: false,
-    dictProduits: [],
-    prixTotal: 0, 
     payed: false,
     realized: false,
+    dictProduits: [],
+    prixTotal: 0
   };
 
   client: Users = {
     id: '',
     nom: '',
     prenom: '',
+    photo: '',
     role: '',
     email: '',
     latitude: 0,
     longitude: 0,
-    photo: '',
     paypal: '',
     rcs: '',
     bio: ''
@@ -48,14 +48,15 @@ export class DetailscommandePage implements OnInit {
     private usersService: UsersService,
     private currentUser: CurrentUserService,
     private loadingController: LoadingController
-  ) { }
-
-  ngOnInit() {
+  )
+  {
     this.commandeId = this.route.snapshot.params['id'];
     if (this.commandeId)  {
       this.loadCommande();
     }
   }
+
+
 
   async loadCommande() {
     const loading = await this.loadingController.create({
