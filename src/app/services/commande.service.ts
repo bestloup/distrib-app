@@ -14,6 +14,7 @@ export interface Commande {
   realized: boolean;
   dictProduits: ProduitCommande[];
   prixTotal: number;
+  nomMarchand: string;
 }
 
 export interface ProduitCommande {

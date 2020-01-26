@@ -10,21 +10,28 @@ ion-header{
 }
 
 .toPrepareList {
-  height: 40%;
+  height: 35%;
   overflow-y : auto;
 }
 
 .toAcceptList {
-  height: 40%;
+  height: 35%;
   overflow-y : auto;
 }
 
-.list_title {
+.list_titleprepare {
   text-align: center;
   padding: 10px;
   font-size: 1em;
+  color: darkorange;
 }
 
+.list_titleaccept {
+  text-align: center;
+  padding: 10px;
+  font-size: 1em;
+  color: limegreen;
+}
 .prepare {
   color: darkorange;
 }

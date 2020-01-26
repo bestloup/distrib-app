@@ -53,7 +53,7 @@ onClickFuntion(event){
   const mark = marker([45.4471431, 4.865949285583477]);
   this.map.addLayer(mark);
 }
-
+ 
   leafletMap() {
     this.map = new Map('mapId').setView([45.77233909078429, 4.865949285583477], 13);
     tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(this.map);

@@ -23,7 +23,8 @@ export class DetailscommandePage {
     payed: false,
     realized: false,
     dictProduits: [],
-    prixTotal: 0
+    prixTotal: 0,
+    nomMarchand: '',
   };
 
   client: Users = {

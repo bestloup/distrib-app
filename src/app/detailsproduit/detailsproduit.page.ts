@@ -23,7 +23,7 @@ export class DetailsproduitPage {
   };
 
   produitId = null;
-
+ 
   constructor(
     public pickerCtrl: PickerController,
     private router: Router,

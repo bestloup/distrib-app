@@ -24,6 +24,7 @@ export class PaypalPage {
     prixTotal: 0,
     payed: false,
     realized: false,
+    nomMarchand: '',
   };
 
   commandeid = '';

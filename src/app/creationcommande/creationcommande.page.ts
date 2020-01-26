@@ -26,12 +26,12 @@ export class CreationcommandePage {
     idClient: '',
     idMarchand: '',
     nomClient: '',
-    nomMarchand: '',
     accepted: false,
     payed: false,
     realized: false,
     dictProduits: [],
-    prixTotal: 0
+    prixTotal: 0,
+    nomMarchand: ''
   };
 
   marchand: Users = {
@@ -357,7 +357,6 @@ export class CreationcommandePage {
     } else {
       this.usersService.getUserDB(this.commande.idClient).pipe(first()).subscribe((user: any) => {
         this.commande.nomClient = user.prenom + ' ' + user.nom;
-        this.commande.nomMarchand = marchand.prenom + ' ' + marchand.nom;
         console.log(this.commande);
         if (this.commandeId) {
           this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
@@ -369,6 +368,7 @@ export class CreationcommandePage {
               idClient: '',
               idMarchand: '',
               nomClient: '',
+              nomMarchand: '',
               accepted: false,
               payed: false,
               realized: false,
@@ -388,6 +388,7 @@ export class CreationcommandePage {
                 idClient: '',
                 idMarchand: '',
                 nomClient: '',
+                nomMarchand: '',
                 accepted: false,
                 payed: false,
                 realized: false,
