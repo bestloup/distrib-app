@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabsmarchand/gestioncommande"></ion-back-button>
+      <ion-back-button *ngIf="user.role == 'marchand'" defaultHref="/tabsmarchand/gestioncommande"></ion-back-button>
+      <ion-back-button *ngIf="user.role == 'client'" defaultHref="/histcommande"></ion-back-button>
     </ion-buttons>
-    <ion-title>Client : {{client.prenom}} {{client.nom}}</ion-title>
+    <ion-title *ngIf="user.role == 'marchand'">Client : {{client.prenom}} {{client.nom}}</ion-title>
+    <ion-title *ngIf="user.role == 'client'">Commande de {{commande.prixTotal}}€</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -36,7 +38,10 @@
   </ion-item-sliding>
 
   </ion-list>
-  <ion-item lines="inset">ID commande : {{commande.id}}</ion-item>
-  <ion-button *ngIf="commande.accepted == false" expand="full" (click)="accept()">Accepter la commande</ion-button>
-  <ion-button *ngIf="commande.realized == false && commande.accepted == true" expand="full" (click)="deliver()">Commande effectuée</ion-button>
+
+    <h2>ID commande :</h2>
+    <h3>{{commande.id}}</h3>
+    <br>
+  <ion-button *ngIf="commande.accepted == false && user.role == 'marchand'" expand="full" (click)="accept()">Accepter la commande</ion-button>
+  <ion-button *ngIf="commande.realized == false && commande.accepted == true && user.role == 'marchand'" expand="full" (click)="deliver()">Commande effectuée</ion-button>
 </ion-content>
