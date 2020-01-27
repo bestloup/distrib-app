@@ -357,6 +357,7 @@ export class CreationcommandePage {
     } else {
       this.usersService.getUserDB(this.commande.idClient).pipe(first()).subscribe((user: any) => {
         this.commande.nomClient = user.prenom + ' ' + user.nom;
+        this.commande.nomMarchand = this.marchand.prenom + ' ' + this.marchand.nom;
         console.log(this.commande);
         if (this.commandeId) {
           this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
