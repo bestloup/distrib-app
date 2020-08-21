@@ -1,9 +1,9 @@
-# photo-gallery
+# distrib-app
 
-lors de l'installation n'oubliez pas de téléchargé le librairies lié au projet 
+Lors de l'installation n'oubliez pas de télécharger les librairies liées au projet 
 
-pour compiler le projet : 
-- ce mettre a la racine du projet 
+Pour compiler le projet : 
+- se mettre a la racine du projet 
 - installer angular 
 - taper "ionic serve"
 
@@ -11,4 +11,4 @@ pour compiler le projet :
 #problème marqueur 
 
 il faut modifier la bibliothèque leaflet -> le fichier leaflet-src.js 
-mofiifer les chemins des marqueurs ( ajouter 'assets/' devant ) et mettre les icones dans le fichier assets 
+modifier les chemins des marqueurs ( ajouter 'assets/' devant ) et mettre les icones dans le fichier assets 
