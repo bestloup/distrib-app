@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase : {
+  firebase : { /* Fill in with the data specific to your firebase project */
     apiKey: "AIzaSyAmuOlcUgF64oB9hsiJDvLOKAwx4v2k750",
     authDomain: "preproject-abaab.firebaseapp.com",
     databaseURL: "https://preproject-abaab.firebaseio.com",
