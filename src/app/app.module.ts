@@ -68,7 +68,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   entryComponents: [],
   imports: [BrowserModule,
     AngularFireModule.initializeApp(environment.firebase), IonicModule.forRoot(), AppRoutingModule,
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyD29NPr_VCstyuxj13L3Dg9oAjBG0Cw3x8'}), HttpClientModule,
+    HttpClientModule,
     AngularFireAuthModule, AngularFirestoreModule, AngularFireDatabaseModule,
       FirebaseUIModule.forRoot(firebaseUiAuthConfig), AngularFireStorageModule ],
   providers: [
