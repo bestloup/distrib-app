@@ -41,10 +41,9 @@ export class CurrentUserService {
 
   subscribeToCurrentUser(id: string) {
 
-    //var self = this;
+    //var self = this; (can resolve loss of scope with 'this')
     this.idCurrentUser = id;
-    this.usersService.getUserDB(id).subscribe((user :any) => { //this.disposable =
-      //this.user = user;
+    this.usersService.getUserDB(id).subscribe((user :any) => {
       this.user.id = user.id;
       this.user.nom = user.nom;
       this.user.prenom = user.prenom;
@@ -52,8 +51,6 @@ export class CurrentUserService {
       this.user.email = user.email;
       this.user.latitude = user.latitude;
       this.user.longitude = user.longitude;
-      //console.log('Current user :');
-      //console.log(this.user);
     });
     return this.usersService.getUserDB(id);
   }

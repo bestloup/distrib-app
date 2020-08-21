@@ -13,7 +13,7 @@ export class DetailsproduitPage {
 
   produit: Produit = {
     nom: '',
-    idMarchand: '', //idCurrentUser
+    idMarchand: '',
     quantiteStock: 0,
     prix: 0,
     grandeurPrix: '',
@@ -118,17 +118,12 @@ export class DetailsproduitPage {
 
 
   async openPickerForQuantity(columnOptions) { //
-    //const pickerController = document.querySelector('ion-picker-controller');
     const picker = await this.pickerCtrl.create({
-    //const picker = await pickerController.create({
       columns: this.getColumnsForQuantity(columnOptions),
       buttons: [
         {
           text: 'Annuler',
-          role: 'cancel'/*,
-          handler: (value) => {
-            return 0;
-          }*/
+          role: 'cancel'
         },
         {
           text: 'Confirmer',
@@ -141,7 +136,6 @@ export class DetailsproduitPage {
             this.produit.grandeurStock = value.grandeur.text;
             console.log("ici");
             console.log(this.produit)
-            //return nbNumber;
           }
         }
       ]
@@ -184,17 +178,12 @@ export class DetailsproduitPage {
 
 
   async openPickerForPrice(columnOptions) { //
-    //const pickerController = document.querySelector('ion-picker-controller');
     const picker = await this.pickerCtrl.create({
-    //const picker = await pickerController.create({
       columns: this.getColumnsForPrice(columnOptions),
       buttons: [
         {
           text: 'Annuler',
-          role: 'cancel'/*,
-          handler: (value) => {
-            return 0;
-          }*/
+          role: 'cancel'
         },
         {
           text: 'Confirmer',
@@ -207,7 +196,6 @@ export class DetailsproduitPage {
             this.produit.grandeurPrix = value.grandeur.text;
             console.log("ici");
             console.log(this.produit)
-            //return nbNumber;
           }
         }
       ]

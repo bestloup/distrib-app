@@ -46,18 +46,9 @@ export class ConnexionPage {
   {
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
-        //console.log('non connecté');
         this.connected = false;
       } else {
-        //console.log('connecté: ' + auth.uid);
         this.connected = true;
-        //
-        // if (this.user.role == 'marchand') {
-        //   this.router.navigateByUrl('/accueilmarchand');
-        // } else if (this.user.role == 'client') {
-        //   this.router.navigateByUrl('/tabs/annonces');
-        // }
-        //this.router.navigateByUrl('/tabs/annonces'); // ???????????????????????????????????????????????????????????
       }
     });
   }

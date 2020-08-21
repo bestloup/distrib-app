@@ -11,9 +11,6 @@
     </ion-card-header>
     <ion-card-content>
       <div class="fileUpload btn btn-primary">
-        <!--
-        <span>Charger</span>
-        -->
         <input
           id="uploadBtn"
           type="file"
@@ -72,36 +69,7 @@
     </div>
   </ion-card-content>
 
-  <!--
-  <a [href]="url" target="_blank" rel="noopener">Télécharger</a>
-  File Size: {{ fileSize | fileSizePipe }}
-  <ion-button
-  expand="full"
-  color="success"
-  (click)="isUploading = isUploaded = false"
-  >Upload More</ion-button>
-  <ion-card text-center *ngIf="!isUploading && isUploaded">
-    <ion-card-header>
-      <ion-card-title>
-        <b>{{ fileName }}</b>
-      </ion-card-title>
-    </ion-card-header>
 
-  </ion-card>
--->
-<!--
-
-
-  <ion-card color="light" text-center *ngFor="let item of images | async">
-
-
-
-    <ion-card-content *ngIf="item.idpicture == user.id && item.index == 0">
-      <img class="profile_image" [src]="item.filepath" />
-      <a [href]="item.filepath" target="_blank" rel="noopener">Download</a>
-    </ion-card-content>
-  </ion-card>
--->
 
 
 
@@ -176,24 +144,7 @@
 
 
 
-<!--
-<ion-card text-center *ngIf="user.role == 'marchand'">
-  <ion-card-header>
-    <ion-card-title>Photo de votre stand au marché</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <div class="fileUpload btn btn-primary">
 
-      <input
-        id="uploadBtn"
-        type="file"
-        class="upload"
-        (change)="uploadFilePhotoEtal($event.target.files)"
-      />
-    </div>
-  </ion-card-content>
-</ion-card>
--->
 
 
 
@@ -203,9 +154,6 @@
   </ion-card-header>
   <ion-card-content>
     <div class="fileUpload btn btn-primary">
-      <!--
-      <span>Charger</span>
-      -->
       <input
         id="uploadBtn"
         type="file"

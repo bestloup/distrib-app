@@ -12,7 +12,6 @@ import { PickerController } from '@ionic/angular';
 
 
 
-//import { TodoDetailsPage } from './../pages/todo-details/todo-details.page'; //..
 
 @Component({
   selector: 'app-creationcommande',
@@ -54,7 +53,7 @@ export class CreationcommandePage {
 
   produits: Produit[];
 
-  produitsDisponibles: ProduitCommande[]; //{nomProduit: "Patate"} //= []
+  produitsDisponibles: ProduitCommande[];
 
 
 
@@ -75,7 +74,6 @@ export class CreationcommandePage {
   )
   {
 
-    //this.router.navigateByUrl('/tabsmarchand/creationcommande/' + this.route.snapshot.params['id'];);
 
     this.loadAvailableProducts();
 
@@ -116,9 +114,8 @@ export class CreationcommandePage {
         console.log("je charge les produits, promis");
         this.produits = res;
         this.produitsDisponibles = [];
-        for (let produit of this.produits) { // est-ce que je mets ce for à l'intérieur ou à l'extérieur du subscribe ? j'ai peur que si le marchand met un nouveau produit dans la base, ça rechange et nique la commande en cours du client...
+        for (let produit of this.produits) {
           if (produit.idMarchand == this.marchandid && this.marchandid != null) {
-            //console.log(produit);
             this.produitsDisponibles.push({
               idProduit: produit.id,
               nomProduit: produit.nom,
@@ -248,10 +245,7 @@ export class CreationcommandePage {
       buttons: [
         {
           text: 'Annuler',
-          role: 'cancel'/*,
-          handler: (value) => {
-            return 0;
-          }*/
+          role: 'cancel'
         },
         {
           text: 'Confirmer',
@@ -262,7 +256,6 @@ export class CreationcommandePage {
             this.produitsDisponibles[index].quantiteAchatProduit = quantityNumber;
             console.log("ici");
             console.log(this.produitsDisponibles[index])
-            //return quantityNumber;
           }
         }
       ]
@@ -346,7 +339,7 @@ export class CreationcommandePage {
     }
     prixTotal = parseFloat(prixTotal.toFixed(2));
     console.log(productTable);
-    this.commande.idMarchand = this.marchandid; // à changer pour mettre le marchand de la page en question
+    this.commande.idMarchand = this.marchandid;
     this.commande.accepted = false;
     this.commande.idClient = this.user.id;
     this.commande.dictProduits = productTable;
@@ -362,7 +355,7 @@ export class CreationcommandePage {
         if (this.commandeId) {
           this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
             //loading.dismiss();
-            this.router.navigate(['/paypal/' + this.commandeId.toString()]); // à changer vers panier
+            this.router.navigate(['/paypal/' + this.commandeId.toString()]);
             this.commandeId = null;
             this.commande = {
               id: '',
@@ -382,7 +375,7 @@ export class CreationcommandePage {
             this.commandeId = res.id;
             this.commande.id = res.id;
             this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
-              this.router.navigate(['/paypal/' + this.commandeId.toString()]); // à changer vers panier
+              this.router.navigate(['/paypal/' + this.commandeId.toString()]);
               this.commandeId = null;
               this.commande = {
                 id: '',
@@ -403,26 +396,5 @@ export class CreationcommandePage {
     }
 
 
-    /*
-    const loading = await this.loadingController.create({
-      message: 'Sauvegarde de la commande...'
-    });
-    await loading.present();
-    */
-
-    /*
-    if (this.commandeId) {
-      this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {
-        //loading.dismiss();
-        this.router.navigate(['/tabsmarchand/gestioncommande']); // à changer vers panier
-      });
-    } else {
-      this.commandeService.addCommande(this.commande).then(res => {
-        this.commandeId = res.id;
-        //loading.dismiss();
-        this.router.navigate(['/paypal', this.commandeId]); // à changer vers panier
-      });
-    }
-    */
   }
 }

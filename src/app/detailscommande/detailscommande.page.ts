@@ -87,8 +87,6 @@ export class DetailscommandePage {
       console.log(this.commande);
       this.usersService.getUserDB(this.commande.idClient).subscribe((user: any) => {
         this.client = user;
-        //console.log("lalalalalalneflczelkfjnefkezfj");
-        //console.log(this.client);
       });
     });
   }
@@ -98,7 +96,7 @@ export class DetailscommandePage {
     const loading = await this.loadingController.create({
       message: 'Sauvegarde du Commande...'
     });
-    await loading.present(); // pour creation commande
+    await loading.present();
 
     if (this.commandeId) {
       this.commandeService.updateCommande(this.commande, this.commandeId).then(() => {

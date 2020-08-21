@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { CreationproduitPage } from './creationproduit.page';
 
-//import { CreationproduitRoutingModule } from './creationproduit-routing.module';
 
 const routes: Routes = [
   {

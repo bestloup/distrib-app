@@ -21,11 +21,8 @@ export class DesmarchandPage implements OnInit {
     this.marchandid = this.route.snapshot.params['id'];
     this.produitService.getProduits().subscribe(res => {
       this.produit = res;
-      //console.log('on a fait la requetes :' + this.marche);
       for (let entry of this.produit) {
-        //console.log(entry.nom + '   ' + entry.longitude + ' ' + entry.latitude ); // 1, "string", false
         if (entry.idMarchand == 'QzSsgLGy1ZQbGFWRb0867d5Vn0f2'){
-          //console.log(entry)
         }
     }
     });

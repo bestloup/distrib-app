@@ -30,12 +30,8 @@ export class AnnoncesPage {
         this.router.navigateByUrl('/tabsmarchand');
       }
       else if (this.user.role == 'client'){
-        //console.log('reste la poto')
       }
     })
-          //this.currentUser.subscribeToCurrentUser(auth.uid);
-
-        //console.log('Connecté: ' + auth.uid);
 
   }
 

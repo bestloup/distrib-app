@@ -65,7 +65,7 @@ export class InfouserPage {
       self.user.email = email;
       self.user.id = firebaseUser.user.uid;
       self.idCurrentUser = firebaseUser.user.uid;
-      self.afd.object('user/' + firebaseUser.user.uid).set(self.user); // inserer le user dans la bdd
+      self.afd.object('user/' + firebaseUser.user.uid).set(self.user);
       self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
     }).catch(function(error) {
         console.error("ERROR: ", error);
@@ -87,7 +87,7 @@ export class InfouserPage {
       self.user.email = email;
       self.user.id = firebaseUser.user.uid;
       self.idCurrentUser = firebaseUser.user.uid;
-      self.afd.object('user/' + firebaseUser.user.uid).set(self.user); // inserer le user dans la bdd
+      self.afd.object('user/' + firebaseUser.user.uid).set(self.user);
       self.currentUser.subscribeToCurrentUser(firebaseUser.user.uid);
     }).catch(function(error) {
         console.error("ERROR: ", error);

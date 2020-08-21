@@ -36,11 +36,8 @@ export class ProfilmarchandPage {
     db: AngularFirestore,
     public usersService: UsersService,
     public currentUser: CurrentUserService
-    //private todosCollection: AngularFirestoreCollection<Users>
   )
   {
-    //this.todosCollection = db.collection<Users>('user');
-    //console.log(this.todosCollection.doc<Users>(this.userId));
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
         console.log('non connecté');
@@ -58,7 +55,7 @@ export class ProfilmarchandPage {
     this.router.navigateByUrl('/connexion');
    }
 
-   updateProfile() { // reste la modification du mail ou du mot de passe à faire, parce que ici si je modifie le mail il n'est pas modifié dans la base auth
+   updateProfile() { // email and password modification are not implemented yet
      console.log(this.user);
      console.log(this.user.id);
      this.usersService.updateUserDB(this.user, this.user.id);

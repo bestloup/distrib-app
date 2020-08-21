@@ -6,7 +6,6 @@ import { Users, UsersService } from './../services/users.service';
 import { CurrentUserService } from './../services/currentuser.service';
 import { PickerController } from '@ionic/angular';
 
-//import { TodoDetailsPage } from './../pages/todo-details/todo-details.page'; //..
 
 @Component({
   selector: 'app-creationproduit',
@@ -17,7 +16,7 @@ export class CreationproduitPage {
 
   produit: Produit = {
     nom: '',
-    idMarchand: '', //idCurrentUser
+    idMarchand: '',
     quantiteStock: 0,
     prix: 0,
     grandeurPrix: '',
@@ -152,17 +151,12 @@ export class CreationproduitPage {
 
 
   async openPickerForQuantity(columnOptions) { //
-    //const pickerController = document.querySelector('ion-picker-controller');
     const picker = await this.pickerCtrl.create({
-    //const picker = await pickerController.create({
       columns: this.getColumnsForQuantity(columnOptions),
       buttons: [
         {
           text: 'Annuler',
-          role: 'cancel'/*,
-          handler: (value) => {
-            return 0;
-          }*/
+          role: 'cancel'
         },
         {
           text: 'Confirmer',
@@ -175,7 +169,6 @@ export class CreationproduitPage {
             this.produit.grandeurStock = value.grandeur.text;
             console.log("ici");
             console.log(this.produit)
-            //return nbNumber;
           }
         }
       ]
@@ -218,17 +211,12 @@ export class CreationproduitPage {
 
 
   async openPickerForPrice(columnOptions) { //
-    //const pickerController = document.querySelector('ion-picker-controller');
     const picker = await this.pickerCtrl.create({
-    //const picker = await pickerController.create({
       columns: this.getColumnsForPrice(columnOptions),
       buttons: [
         {
           text: 'Annuler',
-          role: 'cancel'/*,
-          handler: (value) => {
-            return 0;
-          }*/
+          role: 'cancel'
         },
         {
           text: 'Confirmer',
@@ -241,7 +229,6 @@ export class CreationproduitPage {
             this.produit.grandeurPrix = value.grandeur.text;
             console.log("ici");
             console.log(this.produit)
-            //return nbNumber;
           }
         }
       ]

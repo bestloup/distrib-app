@@ -17,7 +17,6 @@ import { CurrentUserService } from './services/currentuser.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  //private todosCollection: AngularFirestoreCollection<Geo>;
   constructor(
     private router: Router,
     public afAuth: AngularFireAuth,
@@ -53,12 +52,7 @@ export class AppComponent {
           console.log('Connecté: ' + auth.uid);
           this.currentUser.subscribeToCurrentUser(auth.uid).subscribe((user: any) => {
             this.geolocation.getCurrentPosition().then((resp) => {
-              //console.log('latitude = ' + resp.coords.latitude);
-              //console.log('longitude = ' + resp.coords.longitude);
-              //update user
-              //console.log("AppComponent");
               this.user = user;
-              //console.log(this.user);
               this.user.latitude = resp.coords.latitude;
               this.user.longitude = resp.coords.longitude;
               this.usersService.updateUserDB(this.user, this.user.id);

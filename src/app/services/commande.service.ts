@@ -23,7 +23,6 @@ export interface ProduitCommande {
    quantiteAchatProduit: number;
    prixProduitParGrandeur: number;
    grandeurPourPrix: string;
-   //isChecked: boolean; //
 }
 
 @Injectable({
