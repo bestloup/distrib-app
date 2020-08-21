@@ -37,6 +37,20 @@ To compile the project:
 - Install Angular
 - Type in ***ionic serve***
 
+To add your firebase project:
+- Go to /src/environments/
+- In ***environment.ts*** and ***environment.prod.ts***, insert the data relative to your firebase project to identificate it:
+    firebase : {
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: "",
+        measurementId: ""
+    }
+
 
 
 ## Problem: markers
